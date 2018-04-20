@@ -17,7 +17,10 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         $this->publishes([
             __DIR__ . '/../../vendor/components/font-awesome/css' => public_path('vendor/components/font-awesome/css'),
-            __DIR__ . '/../../vendor/components/font-awesome/webfonts' => public_path('vendor/components/font-awesome/webfonts')
+            __DIR__ . '/../../vendor/components/font-awesome/webfonts' => public_path('vendor/components/font-awesome/webfonts'),
+            __DIR__ . '/../../vendor/jquery' => public_path('vendor/jquery'),
+            __DIR__ . '/../../vendor/twitter/bootstrap/dist' => public_path('vendor/bootstrap/dist'),
+            __DIR__ . '/../../vendor/grimmlink/jquery-slimscroll' => public_path('vendor/jquery-slimscroll')
         ], 'public');
     }
 
