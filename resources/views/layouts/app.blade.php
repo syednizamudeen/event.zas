@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('app/bootstrap/css/bootstrap.min.css')}}">
 
     <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="{{asset('app/font-awesome/css/font-awesome.min.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{asset('vendor/components/font-awesome/css/fontawesome-all.css')}}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -306,17 +306,17 @@
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fab fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-linkedin"></i>
+                    <i class="fab fa-linkedin-in"></i>
                   </a>
                 </li>
               </ul>
@@ -330,17 +330,17 @@
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fab fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-linkedin"></i>
+                    <i class="fab fa-linkedin-in"></i>
                   </a>
                 </li>
               </ul>
@@ -354,17 +354,17 @@
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fab fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="#">
-                    <i class="fa fa-linkedin"></i>
+                    <i class="fab fa-linkedin-in"></i>
                   </a>
                 </li>
               </ul>
@@ -463,17 +463,17 @@
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="#">
-                  <i class="fa fa-twitter"></i>
+                  <i class="fab fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a href="#">
-                  <i class="fa fa-facebook"></i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li class="list-inline-item">
                 <a href="#">
-                  <i class="fa fa-linkedin"></i>
+                  <i class="fab fa-linkedin-in"></i>
                 </a>
               </li>
             </ul>
