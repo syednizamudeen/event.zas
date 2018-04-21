@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Service;
 
 class ServicesController extends Controller
 {
@@ -13,7 +14,12 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'title'=>'Services',
+            'services'=>Service::orderBy('name','asc')->paginate(10)
+            // 'services'=>Service::all()
+        );
+        return view('service.index')->with($data);
     }
 
     /**
@@ -23,7 +29,10 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        $data = array(
+            'title'=>'Create Service'
+        );
+        return view('service.create')->with($data);
     }
 
     /**
@@ -34,7 +43,15 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|unique:services,name'
+        ]);
+
+        $service = new Service;
+        $service->name = $request->input('name');
+        $service->save();
+
+        return redirect('/services')->with('success', 'Service Created');
     }
 
     /**
@@ -45,7 +62,11 @@ class ServicesController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = array(
+            'title'=>'Service Details',
+            'service'=>Service::find($id)
+        );
+        return view('service.show')->with($data);
     }
 
     /**
@@ -56,7 +77,11 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = array(
+            'title'=>'Edit Service',
+            'service'=>Service::find($id)
+        );
+        return view('service.edit')->with($data);
     }
 
     /**
@@ -68,7 +93,15 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|unique:services,name'
+        ]);
+
+        $service = Service::find($id);
+        $service->name = $request->input('name');
+        $service->save();
+
+        return redirect('/services')->with('success', 'Service Updated');
     }
 
     /**
@@ -79,6 +112,9 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::find($id);
+        $service->delete();
+
+        return redirect('/services')->with('success', 'Service Deleted');
     }
 }
