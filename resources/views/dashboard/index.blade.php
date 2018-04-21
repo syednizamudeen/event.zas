@@ -5,7 +5,13 @@
             <h3 class="box-title">{{$title}}</h3>
         </div>
         <div class="box-body">
-            The great content goes here
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            You are logged in!
         </div>
     </div>
 @endsection

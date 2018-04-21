@@ -4,18 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class VisitorsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -23,8 +13,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $title = 'Dashbord Elements';
-        return view('dashboard.index', compact('title'));
+        $data = array(
+            'title'=>'Enventzas Home'
+        );
+        return view('visitor.index')->with($data);
     }
 
     /**
