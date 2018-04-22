@@ -39,20 +39,35 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a class="nav-link js-scroll-trigger" href="#services">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Recommended Ideas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+              <a class="nav-link js-scroll-trigger" href="#team">Event Inspiration</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
+            @if (Auth::guest())
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">Register</a>
+            </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
+            </li>
+            @endif
           </ul>
         </div>
       </div>
@@ -61,7 +76,7 @@
     @yield('content') 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="{{asset('app/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('app/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Plugin JavaScript -->

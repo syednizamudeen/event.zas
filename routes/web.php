@@ -11,17 +11,12 @@
 |
 */
 
-Route::get('/', 'VisitorsController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/backend', 'DashboardController@index');
 
 Route::resource('services','ServicesController');
-Route::resource('visitors','VisitorsController');
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::resource('home','HomeController');
 
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
-// Route::get('/home', 'DashboardController@index');

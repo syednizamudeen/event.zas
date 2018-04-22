@@ -57,7 +57,7 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
-            <li><a href="{{url("/visitors")}}" target="_blank">Visit Site<i class="fas fa-external-link-square-alt fa-lg fa-fw"></i></a></li>
+            <li><a href="{{url("/home")}}" target="_blank">Visit Site<i class="fas fa-external-link-square-alt fa-lg fa-fw"></i></a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->

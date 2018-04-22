@@ -1,4 +1,4 @@
-@extends('layouts.visitor')
+@extends('layouts.home')
 @section('content')
     <!-- Header -->
     <header class="masthead">
