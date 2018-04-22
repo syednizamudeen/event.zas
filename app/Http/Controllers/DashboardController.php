@@ -23,6 +23,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // abort(404, 'The resource you are looking for could not be found'); #for testing only
         $title = 'Dashbord Elements';
         return view('dashboard.index', compact('title'));
     }
