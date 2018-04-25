@@ -1,4 +1,4 @@
-@extends('layouts.visitor')
+@extends('layouts.home')
 @section('content')
     <section id="services">
         <div class="container">
