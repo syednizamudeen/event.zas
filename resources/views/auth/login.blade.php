@@ -1,69 +1,65 @@
-@extends('layouts.backend')
+@extends('layouts.home')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+<section>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-5">Welcome</h2>
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <span class="anchor" id="formLogin"></span>
+    
+                        <!-- form card login -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">Login</h3>
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="card-body">
+                                <form class="form" role="form" autocomplete="off" method="POST" action="{{ route('login') }}">
+                                    {{ csrf_field() }}
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <label for="email">E-Mail Address</label>
+                                        <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" required="" autofocus>
+                                        @if ($errors->has('email'))
+                                            <small class="text-danger">{{ $errors->first('email') }}</small>
+                                        @endif
+                                    </div>
+                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" name="password" id="password" required="" autocomplete="new-password">
+                                        @if ($errors->has('password'))
+                                            <small class="text-danger">{{ $errors->first('password') }}</small>
+                                        @endif
+                                    </div>
+                                    <div class="form-check small">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? 'checked' : '' }}> <span>Remember me on this computer</span>
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-lg float-right">
+                                            Login
+                                        </button>
+                                    <div class="form-group">
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">Forgot Your Password?</a>
+                                    </div>
+                                </form>
                             </div>
+                            <!--/card-block-->
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                        <!-- /form card login -->
+    
+                    </div>
+    
+    
                 </div>
+                <!--/row-->
+    
             </div>
+            <!--/col-->
         </div>
+        <!--/row-->
     </div>
-</div>
+    <!--/container-->
+</section>
 @endsection
