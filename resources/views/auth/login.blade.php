@@ -37,7 +37,7 @@
                                             <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? 'checked' : '' }}> <span>Remember me on this computer</span>
                                         </label>
                                     </div>
-                                    <button type="submit" class="btn btn-success btn-lg float-right">
+                                    <button type="submit" class="btn btn-primary btn-lg float-right">
                                             Login
                                         </button>
                                     <div class="form-group">

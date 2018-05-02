@@ -39,7 +39,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-lg float-right">Reset Password</button>
+                                        <button type="submit" class="btn btn-primary btn-lg float-right">Reset Password</button>
                                     </div>
                                 </form>
                             </div>

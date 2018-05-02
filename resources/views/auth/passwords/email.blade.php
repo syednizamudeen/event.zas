@@ -27,7 +27,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-lg btn-block">Send Password Reset Link</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Send Password Reset Link</button>
                                     </div>
                                 </form>
                             </div>

@@ -39,19 +39,19 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Home</a>
+              <a class="nav-link js-scroll-trigger" href="{{url("/home")}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Recommended Ideas</a>
+              <a class="nav-link js-scroll-trigger" href="{{url("/ideas")}}">Recommended Ideas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="{{url("/about")}}">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#team">Event Inspiration</a>
+              <a class="nav-link js-scroll-trigger" href="{{url("/blog")}}">Event Inspiration</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="{{url("/contact")}}">Contact</a>
             </li>
             @if (Auth::guest())
             <li class="nav-item">
