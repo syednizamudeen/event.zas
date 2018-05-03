@@ -19,7 +19,8 @@
         "nnnick/chartjs": "2.7.*",
         "select2/select2": "4.0.*",
         "tinymce/tinymce": "4.7.*",
-        "twitter/bootstrap": "3.3.*"
+        "twitter/bootstrap": "3.3.*",
+        "spatie/laravel-permission": "2.12.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
