@@ -24,3 +24,7 @@ Route::resource('ideas','IdeasController');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::resource('users', 'UserController');
+Route::resource('roles', 'RoleController');
+Route::resource('permissions', 'PermissionController');

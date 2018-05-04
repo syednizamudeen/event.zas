@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Service;
+use Auth;
+use Session;
 
 class ServicesController extends Controller
 {
@@ -14,7 +16,9 @@ class ServicesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
+        $this->middleware(['auth', 'clearance']);
+        // $this->middleware(['auth', 'clearance'])->except('index', 'show');
     }
     
     /**
@@ -74,7 +78,7 @@ class ServicesController extends Controller
     {
         $data = array(
             'title'=>'Service Details',
-            'service'=>Service::find($id)
+            'service'=>Service::findOrFail($id)
         );
         return view('service.show')->with($data);
     }
@@ -89,7 +93,7 @@ class ServicesController extends Controller
     {
         $data = array(
             'title'=>'Edit Service',
-            'service'=>Service::find($id)
+            'service'=>Service::findOrFail($id)
         );
         return view('service.edit')->with($data);
     }
@@ -107,7 +111,7 @@ class ServicesController extends Controller
             'name'=>'required|unique:services,name'
         ]);
 
-        $service = Service::find($id);
+        $service = Service::findOrFail($id);
         $service->name = $request->input('name');
         $service->save();
 
@@ -122,7 +126,7 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id);
+        $service = Service::findOrFail($id);
         $service->delete();
 
         return redirect('/services')->with('success', 'Service Deleted');
