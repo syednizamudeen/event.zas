@@ -5,6 +5,9 @@
             <h3 class="box-title">Users</h3>
             <div class="box-tools pull-right">
                 <a href="{{ route('users.create') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Create</a>
+                <a href="{{ route('roles.index') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Roles</a>
+                <a href="{{ route('permissions.index') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Permissions</a>
+                    
             </div>
         </div>        
         @if(count($users)>0)
