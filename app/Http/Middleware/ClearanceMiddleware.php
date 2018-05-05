@@ -19,9 +19,9 @@ class ClearanceMiddleware {
             return $next($request);
         }
 
-        if ($request->is('posts/create'))//If user is creating a post
+        if ($request->is('services/create'))//If user is creating a services
          {
-            if (!Auth::user()->hasPermissionTo('Create Post'))
+            if (!Auth::user()->hasPermissionTo('add services'))
          {
                 abort('401');
             } 
@@ -30,18 +30,18 @@ class ClearanceMiddleware {
             }
         }
 
-        if ($request->is('posts/*/edit')) //If user is editing a post
+        if ($request->is('services/*/edit')) //If user is editing a services
          {
-            if (!Auth::user()->hasPermissionTo('Edit Post')) {
+            if (!Auth::user()->hasPermissionTo('edit services')) {
                 abort('401');
             } else {
                 return $next($request);
             }
         }
 
-        if ($request->isMethod('Delete')) //If user is deleting a post
+        if ($request->isMethod('Delete')) //If user is deleting a services
          {
-            if (!Auth::user()->hasPermissionTo('Delete Post')) {
+            if (!Auth::user()->hasPermissionTo('delete services')) {
                 abort('401');
             } 
          else 
