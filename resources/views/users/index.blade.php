@@ -5,8 +5,8 @@
             <h3 class="box-title">Users</h3>
             <div class="box-tools pull-right">
                 <a href="{{ route('users.create') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Create</a>
-                <a href="{{ route('roles.index') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Roles</a>
-                <a href="{{ route('permissions.index') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Permissions</a>
+                <a href="{{ route('roles.index') }}" class="btn btn-sm btn-default"><i class="fas fa-key fa-fw"></i> Roles</a>
+                <a href="{{ route('permissions.index') }}" class="btn btn-sm btn-default"><i class="fas fa-lock fa-fw"></i> Permissions</a>
                     
             </div>
         </div>        
@@ -25,7 +25,11 @@
                     <tr>
                         <td><a href="{{url('/users/'.$user->id)}}">{{$user->name}}</a></td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
+                        <td>
+                            @if (!empty($user->created_at))
+                            {{ $user->created_at->format('F d, Y h:ia') }}
+                            @endif
+                        </td>
                         <td>{{  $user->roles()->pluck('name')->implode(' ') }}</td>
                         <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a></td>
                         <td>

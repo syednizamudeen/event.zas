@@ -5,8 +5,8 @@
             <h3 class="box-title">Roles</h3>
             <div class="box-tools pull-right">
                 <a href="{{ URL::to('roles/create') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Create</a>
-                <a href="{{ route('users.index') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Users</a>
-                <a href="{{ route('permissions.index') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Permissions</a>
+                <a href="{{ route('users.index') }}" class="btn btn-sm btn-default"><i class="fas fa-users fa-fw"></i> Users</a>
+                <a href="{{ route('permissions.index') }}" class="btn btn-sm btn-default"><i class="fas fa-lock fa-fw"></i> Permissions</a>
             </div>
         </div>        
         @if(count($roles)>0)
