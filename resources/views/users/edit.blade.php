@@ -19,8 +19,10 @@
                 </div>
                 <div class="form-group">
                     @foreach ($roles as $role)
-                        {{ Form::checkbox('roles[]',  $role->id, $user->roles ) }}
-                        {{ Form::label($role->name, ucfirst($role->name)) }}           
+                    <div class="form-check">
+                        {{ Form::checkbox('roles[]',  $role->id, $user->roles, ['class'=>'form-check-input'] ) }}
+                        {{ Form::label($role->name, ucfirst($role->name)) }}
+                    </div>          
                     @endforeach
                 </div>
                 <div class="form-group">
