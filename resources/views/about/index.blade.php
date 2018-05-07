@@ -2,7 +2,7 @@
 @section('content')
 
 <style>
-    .pricing-table{
+.pricing-table{
   background-color: #eee;
   font-family: 'Montserrat', sans-serif;
 }
@@ -14,7 +14,7 @@
 }
 
 .pricing-table .block-heading h2 {
-  color: #3b99e0;
+  color: #fed136;
 }
 
 .pricing-table .block-heading p {
@@ -33,7 +33,7 @@
 .pricing-table .item {
   background-color: #ffffff;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
-  border-top: 2px solid #5ea4f3;
+  border-top: 2px solid #fed136;
   padding: 30px;
   overflow: hidden;
   position: relative; 
@@ -82,7 +82,7 @@
   margin: 15px 0;
   font-size: 45px;
   text-align: center;
-  color: #2288f9; 
+  color: #fed136; 
 }
 
 .pricing-table .buy-now button {
@@ -195,7 +195,7 @@
                     <div class="price">
                         <h4>$25</h4>
                     </div>
-                    <button class="btn btn-block btn-outline-primary" type="submit">BUY NOW</button>
+                    <button class="btn btn-block btn-default" type="submit">BUY NOW</button>
                 </div>
             </div>
             <div class="col-md-5 col-lg-4">
@@ -230,7 +230,7 @@
                     <div class="price">
                         <h4>$150</h4>
                     </div>
-                    <button class="btn btn-block btn-outline-primary" type="submit">BUY NOW</button>
+                    <button class="btn btn-block btn-outline-success" type="submit">BUY NOW</button>
                 </div>
             </div>
         </div>
