@@ -5,18 +5,18 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-center mb-5">New User Registration</h2>
+                <h2 class="text-center mb-5">Vendor Registration</h2>
                 <div class="row">
                     <div class="col-md-6 mx-auto">
                         <div class="card border-secondary">
                             <div class="card-header">
-                                <h3 class="mb-0 my-2">Sign Up</h3>
+                                <h3 class="mb-0 my-2">Create Account</h3>
                             </div>
                             <div class="card-body">
                                 <form class="form" role="form" autocomplete="off" method="POST" action="{{ route('register') }}">
                                     {{ csrf_field() }}
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label for="name">Name</label>
+                                        <label for="name">Company Name</label>
                                         <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required="" autofocus placeholder="full name">
                                         @if ($errors->has('name'))
                                             <small class="text-danger">{{ $errors->first('name') }}</small>
@@ -43,6 +43,7 @@
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg float-right">Register</button>
                                     </div>
+                                    {{Form::hidden('vendor','enabled')}}
                                 </form>
                             </div>
                         </div>

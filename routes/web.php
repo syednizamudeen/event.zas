@@ -20,6 +20,8 @@ Route::resource('contact','ContactController');
 Route::resource('about','AboutController');
 Route::resource('blog','BlogsController');
 Route::resource('ideas','IdeasController');
+Route::get('vendors/register', 'VendorsController@register');
+Route::resource('vendors','VendorsController');
 
 Auth::routes();
 

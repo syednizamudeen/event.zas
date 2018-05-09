@@ -62,13 +62,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $is_vendor = $data['vendor'];
         $data = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
         ]);
         $user = User::find($data->id);
-        $user->assignRole('visitor');
+        if($is_vendor=='enabled')
+        {
+            $user->assignRole('vendor');
+        }
+        else
+        {
+            $user->assignRole('visitor');
+        }
         return $data;
     }
 }
