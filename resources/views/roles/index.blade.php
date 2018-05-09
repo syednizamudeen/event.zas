@@ -2,7 +2,7 @@
 @section('content')
     <div class="box box-default">
         <div class="box-header with-border">
-            <h3 class="box-title">Roles</h3>
+            <h3 class="box-title">{{$title}}</h3>
             <div class="box-tools pull-right">
                 <a href="{{ URL::to('roles/create') }}" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i>Create</a>
                 <a href="{{ route('users.index') }}" class="btn btn-sm btn-default"><i class="fas fa-users fa-fw"></i> Users</a>
@@ -34,10 +34,10 @@
             </div>
             <div class="box-footer clearfix">
                 <div class="pull-left">
-                    {{-- Showing {{$services->firstItem()}} to {{$services->lastItem()}} of {{$services->total()}} records. --}}
+                    Showing {{$roles->firstItem()}} to {{$roles->lastItem()}} of {{$roles->total()}} records.
                 </div>
                 <div class="pull-right">
-                    {{-- {{$services->links()}} --}}
+                    {{$roles->links()}}
                 </div>
             </div>                
         @else

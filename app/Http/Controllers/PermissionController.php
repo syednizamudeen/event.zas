@@ -22,8 +22,11 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::all(); 
-        return view('permissions.index')->with('permissions', $permissions);
+        $data = array(
+            'title'=>'Permissions',
+            'permissions'=>Permission::orderBy('name','asc')->paginate(10)
+        );
+        return view('permissions.index')->with($data);
     }
 
     /**

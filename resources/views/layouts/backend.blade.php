@@ -51,8 +51,12 @@
                 <li><a href="{{url("/services")}}">Service</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
+                @role('super-admin')
                 <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a href="{{url("/users")}}">Users</a></li>
+                <li><a href="{{url("/roles")}}">Roles</a></li>
+                <li><a href="{{url("/permissions")}}">Permissions</a></li>
+                @endrole
                 <li class="divider"></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>

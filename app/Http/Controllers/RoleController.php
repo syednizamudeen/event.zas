@@ -22,8 +22,11 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
-        return view('roles.index')->with('roles', $roles);
+        $data = array(
+            'title'=>'Roles',
+            'roles'=>Role::orderBy('name','asc')->paginate(10)
+        );
+        return view('roles.index')->with($data);
     }
 
     /**

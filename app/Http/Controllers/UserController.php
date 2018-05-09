@@ -23,8 +23,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all(); 
-        return view('users.index')->with('users', $users);
+        $data = array(
+            'title'=>'Users',
+            'users'=>User::orderBy('name','asc')->paginate(10)
+        );
+        return view('users.index')->with($data);
     }
 
     /**
