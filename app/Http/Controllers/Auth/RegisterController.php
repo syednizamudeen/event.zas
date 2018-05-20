@@ -62,7 +62,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $is_vendor = $data['vendor'];
+        $is_vendor = array_key_exists('vendor',$data)?$data['vendor']:'';
         $data = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
