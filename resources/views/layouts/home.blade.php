@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('app/bootstrap/css/bootstrap.min.css')}}">
 
     <!-- Custom fonts for this template -->
-  <link rel="stylesheet" href="{{asset('vendor/components/font-awesome/css/fontawesome-all.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('vendor/components/font-awesome/css/fontawesome-all.css')}}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">EventZAS</a>
+        <a class="navbar-brand js-scroll-trigger" href="{{url("/")}}">EventZAS</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
