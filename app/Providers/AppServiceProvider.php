@@ -20,7 +20,8 @@ class AppServiceProvider extends ServiceProvider
             __DIR__ . '/../../vendor/components/font-awesome/webfonts' => public_path('vendor/components/font-awesome/webfonts'),
             __DIR__ . '/../../vendor/jquery' => public_path('vendor/jquery'),
             __DIR__ . '/../../vendor/twitter/bootstrap/dist' => public_path('vendor/bootstrap/dist'),
-            __DIR__ . '/../../vendor/grimmlink/jquery-slimscroll' => public_path('vendor/jquery-slimscroll')
+            __DIR__ . '/../../vendor/grimmlink/jquery-slimscroll' => public_path('vendor/jquery-slimscroll'),
+            __DIR__ . '/../../vendor/select2/dist' => public_path('vendor/select2/dist')
         ], 'public');
     }
 
