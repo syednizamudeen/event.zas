@@ -22,6 +22,7 @@ Route::resource('blog','BlogsController');
 Route::resource('ideas','IdeasController');
 Route::get('vendors/register', 'VendorsController@register');
 Route::resource('vendors','VendorsController');
+Route::resource('subscriptions','SubscriptionsController');
 
 Auth::routes();
 

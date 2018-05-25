@@ -14,7 +14,7 @@
                     {{Form::text('name','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
                 </div>
                 <div class="form-group">
-                    @if(!$roles->isEmpty()) //If no roles exist yet
+                    @if(!$roles->isEmpty())
                         <h4>Assign Permission to Roles</h4>                
                         @foreach ($roles as $role) 
                             {{ Form::checkbox('roles[]',  $role->id ) }}

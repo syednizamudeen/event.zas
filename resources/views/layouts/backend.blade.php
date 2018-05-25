@@ -49,7 +49,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{{url("/services")}}">Service</a></li>
-                <li><a href="#">Another action</a></li>
+                <li><a href="{{url("/subscriptions")}}">Subscription</a></li>
                 <li><a href="#">Something else here</a></li>
                 @role('super-admin')
                 <li class="divider"></li>

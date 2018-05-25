@@ -14,42 +14,93 @@ class ClearanceMiddleware {
      * @return mixed
      */
     public function handle($request, Closure $next) {        
-        if (Auth::user()->hasPermissionTo('Administer roles & permissions')) //If user has this //permission
-    {
+        if (Auth::user()->hasPermissionTo('Administer roles & permissions'))
+        {
             return $next($request);
         }
 
-        if ($request->is('services/create'))//If user is creating a services
-         {
-            if (!Auth::user()->hasPermissionTo('add services'))
-         {
-                abort('401');
+        if ($request->is('services/*') || $request->is('services'))
+        {
+            if (Auth::user()->hasPermissionTo('view services'))
+            {
+                return $next($request);                
             } 
-         else {
-                return $next($request);
+            else
+            {
+                abort('401');
             }
         }
-
-        if ($request->is('services/*/edit')) //If user is editing a services
-         {
-            if (!Auth::user()->hasPermissionTo('edit services')) {
-                abort('401');
-            } else {
-                return $next($request);
-            }
-        }
-
-        if ($request->isMethod('Delete')) //If user is deleting a services
-         {
-            if (!Auth::user()->hasPermissionTo('delete services')) {
-                abort('401');
+        elseif ($request->is('subscriptions/*') || $request->is('subscriptions'))
+        {
+            if (Auth::user()->hasPermissionTo('view subscriptions'))
+            {
+                return $next($request);                
             } 
-         else 
-         {
-                return $next($request);
+            else
+            {
+                abort('401');
             }
         }
 
-        return $next($request);
+        if ($request->is('services/create'))
+        {
+            if (Auth::user()->hasPermissionTo('add services'))
+            {
+                return $next($request);                
+            } 
+            else
+            {
+                abort('401');
+            }
+        }
+        elseif ($request->is('subscriptions/create'))
+        {
+            if (Auth::user()->hasPermissionTo('add subscriptions'))
+            {
+                return $next($request);                
+            } 
+            else
+            {
+                abort('401');
+            }
+        }
+
+        if ($request->is('services/*/edit'))
+         {
+            if (Auth::user()->hasPermissionTo('edit services'))
+            {
+                return $next($request);
+            } 
+            else
+            {
+                abort('401');
+            }
+        }
+        elseif ($request->is('subscriptions/*/edit'))
+        {
+           if (Auth::user()->hasPermissionTo('edit subscriptions'))
+           {
+               return $next($request);
+           } 
+           else
+           {
+               abort('401');
+           }
+       }
+
+        if ($request->isMethod('Delete'))
+        {
+            if (Auth::user()->hasPermissionTo('delete services'))
+            {
+                return $next($request);
+            } 
+            else 
+            {
+                abort('401');
+            }
+        }
+
+        abort('401');
+        // return $next($request);
     }
 }
