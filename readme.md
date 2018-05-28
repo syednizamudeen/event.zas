@@ -10,7 +10,7 @@
 
 * [Requirements](https://github.com/syednizamudeen/event.zas/wiki/Server-Requirements)
 * [Installation](https://github.com/syednizamudeen/event.zas/wiki/Installation)
-* [Credentials](https://github.com/syednizamudeen/event.zas/wiki)
+* [Credentials](https://github.com/syednizamudeen/event.zas/wiki) *(default)*
 
 ## Feature
 * Basic Authentication
