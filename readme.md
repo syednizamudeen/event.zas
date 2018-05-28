@@ -6,8 +6,18 @@
 
 **event.zas** is an web application. The purpose of application for self study Laravel Framework.
 
-It's developed from scratch by [@syednizamudeen](https://github.com/syednizamudeen/claimy)
+## Getting Started
+
+* [Requirements](https://github.com/syednizamudeen/event.zas/wiki/Server-Requirements)
+* [Installation](https://github.com/syednizamudeen/event.zas/wiki/Installation)
+* [Credentials](https://github.com/syednizamudeen/event.zas/wiki)
+
+## Feature
+* Basic Authentication
+* Role Based Access Control
 
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+Developed by [@syednizamudeen](https://github.com/syednizamudeen/claimy)
