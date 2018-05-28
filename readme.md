@@ -4,7 +4,7 @@
 
 ### What is it?
 
-**event.zas** is an web application. The purpose of application for self study Laravel Framework.
+**event.zas** is an web application. The purpose of application for self studying Laravel Framework.
 
 ## Getting Started
 
