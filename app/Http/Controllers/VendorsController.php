@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Service;
 
 class VendorsController extends Controller
 {
@@ -102,7 +103,10 @@ class VendorsController extends Controller
     {
         if(Auth::guest())
         {
-            return view('vendors.register');
+            $data = array(
+                'services'=>array_column(Service::all('id','name')->toArray(), 'name', 'id')
+            );
+            return view('vendors.register')->with($data);
         }
         else
         {

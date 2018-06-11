@@ -21,8 +21,18 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="{{asset('vendor/select2/dist/css/select2.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap-fileinput/css/fileinput.css')}}">
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{asset('app/agency.css')}}">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('app/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{asset('app/jquery-easing/jquery.easing.min.js')}}"></script>
 
   </head>
 
@@ -59,6 +69,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url("/vendors/register")}}">Become a Vendor</a>
             </li>
             @else
             <li class="nav-item">
@@ -97,7 +110,7 @@
               </li>
               <li class="list-inline-item">
                   <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
+                  <i class="fab fa-instagram"></i>
                   </a>
               </li>
               </ul>
@@ -116,13 +129,6 @@
       </div>
       </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('app/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="{{asset('app/jquery-easing/jquery.easing.min.js')}}"></script>
-
     <!-- Contact form JavaScript -->
     <script src="{{asset('app/jqBootstrapValidation.js')}}"></script>
     <script src="{{asset('app/contact_me.js')}}"></script>
@@ -131,5 +137,4 @@
     <script src="{{asset('app/agency.min.js')}}"></script>
 
   </body>
-
 </html>
