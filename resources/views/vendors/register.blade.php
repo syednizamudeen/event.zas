@@ -91,6 +91,8 @@
       padding: 9px 0; 
     }
 </style>
+<link rel="stylesheet" href="{{asset('vendor/select2/dist/css/select2.css')}}">
+<link rel="stylesheet" href="{{asset('vendor/bootstrap-fileinput/css/fileinput.css')}}">
 <section>
     <div class="container py-5">
         <div class="row">
@@ -98,28 +100,28 @@
                 <h2 class="text-center mb-5">Vendor Registration</h2>
                 <ul class="nav nav-tabs" role="tablist">
     
-                    <li role="presentation" class="nav-item">
+                    <li role="presentation" class="nav-item disabled">
                         <a href="#step1" class="nav-link active" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                                 Login Details
                             </a>
                     </li>
     
-                    <li role="presentation" class="nav-item">
+                    <li role="presentation" class="nav-item disabled">
                         <a href="#step2" class="nav-link" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
                                 Company Info
                             </a>
                     </li>
-                    <li role="presentation" class="nav-item">
+                    <li role="presentation" class="nav-item disabled">
                         <a href="#step3" class="nav-link disable" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
                                 Social Connection
                             </a>
                     </li>    
-                    <li role="presentation" class="nav-item">
+                    <li role="presentation" class="nav-item disabled">
                         <a href="#step4" class="nav-link disable" data-toggle="tab" aria-controls="step4" role="tab" title="Step 4">
                                 Subscription
                             </a>
                     </li>
-                    <li role="presentation" class="nav-item">
+                    <li role="presentation" class="nav-item disabled">
                         <a href="#step5" class="nav-link disable" data-toggle="tab" aria-controls="step5" role="tab" title="Step 5">
                                 Add On
                             </a>
@@ -300,7 +302,7 @@
                                                     <div class="price">
                                                         <h4>$25</h4>
                                                     </div>
-                                                    <button class="btn btn-block btn-default" type="submit">BUY NOW</button>
+                                                    <button class="btn btn-block btn-default next-step" type="submit">BUY NOW</button>
                                                 </div>
                                             </div>
                                             <div class="col-md-5 col-lg-4">
@@ -318,7 +320,7 @@
                                                     <div class="price">
                                                         <h4>$50</h4>
                                                     </div>
-                                                    <button class="btn btn-block btn-primary" type="submit">BUY NOW</button>
+                                                    <button class="btn btn-block btn-primary next-step" type="submit">BUY NOW</button>
                                                 </div>
                                             </div>
                                             <div class="col-md-5 col-lg-4">
@@ -335,14 +337,14 @@
                                                     <div class="price">
                                                         <h4>$150</h4>
                                                     </div>
-                                                    <button class="btn btn-block btn-outline-success" type="submit">BUY NOW</button>
+                                                    <button class="btn btn-block btn-outline-success next-step" type="submit">BUY NOW</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <ul class="list-inline float-right">
                                             <li class="list-inline-item">
                                                 {{-- <button type="submit" class="btn btn-primary btn-lg float-right">Payment</button> --}}
-                                                <button type="button" class="btn btn-primary btn-info-full next-step">Next</button>
+                                                <button type="button" class="btn btn-default prev-step">Previous</button>
                                             </li>
                                         </ul>
                                     </div>                                

@@ -21,9 +21,6 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="{{asset('vendor/select2/dist/css/select2.css')}}">
-    <link rel="stylesheet" href="{{asset('vendor/bootstrap-fileinput/css/fileinput.css')}}">
-
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{asset('app/agency.css')}}">
 
