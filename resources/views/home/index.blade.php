@@ -1,12 +1,70 @@
 @extends('layouts.home')
 @section('content')
+    <style>
+        .select2-container--default .select2-selection--single {
+            height: 46px !important;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 6px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            top: 85% !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 26px !important;
+        }
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #CCC !important;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+    </style>
+    <link rel="stylesheet" href="{{asset('vendor/select2/dist/css/select2.css')}}">
     <!-- Header -->
     <header class="masthead">
     <div class="container">
         <div class="intro-text">
-        <div class="intro-lead-in">Welcome To Our {{$title}} Studio!</div>
-        <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#">Success</a>
+            <div class="intro-lead-in">Welcome To Our {{$title}} Studio!</div>
+            <!--<div class="intro-heading text-uppercase">It's Nice To Meet You</div>-->            
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <select class="form-control form-control-lg select2" id="exampleFormControlSelect1">
+                            <option>Category</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <select class="form-control form-control-lg select2" id="exampleFormControlSelect2">
+                            <option>City</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <select class="form-control form-control-lg select2" id="exampleFormControlSelect3">
+                            <option>Country</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <a class="btn btn-primary btn-block btn-lg text-uppercase js-scroll-trigger" href="#">Search</a>
+                </div>
+            </div>
         </div>
     </div>
     </header>
@@ -75,6 +133,11 @@
         </div>
         </div>
     </div>
-    </section>     
-
+    </section>
+    <script src="{{asset('vendor/select2/dist/js/select2.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+    </script>
 @endsection
