@@ -28,112 +28,137 @@
             <div class="intro-lead-in">Welcome To Our {{$title}} Studio!</div>
             <!--<div class="intro-heading text-uppercase">It's Nice To Meet You</div>-->            
             <div class="row">
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
                     <div class="form-group">
-                        <select class="form-control form-control-lg select2" id="exampleFormControlSelect1">
-                            <option>Category</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                        {{Form::select('services',$services, '',['class'=>'form-control form-control-lg select2','id'=>'exampleFormControlSelect1','style'=>'width:100%'])}}
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
                     <div class="form-group">
-                        <select class="form-control form-control-lg select2" id="exampleFormControlSelect2">
-                            <option>City</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                        {{Form::select('cities',$cities, '',['class'=>'form-control form-control-lg select2','id'=>'exampleFormControlSelect2','style'=>'width:100%'])}}
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
                     <div class="form-group">
-                        <select class="form-control form-control-lg select2" id="exampleFormControlSelect3">
-                            <option>Country</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                        {{Form::select('countries',$countries, '',['class'=>'form-control form-control-lg select2','id'=>'exampleFormControlSelect3','style'=>'width:100%'])}}
                     </div>
                 </div>
-                <div class="col-3">
-                    <a class="btn btn-primary btn-block btn-lg text-uppercase js-scroll-trigger" href="#">Search</a>
+                <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                    <a class="btn btn-primary btn-block btn-lg text-uppercase js-scroll-trigger" href="#">Search</a>                    
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12"><a href="#" class="btn btn-outline-warning">Advanced Search <i class="fas fa-search-plus"></i></a></div>
             </div>
         </div>
     </div>
     </header>
-
+    <!-- Clients -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="#">
+                                <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/envato.jpg')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="#">
+                                <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/designmodo.jpg')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="#">
+                                <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/themeforest.jpg')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="#">
+                                <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/creative-market.jpg')}}" alt="">
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="#">
+                                <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/envato.jpg')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="#">
+                                <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/designmodo.jpg')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="#">
+                                <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/themeforest.jpg')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                <a href="#">
+                                <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/creative-market.jpg')}}" alt="">
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </section>
     <!-- Services -->
-    <section id="services">
+    <section id="services" class="py-5">
     <div class="container">
-        <div class="row">
+        <!--<div class="row">
         <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Services</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>     
         </div>
-        </div>
+        </div>-->
         <div class="row text-center">
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
             <span class="fa-stack fa-4x">
             <i class="fa fa-circle fa-stack-2x text-primary"></i>
             <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">E-Commerce</h4>
+            <h4 class="service-heading">Search Vendor</h4>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
             <span class="fa-stack fa-4x">
             <i class="fa fa-circle fa-stack-2x text-primary"></i>
             <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">Responsive Design</h4>
+            <h4 class="service-heading">Recommended Ideas</h4>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
             <span class="fa-stack fa-4x">
             <i class="fa fa-circle fa-stack-2x text-primary"></i>
             <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">Web Security</h4>
+            <h4 class="service-heading">Event Inspirations</h4>
+            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+            <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+            <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading">About</h4>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
         </div>
         </div>
     </div>
-    </section>
-
-    <!-- Clients -->
-    <section class="py-5">
-    <div class="container">
-        <div class="row">
-        <div class="col-md-3 col-sm-6">
-            <a href="#">
-            <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/envato.jpg')}}" alt="">
-            </a>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <a href="#">
-            <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/designmodo.jpg')}}" alt="">
-            </a>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <a href="#">
-            <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/themeforest.jpg')}}" alt="">
-            </a>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <a href="#">
-            <img class="img-fluid d-block mx-auto" src="{{asset('app/img/logos/creative-market.jpg')}}" alt="">
-            </a>
-        </div>
-        </div>
-    </div>
-    </section>
+    </section>    
     <script src="{{asset('vendor/select2/dist/js/select2.js')}}"></script>
     <script>
         $(document).ready(function () {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Service;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,10 @@ class HomeController extends Controller
     public function index()
     {
         $data = array(
-            'title'=>'Enventzas Home'
+            'title'=>'Enventzas Home',
+            'services'=>array_merge(array(''=>'Category'),array_column(Service::all('id','name')->toArray(), 'name', 'id')),
+            'cities'=>array(''=>'City','1'=>'Singapore','2'=>'Johor','3'=>'Kuala Lumpur'),
+            'countries'=>array(''=>'Country','1'=>'Singapore','2'=>'Malaysia')
         );
         return view('home.index')->with($data);
     }

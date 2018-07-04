@@ -19,7 +19,7 @@ class ClearanceMiddleware {
             return $next($request);
         }
 
-        if ($request->is('services/*') || $request->is('services'))
+        if ($request->is('services'))
         {
             if (Auth::user()->hasPermissionTo('view services'))
             {
@@ -30,7 +30,7 @@ class ClearanceMiddleware {
                 abort('401');
             }
         }
-        elseif ($request->is('subscriptions/*') || $request->is('subscriptions'))
+        elseif ($request->is('subscriptions'))
         {
             if (Auth::user()->hasPermissionTo('view subscriptions'))
             {
