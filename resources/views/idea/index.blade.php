@@ -4,10 +4,10 @@
     <section class="bg-light" id="portfolio">
     <div class="container">
         <div class="row">
-        <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Portfolio</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-        </div>
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Portfolio</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-0">
@@ -93,6 +93,11 @@
                         </p> 
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-lg-3 offset-md-3 col-lg-6 col-md-6 col-sm-12 col-xs-12 pt-5">
+                <button class="btn btn btn-outline-warning btn-block btn-lg">More Ideas</button>
             </div>
         </div>
     </div>

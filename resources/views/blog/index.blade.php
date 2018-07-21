@@ -14,15 +14,15 @@
                   <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                       
-                  </div><a href="#">
+                  </div><a href="{{url('/blog/show')}}">
                       <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
                   <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                  <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                  <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                       <div class="avatar"><img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid"></div>
                       <div class="title"><span>John Doe</span></div></a>
                       <div class="date"><i class="fas fa-clock"></i> 2 months ago</div>
                       <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
-                  </footer>
+                  </div>
                   </div>
               </div>
               <!-- post             -->
@@ -30,7 +30,7 @@
                   <div class="post-thumbnail"></div>
                   <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">                            
-                  </div><a href="#">
+                  </div><a href="{{url('/blog/show')}}">
                       <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
                   <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
                   <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
@@ -47,7 +47,7 @@
                   <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                       
-                  </div><a href="#">
+                  </div><a href="{{url('/blog/show')}}">
                       <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
                   <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
                   <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
@@ -64,7 +64,7 @@
                   <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                       
-                  </div><a href="#">
+                  </div><a href="{{url('/blog/show')}}">
                       <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
                   <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
                   <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
@@ -75,16 +75,54 @@
                   </div>
                   </div>
               </div>
+              <!-- post             -->
+              <div class="post col-xl-6">
+                <div class="post-thumbnail"></div>
+                <div class="post-details">
+                <div class="post-meta d-flex justify-content-between">
+                    
+                </div><a href="{{url('/blog/show')}}">
+                    <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                    <div class="avatar"><img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>John Doe</span></div></a>
+                    <div class="date"><i class="fas fa-clock"></i> 2 months ago</div>
+                    <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
+                </div>
+                </div>
+            </div>
+            <!-- post -->
+            <div class="post col-xl-6">
+                <div class="post-thumbnail"></div>
+                <div class="post-details">
+                <div class="post-meta d-flex justify-content-between">
+                    
+                </div><a href="{{url('/blog/show')}}">
+                    <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                    <div class="avatar"><img src="{{asset('app/img/team/3.jpg')}}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>John Doe</span></div></a>
+                    <div class="date"><i class="fas fa-clock"></i> 2 months ago</div>
+                    <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
+                </div>
+                </div>
+            </div>
               </div>
               <!-- Pagination -->
               <nav aria-label="Page navigation example">
-              <ul class="pagination pagination-template d-flex justify-content-center">
-                  <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
-                  <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                  <li class="page-item"><a href="#" class="page-link">2</a></li>
-                  <li class="page-item"><a href="#" class="page-link">3</a></li>
-                  <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
-              </ul>
+                    <ul class="pagination pagination-lg justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-circle-left fa-lg" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#" tabindex="-1">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#"><i class="fas fa-chevron-circle-right fa-lg" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
               </nav>
           </div>
           </main>

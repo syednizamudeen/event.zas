@@ -341,7 +341,7 @@ section.featured-posts .row:nth-of-type(odd) .text {
   }
   
   main.posts-listing {
-    padding-top: 50px;
+    /* padding-top: 50px; */
     padding-left: 0;
     padding-right: 0;
   }
@@ -375,24 +375,25 @@ section.featured-posts .row:nth-of-type(odd) .text {
     border: none;
     border-bottom: 1px solid #ddd;
     font-size: 0.95em;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
     font-weight: 400;
     background: none;
+    outline: none;
   }
   
   .widget.search input::-moz-placeholder {
     color: #aaa;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
   }
   
   .widget.search input::-webkit-input-placeholder {
     color: #aaa;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
   }
   
   .widget.search input:-ms-input-placeholder {
     color: #aaa;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
   }
   
   .widget.search .submit {
@@ -676,7 +677,7 @@ section.featured-posts .row:nth-of-type(odd) .text {
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
     border-radius: 0;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
   }
   
   .blog-post .add-comment input::-moz-placeholder,
@@ -685,7 +686,7 @@ section.featured-posts .row:nth-of-type(odd) .text {
     font-size: 0.9em;
     color: #aaa;
     font-weight: 400;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
   }
   
   .blog-post .add-comment input::-webkit-input-placeholder,
@@ -694,7 +695,7 @@ section.featured-posts .row:nth-of-type(odd) .text {
     font-size: 0.9em;
     color: #aaa;
     font-weight: 400;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
   }
   
   .blog-post .add-comment input:-ms-input-placeholder,
@@ -703,7 +704,7 @@ section.featured-posts .row:nth-of-type(odd) .text {
     font-size: 0.9em;
     color: #aaa;
     font-weight: 400;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
   }
   
   .blog-post .add-comment input:focus,
@@ -746,22 +747,4 @@ section.featured-posts .row:nth-of-type(odd) .text {
     .blog-post .author {
       margin-bottom: 10px;
     }
-  }
-  
-  .pagination-template li.page-item {
-    margin: 0 5px;
-  }
-  
-  .pagination-template a.page-link {
-    width: 40px;
-    height: 40px;
-    line-height: 27px;
-    border-radius: 50% !important;
-    border: none;
-    color: #555;
-    text-align: center;
-  }
-  
-  .pagination-template a.page-link:hover, .pagination-template a.page-link.active {
-    background: #eee;
-  }
+  }  
