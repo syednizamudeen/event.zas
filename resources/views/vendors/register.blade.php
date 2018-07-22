@@ -301,10 +301,10 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="container">
-                                            <div class="rowmt-5">
+                                            <div class="row mt-5">
                                                 <div class="col text-center"><i class="fab fa-cc-paypal fa-10x text-primary"></i></div>
                                             </div>
-                                            <div class="rowmt-5">
+                                            <div class="row mt-5">
                                                 <div class="col">
                                                     <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium minus ipsam molestiae eaque similique porro maiores ducimus rem. Voluptate animi officia laboriosam fugit ab illo delectus. Facere dolores cumque placeat.</p>
                                                 </div>
@@ -348,8 +348,8 @@
     $(document).ready(function () {
         // Toolbar extra buttons
         var btnFinish = $('<button></button>').text('Finish')
-        .addClass('btn btn-info btn-finish')
-        .prop('type','submit')
+        .addClass('btn btn-info btn-finish disabled')
+        .prop({"type":"submit","disabled":true})
         .on('click', function(){
             // if( !$(this).hasClass('disabled')){
                 var elmForm = $("#myForm");
@@ -395,9 +395,9 @@
             }, 1000);
             // Enable finish button only on last step
             if(stepNumber == 4){
-                $('.btn-finish').removeClass('disabled');
+                $('.btn-finish').removeClass('disabled').prop('disabled', false);
             }else{
-                $('.btn-finish').addClass('disabled');
+                $('.btn-finish').addClass('disabled').prop('disabled', true);
             }
         });     
         $('.select2').select2();
