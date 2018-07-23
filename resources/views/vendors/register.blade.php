@@ -348,7 +348,7 @@
     $(document).ready(function () {
         // Toolbar extra buttons
         var btnFinish = $('<button></button>').text('Finish')
-        .addClass('btn btn-info btn-finish disabled')
+        .addClass('btn btn-warning btn-finish disabled')
         .prop({"type":"submit","disabled":true})
         .on('click', function(){
             // if( !$(this).hasClass('disabled')){
@@ -368,14 +368,14 @@
             // }
         });
         var btnCancel = $('<button></button>').text('Cancel')
-        .addClass('btn btn-danger')
+        .addClass('btn btn-default')
         .on('click', function(){
             $('#smartwizard').smartWizard("reset");
             $('#myForm').find("input, textarea").val("");
         });
         $('#smartwizard').smartWizard({
             selected: 0,
-            theme: 'arrows',
+            theme: 'default',
             transitionEffect:'fade',
             toolbarSettings: {
                 toolbarPosition: 'bottom',
