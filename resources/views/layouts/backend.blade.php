@@ -25,6 +25,10 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <!-- jQuery -->
+  <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+  <!-- Bootstrap -->
+  <script src="{{asset('vendor/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-yellow-light layout-top-nav">
@@ -50,7 +54,8 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{{url("/services")}}">Service</a></li>
                 <li><a href="{{url("/subscriptions")}}">Subscription</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a href="{{url("/plans")}}">Plan</a></li>
+                <li><a href="{{url("/countries")}}">Country</a></li>
                 @role('super-admin')
                 <li class="divider"></li>
                 <li><a href="{{url("/users")}}">Users</a></li>
@@ -180,10 +185,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap -->
-<script src="{{asset('vendor/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- SlimScroll -->
 <script src="{{asset('vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
