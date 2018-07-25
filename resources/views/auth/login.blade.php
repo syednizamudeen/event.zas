@@ -13,7 +13,7 @@
                         <!-- form card login -->
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0">Login</h3>
+                                <h3 class="mb-0">Login</h3>                                
                             </div>
                             <div class="card-body">
                                 <form class="form" role="form" autocomplete="off" method="POST" action="{{ route('login') }}">
@@ -36,10 +36,9 @@
                                         <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? 'checked' : '' }}> <span>Remember me on this computer</span>
                                         </label>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-lg float-right">
-                                            Login
-                                        </button>
+                                    </div>                                    
+                                    <button type="submit" class="btn btn-primary btn-lg float-right">Login</button>
+                                    <a href="{{ route('register') }}" class="btn btn-success btn-lg float-right mr-1">Sign Up</a>
                                     <div class="form-group">
                                         <a class="btn btn-link" href="{{ route('password.request') }}">Forgot Your Password?</a>
                                     </div>

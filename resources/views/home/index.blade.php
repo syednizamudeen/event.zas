@@ -35,14 +35,14 @@
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
                     <div class="form-group">
-                        {{Form::select('cities',$cities, '',['class'=>'form-control form-control-lg select2','id'=>'exampleFormControlSelect2','style'=>'width:100%'])}}
+                        {{Form::select('countries',$countries, '',['class'=>'form-control form-control-lg select2','id'=>'exampleFormControlSelect3','style'=>'width:100%'])}}
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
                     <div class="form-group">
-                        {{Form::select('countries',$countries, '',['class'=>'form-control form-control-lg select2','id'=>'exampleFormControlSelect3','style'=>'width:100%'])}}
+                        {{Form::select('cities',$cities, '',['class'=>'form-control form-control-lg select2','id'=>'exampleFormControlSelect2','style'=>'width:100%'])}}
                     </div>
-                </div>
+                </div>                
                 <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
                     <a class="btn btn-primary btn-block btn-lg text-uppercase js-scroll-trigger" href="#">Search</a>                    
                 </div>
@@ -162,7 +162,9 @@
     <script src="{{asset('vendor/select2/dist/js/select2.js')}}"></script>
     <script>
         $(document).ready(function () {
-            $('.select2').select2();
+            $('.select2').select2({
+                placeholder: "Select",
+            });
         });
     </script>
 @endsection

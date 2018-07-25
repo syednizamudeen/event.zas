@@ -52,20 +52,11 @@
               <a class="nav-link js-scroll-trigger" href="{{url("/ideas")}}">Recommended Ideas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url("/about")}}">About</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url("/blog")}}">Event Inspiration</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url("/contact")}}">Contact</a>
             </li>
             @if (Auth::guest())
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('register') }}">Register</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url("/vendors/register")}}">Become a Vendor</a>
@@ -115,10 +106,16 @@
           <div class="col-md-4">
               <ul class="list-inline quicklinks">
               <li class="list-inline-item">
+                  <a href="{{url("/about")}}">About</a>
+              </li>
+              <li class="list-inline-item">
                   <a href="#">Privacy Policy</a>
               </li>
               <li class="list-inline-item">
                   <a href="#">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">
+                  <a href="{{url("/contact")}}">Contact</a>
               </li>
               </ul>
           </div>
