@@ -15,15 +15,13 @@
                     <tr>
                         <th>Permissions</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 @foreach($permissions as $permission)
                     <tr>
                         <td><a href="{{url('/permissions/'.$permission->id)}}">{{$permission->name}}</a></td>
-                        <td><a href="{{ URL::to('permissions/'.$permission->id.'/edit') }}" class="btn btn-sm btn-warning">Edit</a></td>
                         <td>
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['permissions.destroy', $permission->id] ]) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
+                            <a href="{{ URL::to('permissions/'.$permission->id.'/edit') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a> {!! Form::open(['method' => 'DELETE', 'route' => ['permissions.destroy', $permission->id], 'class'=>'pull-right' ]) !!}
+                                {{ Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger'] )  }}
                             {!! Form::close() !!}
                         </td>
                     </tr>

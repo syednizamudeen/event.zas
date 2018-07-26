@@ -19,7 +19,6 @@
                         <th>Date/Time Added</th>
                         <th>User Roles</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 @foreach($users as $user)
                     <tr>
@@ -31,10 +30,9 @@
                             @endif
                         </td>
                         <td>{{  $user->roles()->pluck('name')->implode(' ') }}</td>
-                        <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a></td>
                         <td>
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id] ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a> {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'class'=>'pull-right' ]) !!}
+                            {{ Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger'] )  }}
                             {!! Form::close() !!}
                         </td>
                     </tr>

@@ -14,18 +14,16 @@
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>Role</th>
-                        <th>Permissions</th>
-                        <th></th>
+                        <th width="60%">Permissions</th>
                         <th></th>
                     </tr>
                 @foreach($roles as $role)
                     <tr>
                         <td><a href="{{url('/roles/'.$role->id)}}">{{$role->name}}</a></td>
                         <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>
-                        <td><a href="{{ URL::to('roles/'.$role->id.'/edit') }}" class="btn btn-sm btn-warning">Edit</a></td>
                         <td>
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id] ]) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
+                            <a href="{{ URL::to('roles/'.$role->id.'/edit') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a> {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'class'=>'pull-right' ]) !!}
+                                {{ Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger'] )  }}
                             {!! Form::close() !!}
                         </td>
                     </tr>

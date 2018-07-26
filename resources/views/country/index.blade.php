@@ -21,7 +21,6 @@
                         <th>Tax Rate (%)</th>
                         <th>Calling Code</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 @foreach($countries as $country)
                     <tr>
@@ -34,11 +33,10 @@
                         <td>{{$country->taxcode}}</td>
                         <td>{{$country->taxrate}}</td>
                         <td>{{$country->countrycode}}</td>
-                        <td><a href="{{url('/countries/'.$country->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a></td>
                         <td>
-                            {!! Form::open(['action' => ['CountriesController@destroy', $country->id], 'method' => 'POST', 'class'=>'pull-right']) !!}
-                                {{Form::hidden('_method','DELETE')}}
-                                {{Form::submit('Delete',['class'=>'btn btn-sm btn-danger'])}}
+                            <a href="{{url('/countries/'.$country->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a> {!! Form::open(['action' => ['CountriesController@destroy', $country->id], 'method' => 'POST', 'class'=>'pull-right']) !!}
+                            {{Form::hidden('_method','DELETE')}}
+                                {{ Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger'] )  }}
                             {!! Form::close() !!}
                         </td>
                     </tr>

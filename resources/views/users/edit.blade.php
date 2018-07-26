@@ -7,8 +7,8 @@
                 <a href="{{url('/users')}}" class="btn btn-sm btn-default"><i class="fa fa-undo fa-fw"></i>Go Back</a>
             </div>
         </div>
-        <div class="box-body">
-                {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}
+        {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}
+            <div class="box-body">                
                 <div class="form-group">
                     {{Form::label('name','Name')}}
                     {{Form::text('name',null,['class'=>'form-control','placeholder'=>'Enter Text'])}}
@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     @foreach ($roles as $role)
-                    <div class="form-check">
+                    <div class="form-check col-lg-3">
                         {{ Form::checkbox('roles[]',  $role->id, $user->roles, ['class'=>'form-check-input'] ) }}
                         {{ Form::label($role->name, ucfirst($role->name)) }}
                     </div>          
@@ -32,9 +32,11 @@
                 <div class="form-group">
                     {{ Form::label('password', 'Confirm Password') }}
                     {{ Form::password('password_confirmation', ['class' => 'form-control','placeholder'=>'Enter Text']) }}
-                </div>
-                {{Form::submit('Save',['class'=>'btn btn-primary'])}}
-            {!! Form::close() !!}
-        </div>
+                </div>           
+            </div>
+            <div class="box-footer clearfix">
+                {{ Form::button('<i class="fas fa-save fa-lg fa-fw"></i>Save', ['type' => 'submit', 'class' => 'btn btn-primary pull-right'] )  }}
+            </div>
+        {!! Form::close() !!}
     </div>
 @endsection
