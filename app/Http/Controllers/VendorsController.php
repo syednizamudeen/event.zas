@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Service;
+use App\Plan;
+use App\Country;
+use App\Type;
+use App\Duration;
 
 class VendorsController extends Controller
 {
@@ -104,7 +108,9 @@ class VendorsController extends Controller
         if(Auth::guest())
         {
             $data = array(
-                'services'=>array_column(Service::all('id','name')->toArray(), 'name', 'id')
+                'services'=>array_column(Service::all('id','name')->toArray(), 'name', 'id'),
+                'packages'=>Plan::where('type_id', 1)->get(),
+                'addons'=>Plan::where('type_id', 2)->get()
             );
             return view('vendors.register')->with($data);
         }
