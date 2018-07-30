@@ -304,9 +304,7 @@
                 $('.btn-finish').addClass('disabled').prop('disabled', true);
             }
         });     
-        $('.select2').select2({
-            placeholder: "Choose an operation..."
-        });
+        $('.select2').select2();
         $('.fileinput').fileinput({
             theme: "fas",
             showUpload: false,
@@ -321,7 +319,13 @@
             uploadUrl: "/file-upload-batch/logo"
         });
         $(".package").on("click", ".btn-package", function(e){
-            console.log('its pressed!');
+            var that = this;
+            $( ".card" ).each(function( index ) {
+                $(this).removeClass('border-warning');
+                $(this).children(':nth-child(2)').removeClass('text-white bg-warning');
+            });
+            $(that).parent().parent().addClass('border-warning');
+            $(that).parent().addClass('text-white bg-warning');
         });
     });
 </script>
