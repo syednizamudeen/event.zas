@@ -1,96 +1,6 @@
 @extends('layouts.home')
 
 @section('content')
-<style>
-    .pricing-table{
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .pricing-table .block-heading {
-      padding-top: 50px;
-      margin-bottom: 40px;
-      text-align: center; 
-    }
-    
-    .pricing-table .block-heading h2 {
-      color: #fed136;
-    }
-    
-    .pricing-table .block-heading p {
-      text-align: center;
-      max-width: 420px;
-      margin: auto;
-      opacity: 0.7; 
-    }
-    
-    .pricing-table .heading {
-      text-align: center;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
-    }
-    
-    .pricing-table .item {
-      background-color: #ffffff;
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
-      border-top: 2px solid #fed136;
-      padding: 30px;
-      overflow: hidden;
-      position: relative; 
-    }
-    
-    .pricing-table .col-md-5:not(:last-child) .item {
-      margin-bottom: 30px; 
-    }
-    
-    .pricing-table .item button {
-      font-weight: 600; 
-    }
-    
-    .pricing-table .ribbon {
-      width: 160px;
-      height: 32px;
-      font-size: 12px;
-      text-align: center;
-      color: #fff;
-      font-weight: bold;
-      box-shadow: 0px 2px 3px rgba(136, 136, 136, 0.25);
-      background: #4dbe3b;
-      transform: rotate(45deg);
-      position: absolute;
-      right: -42px;
-      top: 20px;
-      padding-top: 7px; 
-    }
-    
-    .pricing-table .item p {
-      text-align: center;
-      margin-top: 20px;
-      opacity: 0.7; 
-    }
-    
-    .pricing-table .features .feature {
-      font-weight: 600; }
-    
-    .pricing-table .features h4 {
-      text-align: center;
-      font-size: 18px;
-      padding: 5px; 
-    }
-    
-    .pricing-table .price h4 {
-      margin: 15px 0;
-      font-size: 45px;
-      text-align: center;
-      color: #fed136; 
-    }
-    
-    .pricing-table .buy-now button {
-      text-align: center;
-      margin: auto;
-      font-weight: 600;
-      padding: 9px 0; 
-    }
-</style>
 <link rel="stylesheet" href="{{asset('vendor/smartwizard/css/smart_wizard.css')}}">
 <link rel="stylesheet" href="{{asset('vendor/smartwizard/css/smart_wizard_theme_arrows.css')}}">
 <link rel="stylesheet" href="{{asset('vendor/select2/dist/css/select2.css')}}">
@@ -236,47 +146,37 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="step-4" class="pricing-table">
+                            <div id="step-4">
                                 <div class="container">
-                                    <div class="block-heading">
-                                        <h3>Step 4</h3>
-                                    </div>
-                                    <div class="row justify-content-md-center">
+                                    <h3 class="pt-2 text-center">Step 4</h3>
+                                    <div class="card-deck mb-3 text-center package">
                                         @foreach ($packages as $package)
-                                            <div class="col-md-5 col-lg-4">
-                                                <div class="item">
-                                                    {{-- <div class="ribbon">Best Value</div> --}}
-                                                    <div class="heading">
-                                                        <h3>{{$package->name}}</h3>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                    <div class="features">
-                                                        {{-- <h4><span class="feature">Full Support</span> : <span class="value">No</span></h4> --}}
-                                                        <h4><span class="feature">Duration</span> : <span class="value">{{$package->duration->name}}</span></h4>
-                                                        <div class="form-group">
-                                                        @foreach ($addons as $addon)
-                                                        <h4>            
-                                                            @if($package->amount>0)
-                                                            <div class="form-check">
-                                                            {{ Form::checkbox('addons[]',  $addon->id, '', ['class'=>'form-check-input'] ) }}
-                                                            {{ Form::label($addon->name, ucfirst($addon->name)) }}
-                                                            </div>
-                                                        <small id="emailHelp" class="form-text text-muted">({{$addon->duration->name}} {{$addon->country->currencysymbol}} {{$addon->amount}})</small>
-                                                            @else
-                                                            <span class="feature">{{$addon->name}}</span> : <span class="value">No</span>
-                                                            @endif
-                                                        </h4>
-                                                        @endforeach
-                                                        </div>
-                                                    </div>
-                                                    <div class="price">
-                                                        <h4>{{$package->country->currencysymbol}} {{$package->amount}}</h4>
-                                                    </div>
-                                                    <button class="btn btn-block btn-default" type="submit">BUY NOW</button>
-                                                    {{-- <button class="btn btn-block btn-outline-success" type="submit">BUY NOW</button> --}}
-                                                    {{-- <button class="btn btn-block btn-primary" type="submit">BUY NOW</button> --}}
-                                                </div>
+                                        <div class="card mb-4">
+                                            <div class="card-header text-white {{$package->amount>0?'bg-success':'bg-secondary'}}">
+                                                <h4 class="my-0 font-weight-normal">{{$package->name}}</h4>
                                             </div>
+                                            <div class="card-body">
+                                                <h1 class="card-title pricing-card-title">{{$package->country->currencysymbol}} {{$package->amount}} 
+                                                @if($package->amount>0)    
+                                                    <small class="text-muted">{{$package->duration->name}}</small>
+                                                @endif
+                                                </h1>
+                                                <div class="form-group mt-3 mb-4">
+                                                    @foreach ($addons as $addon)
+                                                    <div class="form-check">
+                                                        {{ Form::checkbox('addons[]',  $addon->id, '', ['class'=>'form-check-input',($package->amount>0?'':'disabled')] ) }}
+                                                        {{ Form::label($addon->name, ucfirst($addon->name)) }}
+                                                    </div>
+                                                    <small class="form-text text-muted">({{$addon->duration->name}} {{$addon->country->currencysymbol}} {{$addon->amount}})</small>
+                                                    @endforeach
+                                                </div>
+                                                @if($package->amount>0)
+                                                <button type="button" class="btn btn-lg btn-block btn-success btn-package">Choose Plan</button>
+                                                @else
+                                                <button type="button" class="btn btn-lg btn-block btn-default btn-package">Start Trial</button>
+                                                @endif
+                                            </div>
+                                        </div>
                                         @endforeach
                                     </div>
                                 </div> 
@@ -397,6 +297,9 @@
             removeLabel: "Delete",
             removeIcon: "<i class=\"fas fa-trash-alt\"></i> ",
             uploadUrl: "/file-upload-batch/logo"
+        });
+        $(".package").on("click", ".btn-package", function(e){
+            console.log('its pressed!');
         });
     });
 </script>
