@@ -36,7 +36,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6" id="form-step-0" role="form" data-toggle="validator">
                                         <h3 class="pt-2">Step 1</h3>
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name">Company Name</label>
@@ -44,6 +44,7 @@
                                             @if ($errors->has('name'))
                                                 <small class="text-danger">{{ $errors->first('name') }}</small>
                                             @endif
+                                            <div class="text-danger help-block with-errors"></div>
                                         </div>
                                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                             <label for="email">Email</label>
@@ -51,6 +52,7 @@
                                             @if ($errors->has('email'))
                                                 <small class="text-danger">{{ $errors->first('email') }}</small>
                                             @endif
+                                            <div class="text-danger help-block with-errors"></div>
                                         </div>
                                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                             <label for="password">Password</label>
@@ -58,10 +60,12 @@
                                             @if ($errors->has('password'))
                                                 <small class="text-danger">{{ $errors->first('password') }}</small>
                                             @endif
+                                            <div class="text-danger help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="password-confirmation">Verify</label>
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="password (again)" required="">
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  data-match="#password" data-match-error="Whoops, these don't match" placeholder="password (again)" required="">
+                                            <div class="text-danger help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -86,11 +90,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6" id="form-step-1" role="form" data-toggle="validator">
                                         <h3 class="pt-2">Step 2</h3>
                                         <div class="form-group">
                                             {{Form::label('services','Services Provided')}}
-                                            {{Form::select('services',$services, '',['class'=>'form-control select2','multiple'=>'multiple','style'=>'width:100%'])}}
+                                            {{Form::select('services',$services, '',['class'=>'form-control select2','multiple'=>'multiple','style'=>'width:100%','required'])}}
+                                            <div class="text-danger help-block with-errors"></div>
                                         </div>                                    
                                         <div class="form-group">
                                             {{Form::label('companyregno','Company Reg. No.')}}
@@ -133,7 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6" id="form-step-2" role="form" data-toggle="validator">
                                         <h3 class="pt-2">Step 3</h3>
                                         <div class="form-group">
                                             {{Form::label('facebook','Facebook')}}
@@ -146,7 +151,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="step-4">
+                            <div id="step-4" id="form-step-3" role="form" data-toggle="validator">
                                 <div class="container">
                                     <h3 class="pt-2 text-center">Step 4</h3>
                                     <div class="card-deck mb-3 text-center package">
@@ -195,7 +200,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 id="form-step-4" role="form" data-toggle="validator"">
                                         <h3 class="pt-2">Step 5</h3>
                                         <div class="form-group">
                                             {{Form::label('cardholdername','Card Holder Name')}}
@@ -224,6 +229,7 @@
         </div>
     </div>
 </section>
+<script src="{{asset('js/validator.min.js')}}"></script>
 <script src="{{asset('vendor/smartwizard/js/jquery.smartWizard.min.js')}}"></script>
 <script src="{{asset('vendor/select2/dist/js/select2.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-fileinput/js/fileinput.js')}}"></script>
@@ -272,7 +278,21 @@
                 removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
                 enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
             }
-        }); 
+        });
+        $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+            var elmForm = $("#form-step-" + stepNumber);
+            // stepDirection === 'forward' :- this condition allows to do the form validation
+            // only on forward navigation, that makes easy navigation on backwards still do the validation when going next
+            if(stepDirection === 'forward' && elmForm){
+                elmForm.validator('validate');
+                var elmErr = elmForm.children('.has-error');
+                if(elmErr && elmErr.length > 0){
+                    // Form validation failed
+                    return false;
+                }
+            }
+            return true;
+        });
         $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
             $('html, body').animate({
                 scrollTop: $("div.top").offset().top
@@ -284,7 +304,9 @@
                 $('.btn-finish').addClass('disabled').prop('disabled', true);
             }
         });     
-        $('.select2').select2();
+        $('.select2').select2({
+            placeholder: "Choose an operation..."
+        });
         $('.fileinput').fileinput({
             theme: "fas",
             showUpload: false,
