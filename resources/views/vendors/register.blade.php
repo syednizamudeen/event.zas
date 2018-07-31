@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="text-center mb-5">Vendor Registration</h2>
-                <form class="form" role="form" autocomplete="off" method="POST" id="myForm" action="{{ route('register') }}">
+                <form class="form" role="form" autocomplete="off" method="POST" id="myForm" action="{{ route('register') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div id="smartwizard" class="top">
                         <ul>
@@ -75,13 +75,7 @@
                                     <div class="col-lg-6">
                                         <div class="container">
                                             <div class="row mt-5">
-                                                <div class="col text-center">
-                                                    {{-- <i class="far fa-building fa-10x text-primary"></i> --}}
-                                                    <div class="form-group">
-                                                        {{Form::label('logo','Logo')}}
-                                                        {{Form::file('logo',['class'=>'form-control fileinput'])}}
-                                                    </div>
-                                                </div>
+                                                <div class="col text-center"><i class="far fa-building fa-10x text-primary"></i></div>
                                             </div>
                                             <div class="row mt-5">
                                                 <div class="col">
@@ -99,7 +93,8 @@
                                         </div>                                    
                                         <div class="form-group">
                                             {{Form::label('companyregno','Company Reg. No.')}}
-                                            {{Form::text('companyregno','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                                            {{Form::text('companyregno','',['class'=>'form-control','placeholder'=>'Enter Text','required'])}}
+                                            <div class="text-danger help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
                                             {{Form::label('address','Address')}}
@@ -107,7 +102,7 @@
                                         </div>
                                         <div class="form-group">
                                             {{Form::label('country','Country')}}
-                                            {{Form::select('country',['L' => 'Malaysia', 'S' => 'Singapore'], 'S',['class'=>'form-control'])}}
+                                            {{Form::select('country',$countries, '',['class'=>'form-control'])}}
                                         </div>
                                         <div class="form-group">
                                             {{Form::label('postalcode','Postal Code')}}
@@ -232,8 +227,6 @@
 <script src="{{asset('js/validator.min.js')}}"></script>
 <script src="{{asset('vendor/smartwizard/js/jquery.smartWizard.min.js')}}"></script>
 <script src="{{asset('vendor/select2/dist/js/select2.js')}}"></script>
-<script src="{{asset('vendor/bootstrap-fileinput/js/fileinput.js')}}"></script>
-<script src="{{asset('vendor/bootstrap-fileinput/themes/fas/theme.js')}}"></script>
 <script>
     $(document).ready(function () {
         // Toolbar extra buttons
@@ -305,19 +298,6 @@
             }
         });     
         $('.select2').select2();
-        $('.fileinput').fileinput({
-            theme: "fas",
-            showUpload: false,
-            allowedFileExtensions: ["jpg", "jpeg", "gif", "png", "bmp"],
-            allowedFileTypes: ["image"],
-            browseClass: "btn btn-success",
-            browseLabel: "Pick Image",
-            browseIcon: "<i class=\"fas fa-image\"></i> ",
-            removeClass: "btn btn-danger",
-            removeLabel: "Delete",
-            removeIcon: "<i class=\"fas fa-trash-alt\"></i> ",
-            uploadUrl: "/file-upload-batch/logo"
-        });
         $(".package").on("click", ".btn-package", function(e){
             var that = this;
             $( ".card" ).each(function( index ) {

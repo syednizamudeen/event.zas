@@ -109,6 +109,7 @@ class VendorsController extends Controller
         {
             $data = array(
                 'services'=>array_column(Service::all('id','name')->toArray(), 'name', 'id'),
+                'countries'=>array_column(Country::all('id','name')->toArray(), 'name', 'id'),
                 'packages'=>Plan::where('type_id', 1)->get(),
                 'addons'=>Plan::where('type_id', 2)->get()
             );

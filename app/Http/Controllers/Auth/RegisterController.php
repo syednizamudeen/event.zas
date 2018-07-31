@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -63,20 +64,29 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $is_vendor = array_key_exists('vendor',$data)?$data['vendor']:'';
-        $data = User::create([
+        $newuser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
         ]);
-        $user = User::find($data->id);
+        $user = User::find($newuser->id);
         if($is_vendor=='enabled')
         {
             $user->assignRole('vendor');
+            Vendor::create([
+                'user_id' => $newuser->id,
+                'companyregno' => $data['companyregno'],
+                'address' => $data['address'],
+                'country_id' => $data['country'],
+                'postalcode' => $data['postalcode'],
+                'contactno' => $data['contact'],
+                'website' => $data['website'],
+            ]);
         }
         else
         {
             $user->assignRole('visitor');
         }
-        return $data;
+        return $newuser;
     }
 }
