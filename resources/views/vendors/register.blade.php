@@ -135,14 +135,12 @@
                                     </div>
                                     <div class="col-lg-6" id="form-step-2" role="form" data-toggle="validator">
                                         <h3 class="pt-2">Step 3</h3>
+                                        @foreach ($socialconnections as $socialconnection)
                                         <div class="form-group">
-                                            {{Form::label('facebook','Facebook')}}
-                                            {{Form::text('facebook','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                                            {{Form::label('socialconnection['.$socialconnection->id.']',$socialconnection->name)}}
+                                            {{Form::text('socialconnection['.$socialconnection->id.']','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
                                         </div>
-                                        <div class="form-group">
-                                            {{Form::label('instagram','Instagram')}}
-                                            {{Form::text('instagram','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -164,16 +162,17 @@
                                                 <div class="form-group mt-3 mb-4">
                                                     @foreach ($addons as $addon)
                                                     <div class="form-check">
-                                                        {{ Form::checkbox('addons[]',  $addon->id, '', ['class'=>'form-check-input',($package->amount>0?'':'disabled')] ) }}
+                                                        {{ Form::checkbox('addons[]',  $addon->id, '', ['class'=>'form-check-input input-addon',($package->amount>0?'':'disabled')] ) }}
                                                         {{ Form::label($addon->name, ucfirst($addon->name)) }}
                                                     </div>
                                                     <small class="form-text text-muted">({{$addon->duration->name}} {{$addon->country->currencysymbol}} {{$addon->amount}})</small>
                                                     @endforeach
                                                 </div>
                                                 @if($package->amount>0)
-                                                <button type="button" class="btn btn-lg btn-block btn-success btn-package">Choose Plan</button>
+                                                {{ Form::button('Choose Plan', ['type' => 'button', 'class' => 'btn btn-lg btn-block btn-success btn-package','btn-data'=>$package->id] )  }}
                                                 @else
-                                                <button type="button" class="btn btn-lg btn-block btn-default btn-package">Start Trial</button>
+                                                {{ Form::button('Start Trial', ['type' => 'button', 'class' => 'btn btn-lg btn-block btn-default btn-package','btn-data'=>$package->id] )  }}
+                                                {{Form::hidden('plan_id',$package->id)}}
                                                 @endif
                                             </div>
                                         </div>
@@ -264,6 +263,7 @@
                 toolbarPosition: 'bottom',
                 toolbarExtraButtons: [btnFinish, btnCancel]
             },
+            keyNavigation: false,
             anchorSettings: {
                 // enableAllAnchors        :   true, // Activates all anchors clickable all times
                 markDoneStep: true, // add done css
@@ -300,12 +300,21 @@
         $('.select2').select2();
         $(".package").on("click", ".btn-package", function(e){
             var that = this;
+            var val = [];
+            $(that).parent().parent().find(".input-addon").each(function(i) {
+                val[i] = $(this).is(':checked');
+            });
             $( ".card" ).each(function( index ) {
                 $(this).removeClass('border-warning');
                 $(this).children(':nth-child(2)').removeClass('text-white bg-warning');
+                $(this).children(':nth-child(2)').find(".input-addon").each(function() {this.checked = false;});
             });
             $(that).parent().parent().addClass('border-warning');
             $(that).parent().addClass('text-white bg-warning');
+            $('input[name="plan_id"]').val($(that).attr('btn-data'));
+            $(that).parent().find(".input-addon").each(function(i) {this.checked = val[i];});
+        }).on("click", ".input-addon", function(e){
+            if($(this).is(':checked')) $(this).parent().parent().parent().find(".btn-package").trigger("click");
         });
     });
 </script>

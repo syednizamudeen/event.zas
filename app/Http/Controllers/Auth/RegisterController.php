@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Vendor;
+use App\UserSocialConnection;
+use App\Subscription;
+use App\Plan;
+use App\Country;
+use App\Type;
+use App\Duration;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -82,6 +89,43 @@ class RegisterController extends Controller
                 'contactno' => $data['contact'],
                 'website' => $data['website'],
             ]);
+            if(array_key_exists('socialconnection',$data) && !empty($data['socialconnection']) && is_array($data['socialconnection']))
+            {
+                foreach($data['socialconnection'] as $k=>$v)
+                {
+                    if(!is_null($v))
+                    {
+                        UserSocialConnection::create([
+                            'user_id' => $newuser->id,
+                            'social_connection_id' => $k,
+                            'link' => $v,
+                        ]);
+                    }
+                }
+            }
+            $plan = Plan::where('id',$data['plan_id'])->first();
+            $planperiod = Carbon::now();
+            Subscription::create([
+                'vendor_id' => $newuser->id,
+                'plan_id' => $data['plan_id'],
+                'activationdate' => $planperiod->toDateTimeString(),
+                'expirydate' => $planperiod->addDays($plan->duration->noofdays),
+            ]);
+            if(array_key_exists('addons',$data) && !empty($data['addons']) && is_array($data['addons']))
+            {
+                foreach($data['addons'] as $k=>$v)
+                {
+                    $plan = Plan::where('id',$v)->first();
+                    $planperiod = Carbon::now();
+                    Subscription::create([
+                        'vendor_id' => $newuser->id,
+                        'plan_id' => $v,
+                        'activationdate' => $planperiod->toDateTimeString(),
+                        'expirydate' => $planperiod->addDays($plan->duration->noofdays),
+                    ]);
+                }
+            }
+            
         }
         else
         {

@@ -3,26 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use App\Service;
-use App\Plan;
-use App\Country;
-use App\Type;
-use App\Duration;
-use App\SocialConnection;
 
-class VendorsController extends Controller
+class UserSocialConnectionsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware(['auth', 'clearance'])->except('register');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -40,7 +23,7 @@ class VendorsController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -51,7 +34,7 @@ class VendorsController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        //
     }
 
     /**
@@ -97,29 +80,5 @@ class VendorsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function register()
-    {
-        if(Auth::guest())
-        {
-            $data = array(
-                'services'=>array_column(Service::all('id','name')->toArray(), 'name', 'id'),
-                'countries'=>array_column(Country::all('id','name')->toArray(), 'name', 'id'),
-                'packages'=>Plan::where('type_id', 1)->get(),
-                'addons'=>Plan::where('type_id', 2)->get(),
-                'socialconnections'=>SocialConnection::orderBy('name')->get()
-            );
-            return view('vendors.register')->with($data);
-        }
-        else
-        {
-            return redirect('/');
-        }
     }
 }
