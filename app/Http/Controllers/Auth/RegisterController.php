@@ -10,6 +10,7 @@ use App\Plan;
 use App\Country;
 use App\Type;
 use App\Duration;
+use App\VendorService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -80,7 +81,7 @@ class RegisterController extends Controller
         if($is_vendor=='enabled')
         {
             $user->assignRole('vendor');
-            Vendor::create([
+            $newvendor = Vendor::create([
                 'user_id' => $newuser->id,
                 'companyregno' => $data['companyregno'],
                 'address' => $data['address'],
@@ -89,6 +90,19 @@ class RegisterController extends Controller
                 'contactno' => $data['contact'],
                 'website' => $data['website'],
             ]);
+            if(array_key_exists('services',$data) && !empty($data['services']) && is_array($data['services']))
+            {
+                foreach($data['services'] as $k=>$v)
+                {
+                    if(!is_null($v))
+                    {
+                        VendorService::create([
+                            'vendor_id' => $newvendor->id,
+                            'service_id' => $v,
+                        ]);
+                    }
+                }
+            }
             if(array_key_exists('socialconnection',$data) && !empty($data['socialconnection']) && is_array($data['socialconnection']))
             {
                 foreach($data['socialconnection'] as $k=>$v)
@@ -106,7 +120,7 @@ class RegisterController extends Controller
             $plan = Plan::where('id',$data['plan_id'])->first();
             $planperiod = Carbon::now();
             Subscription::create([
-                'vendor_id' => $newuser->id,
+                'vendor_id' => $newvendor->id,
                 'plan_id' => $data['plan_id'],
                 'activationdate' => $planperiod->toDateTimeString(),
                 'expirydate' => $planperiod->addDays($plan->duration->noofdays),
@@ -115,14 +129,17 @@ class RegisterController extends Controller
             {
                 foreach($data['addons'] as $k=>$v)
                 {
-                    $plan = Plan::where('id',$v)->first();
-                    $planperiod = Carbon::now();
-                    Subscription::create([
-                        'vendor_id' => $newuser->id,
-                        'plan_id' => $v,
-                        'activationdate' => $planperiod->toDateTimeString(),
-                        'expirydate' => $planperiod->addDays($plan->duration->noofdays),
-                    ]);
+                    if(!is_null($v))
+                    {
+                        $plan = Plan::where('id',$v)->first();
+                        $planperiod = Carbon::now();
+                        Subscription::create([
+                            'vendor_id' => $newvendor->id,
+                            'plan_id' => $v,
+                            'activationdate' => $planperiod->toDateTimeString(),
+                            'expirydate' => $planperiod->addDays($plan->duration->noofdays),
+                        ]);
+                    }
                 }
             }
             

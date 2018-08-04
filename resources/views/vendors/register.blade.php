@@ -88,7 +88,7 @@
                                         <h3 class="pt-2">Step 2</h3>
                                         <div class="form-group">
                                             {{Form::label('services','Services Provided')}}
-                                            {{Form::select('services',$services, '',['class'=>'form-control select2','multiple'=>'multiple','style'=>'width:100%','required'])}}
+                                            {{Form::select('services[]',$services, '',['class'=>'form-control select2','multiple'=>'multiple','style'=>'width:100%','required'])}}
                                             <div class="text-danger help-block with-errors"></div>
                                         </div>                                    
                                         <div class="form-group">
