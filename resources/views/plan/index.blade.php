@@ -26,7 +26,11 @@
                         <td>{{$plan->country->currencysymbol}}</td>
                         <td>{{$plan->type->name}}</td>
                         <td>{{$plan->duration->name}}</td>
-                        <td>{{$plan->expire_at}}</td>
+                        <td>
+                            @if (!empty($plan->expire_at))
+                            {{ $plan->expire_at->format('F d, Y h:ia') }}
+                            @endif
+                        </td>
                         <td>
                             <a href="{{url('/plans/'.$plan->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a> {!! Form::open(['action' => ['PlansController@destroy', $plan->id], 'method' => 'POST', 'class'=>'pull-right']) !!}
                             {{Form::hidden('_method','DELETE')}}

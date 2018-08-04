@@ -28,8 +28,7 @@ class SubscriptionsController extends Controller
     {
         $data = array(
             'title'=>'Subscriptions',
-            'subscriptions'=>Subscription::orderBy('name','asc')->paginate(10)
-            // 'services'=>Service::all()
+            'subscriptions'=>Subscription::orderBy('expirydate','asc')->paginate(10)
         );
         return view('subscription.index')->with($data);
     }

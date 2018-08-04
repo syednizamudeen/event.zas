@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Vendor;
 use App\Service;
 use App\Plan;
 use App\Country;
@@ -30,7 +31,11 @@ class VendorsController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'title'=>'Vendors',
+            'vendors'=>Vendor::orderBy('id','desc')->paginate(10)
+        );
+        return view('vendors.index')->with($data);
     }
 
     /**

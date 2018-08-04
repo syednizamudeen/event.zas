@@ -105,6 +105,11 @@
           </div>
           <div class="col-md-4">
               <ul class="list-inline quicklinks">
+              @hasanyrole('super-admin|admin|vendor')
+              <li class="list-inline-item">
+                  <a href="{{url("/dashboard")}}">Dashboard</a>
+              </li>
+              @endrole
               <li class="list-inline-item">
                   <a href="{{url("/about")}}">About</a>
               </li>
