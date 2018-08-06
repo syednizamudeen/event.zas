@@ -142,6 +142,7 @@ class RegisterController extends Controller
                     }
                 }
             }
+            $this->redirectTo = '\dashboard';
             
         }
         else

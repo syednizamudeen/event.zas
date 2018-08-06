@@ -58,12 +58,12 @@
                 <li><a href="{{url("/countries")}}">Country</a></li>
                 @role('super-admin')
                 <li class="divider"></li>
-                <li><a href="{{url("/users")}}">Users</a></li>
-                <li><a href="{{url("/roles")}}">Roles</a></li>
-                <li><a href="{{url("/permissions")}}">Permissions</a></li>
+                <li><a href="{{url("/users")}}">User</a></li>
+                <li><a href="{{url("/roles")}}">Role</a></li>
+                <li><a href="{{url("/permissions")}}">Permission</a></li>
                 @endrole
                 <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="{{url("/vendors")}}">Vendor</a></li>
               </ul>
             </li>
             <li><a href="{{url("/home")}}" target="_blank">Visit Site<i class="fas fa-external-link-square-alt fa-lg fa-fw"></i></a></li>
