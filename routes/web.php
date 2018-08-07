@@ -25,6 +25,16 @@ Route::resource('vendors','VendorsController');
 Route::resource('subscriptions','SubscriptionsController');
 Route::resource('countries','CountriesController');
 Route::resource('plans','PlansController');
+Route::get('settings/account', 'SettingsController@account');
+Route::get('settings/profile', 'SettingsController@profile');
+Route::get('settings/picture', 'SettingsController@picture');
+Route::get('settings/connection', 'SettingsController@connection');
+Route::get('settings/payment', 'SettingsController@payment');
+Route::get('settings/subscription', 'SettingsController@subscription');
+Route::get('settings/blocked', 'SettingsController@blocked');
+Route::get('settings/billing', 'SettingsController@billing');
+Route::get('settings/notification', 'SettingsController@notification');
+Route::resource('settings','SettingsController');
 
 Auth::routes();
 
