@@ -50,7 +50,7 @@
             <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
             <li><a href="{{url("/dashboard")}}">Dashboard</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configure <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{{url("/services")}}">Service</a></li>
                 <li><a href="{{url("/subscriptions")}}">Subscription</a></li>
