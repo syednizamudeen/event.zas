@@ -20,27 +20,17 @@
                         <div class="row">
                             <div class="col-md-12">
                                 {!! Form::open(['action' => ['SettingsController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                    @foreach ($imagetypes as $imagetype)
                                     <div class="form-group row">
-                                        {{Form::label('profile', 'Profile Picture', ['class' => 'col-4 col-form-label', 'for' => 'profile'])}}
+                                        {{Form::label('picture['.$imagetype->id.']', $imagetype->name, ['class' => 'col-4 col-form-label', 'for' => 'picture['.$imagetype->id.']'])}}
                                         <div class="col-8">
-                                            {{Form::file('profile',['class'=>'form-control fileinput','placeholder'=>'Enter Text'])}}
+                                            {{Form::file('picture['.$imagetype->id.']',['class'=>'form-control fileinput','placeholder'=>'Enter Text'])}}
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        {{Form::label('featurelogo', 'Feature Logo', ['class' => 'col-4 col-form-label', 'for' => 'featurelogo'])}}
-                                        <div class="col-8">
-                                            {{Form::file('featurelogo',['class'=>'form-control fileinput','placeholder'=>'Enter Text'])}}
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        {{Form::label('featurewall', 'Feature Wall', ['class' => 'col-4 col-form-label', 'for' => 'featurewall'])}}
-                                        <div class="col-8">
-                                            {{Form::file('featurewall',['class'=>'form-control fileinput','placeholder'=>'Enter Text'])}}
-                                        </div>
-                                    </div> 
+                                    @endforeach
                                     <div class="form-group row">
                                         <div class="offset-4 col-8">
-                                            {{Form::hidden('updatesetting','account')}}
+                                            {{Form::hidden('updatesetting','picture')}}
                                             {{Form::hidden('_method','PUT')}}
                                             {{Form::submit('Update',['class'=>'btn btn-primary'])}}
                                         </div>
@@ -61,6 +51,9 @@
         $('.fileinput').fileinput({	
             theme: "fas",	
             showUpload: false,	
+            fileActionSettings : {
+                showUpload : false,
+            },
             allowedFileExtensions: ["jpg", "jpeg", "gif", "png", "bmp"],	
             allowedFileTypes: ["image"],	
             browseClass: "btn btn-success",	
@@ -68,8 +61,7 @@
             browseIcon: "<i class=\"fas fa-image\"></i> ",	
             removeClass: "btn btn-danger",	
             removeLabel: "Delete",	
-            removeIcon: "<i class=\"fas fa-trash-alt\"></i> ",	
-            uploadUrl: "/file-upload-batch/logo"	
+            removeIcon: "<i class=\"fas fa-trash-alt\"></i> "
         });
     });
 </script>   

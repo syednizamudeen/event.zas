@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use App\SocialConnection;
 use App\UserSocialConnection;
+use App\ImageType;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -52,7 +53,8 @@ class SettingsController extends Controller
     {
         $data = array(
             'title'=>'Upload Picture',
-            'user'=>User::findOrFail(Auth::user()->id)
+            'user'=>User::findOrFail(Auth::user()->id),
+            'imagetypes'=>ImageType::orderBy('name')->get()
         );
         return view('settings.picture')->with($data);
     }
