@@ -89,11 +89,12 @@ class SubscriptionsController extends Controller
      */
     public function edit($id)
     {
-        $data = array(
-            'title'=>'Edit Subscription',
-            'subscription'=>Subscription::findOrFail($id)
-        );
-        return view('subscription.edit')->with($data);
+        abort(404, 'The resource you are looking for could not be found');
+        // $data = array(
+        //     'title'=>'Edit Subscription',
+        //     'subscription'=>Subscription::findOrFail($id)
+        // );
+        // return view('subscription.edit')->with($data);
     }
 
     /**
@@ -105,12 +106,13 @@ class SubscriptionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $subscription = Subscription::findOrFail($id);
-        $subscription->name = $request->input('name');
-        $subscription->amount = $request->input('amount');
-        $subscription->save();
+        abort(404, 'The resource you are looking for could not be found');
+        // $subscription = Subscription::findOrFail($id);
+        // $subscription->name = $request->input('name');
+        // $subscription->amount = $request->input('amount');
+        // $subscription->save();
 
-        return redirect('/subscriptions')->with('success', 'Subscription Updated');
+        // return redirect('/subscriptions')->with('success', 'Subscription Updated');
     }
 
     /**
@@ -121,9 +123,10 @@ class SubscriptionsController extends Controller
      */
     public function destroy($id)
     {
-        $subscription = Subscription::findOrFail($id);
-        $subscription->delete();
+        abort(404, 'The resource you are looking for could not be found');
+        // $subscription = Subscription::findOrFail($id);
+        // $subscription->delete();
 
-        return redirect('/subscriptions')->with('success', 'Subscription Deleted');
+        // return redirect('/subscriptions')->with('success', 'Subscription Deleted');
     }
 }
