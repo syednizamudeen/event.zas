@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\User;
+use App\SocialConnection;
+use App\UserSocialConnection;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -29,7 +33,8 @@ class SettingsController extends Controller
     public function account()
     {
         $data = array(
-            'title'=>'Account'
+            'title'=>'Account',
+            'user'=>User::findOrFail(Auth::user()->id)
         );
         return view('settings.account')->with($data);
     }
@@ -37,7 +42,8 @@ class SettingsController extends Controller
     public function profile()
     {
         $data = array(
-            'title'=>'Profile'
+            'title'=>'Profile',
+            'user'=>User::findOrFail(Auth::user()->id)
         );
         return view('settings.profile')->with($data);
     }
@@ -45,23 +51,34 @@ class SettingsController extends Controller
     public function picture()
     {
         $data = array(
-            'title'=>'Upload Picture'
+            'title'=>'Upload Picture',
+            'user'=>User::findOrFail(Auth::user()->id)
         );
         return view('settings.picture')->with($data);
     }
 
     public function connection()
     {
+        $socialArray = array();
+        foreach(SocialConnection::orderBy('name')->get() as $k => $v)
+        {
+            $socialArray[$k] = $v;
+            $socailLinkArray = UserSocialConnection::where(['user_id'=>Auth::user()->id,'social_connection_id'=>$v->id])->get();
+            if($socailLinkArray->count()>0)  $socialArray[$k] = array_merge($v->toArray(),array('link'=>$socailLinkArray->toArray()[0]));
+        }        
         $data = array(
-            'title'=>'Social Connection'
-        );
+            'title'=>'Social Connection',
+            'user'=>User::findOrFail(Auth::user()->id),
+            'socialconnections'=>$socialArray
+        );        
         return view('settings.connection')->with($data);
     }
 
     public function payment()
     {
         $data = array(
-            'title'=>'Payment History'
+            'title'=>'Payment History',
+            'user'=>User::findOrFail(Auth::user()->id)
         );
         return view('settings.payment')->with($data);
     }
@@ -69,7 +86,8 @@ class SettingsController extends Controller
     public function subscription()
     {
         $data = array(
-            'title'=>'Subscription'
+            'title'=>'Subscription',
+            'user'=>User::findOrFail(Auth::user()->id)
         );
         return view('settings.subscription')->with($data);
     }
@@ -77,7 +95,8 @@ class SettingsController extends Controller
     public function blocked()
     {
         $data = array(
-            'title'=>'Blocked Account'
+            'title'=>'Blocked Account',
+            'user'=>User::findOrFail(Auth::user()->id)
         );
         return view('settings.blocked')->with($data);
     }
@@ -85,7 +104,8 @@ class SettingsController extends Controller
     public function billing()
     {
         $data = array(
-            'title'=>'Billing'
+            'title'=>'Billing',
+            'user'=>User::findOrFail(Auth::user()->id)
         );
         return view('settings.billing')->with($data);
     }
@@ -93,7 +113,8 @@ class SettingsController extends Controller
     public function notification()
     {
         $data = array(
-            'title'=>'Notification'
+            'title'=>'Notification',
+            'user'=>User::findOrFail(Auth::user()->id)
         );
         return view('settings.notification')->with($data);
     }
@@ -150,7 +171,52 @@ class SettingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        abort(404, 'The resource you are looking for could not be found');
+        switch ($request['updatesetting']) {
+            case 'account':
+                return $this->updateAccount($request, $id);
+            break;
+            case 'connection':
+                return $this->updateConnection($request, $id);
+            break;
+        }
+    }
+
+    private function updateAccount(Request $request, $id)
+    {
+        $user = User::findOrFail($id);  
+        $this->validate($request, [
+            'name'=>'required|max:120',
+            // 'email'=>'required|email|unique:users,email,'.$id,
+            // 'password'=>'required|min:6|confirmed'
+        ]);
+        $input = $request->only(['name']);
+        $user->fill($input)->save();
+        return redirect()->route('settings.index')->with('flash_message', 'Account'. $user->name.' updated!');
+    }
+
+    private function updateConnection(Request $request, $id)
+    {
+        foreach($request->socialconnection as $k=>$v)
+        {
+            if(!is_null($v) && !is_null($request['socialconnection_hidden'][$k]))
+            {
+                $usersocialconnection = UserSocialConnection::findOrFail($request['socialconnection_hidden'][$k]);
+                $usersocialconnection->link = $v;
+                $usersocialconnection->save();                        
+            }
+            else
+            {
+                if(!is_null($v))
+                {
+                    UserSocialConnection::create([
+                        'user_id' => Auth::user()->id,
+                        'social_connection_id' => $k,
+                        'link' => $v,
+                    ]);
+                }
+            }
+        }
+        return redirect()->route('settings.index')->with('flash_message', 'Social Connection updated!');
     }
 
     /**

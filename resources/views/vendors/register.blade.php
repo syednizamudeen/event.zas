@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{asset('vendor/smartwizard/css/smart_wizard.css')}}">
 <link rel="stylesheet" href="{{asset('vendor/smartwizard/css/smart_wizard_theme_arrows.css')}}">
 <link rel="stylesheet" href="{{asset('vendor/select2/dist/css/select2.css')}}">
-<link rel="stylesheet" href="{{asset('vendor/bootstrap-fileinput/css/fileinput.css')}}">
 <section>
     <div class="container">
         <div class="row">

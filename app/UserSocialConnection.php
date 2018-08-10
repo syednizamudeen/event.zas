@@ -14,4 +14,12 @@ class UserSocialConnection extends Model
     protected $fillable = [
         'user_id', 'social_connection_id', 'link',
     ];
+
+    /**
+     * Get the SocialConnection that relates UserSocialConnection.
+     */
+    public function socialconnection()
+    {
+        return $this->belongsTo('App\SocialConnection', 'social_connection_id', 'id');
+    }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-
+<link rel="stylesheet" href="{{asset('vendor/bootstrap-fileinput/css/fileinput.css')}}">
 <section>
     <div class="container">
         @include('settings.partials.profilecard')
@@ -19,69 +19,33 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <form>
+                                {!! Form::open(['action' => ['SettingsController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                     <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">User Name*</label> 
-                                    <div class="col-8">
-                                        <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="name" class="col-4 col-form-label">First Name</label> 
-                                    <div class="col-8">
-                                        <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
-                                    </div>
+                                        {{Form::label('profile', 'Profile Picture', ['class' => 'col-4 col-form-label', 'for' => 'profile'])}}
+                                        <div class="col-8">
+                                            {{Form::file('profile',['class'=>'form-control fileinput','placeholder'=>'Enter Text'])}}
+                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="lastname" class="col-4 col-form-label">Last Name</label> 
-                                    <div class="col-8">
-                                        <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="text" class="col-4 col-form-label">Nick Name*</label> 
-                                    <div class="col-8">
-                                        <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
-                                    </div>
+                                        {{Form::label('featurelogo', 'Feature Logo', ['class' => 'col-4 col-form-label', 'for' => 'featurelogo'])}}
+                                        <div class="col-8">
+                                            {{Form::file('featurelogo',['class'=>'form-control fileinput','placeholder'=>'Enter Text'])}}
+                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="select" class="col-4 col-form-label">Display Name public as</label> 
-                                    <div class="col-8">
-                                        <select id="select" name="select" class="custom-select">
-                                        <option value="admin">Admin</option>
-                                        </select>
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">Email*</label> 
-                                    <div class="col-8">
-                                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="website" class="col-4 col-form-label">Website</label> 
-                                    <div class="col-8">
-                                        <input id="website" name="website" placeholder="website" class="form-control here" type="text">
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="publicinfo" class="col-4 col-form-label">Public Info</label> 
-                                    <div class="col-8">
-                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="newpass" class="col-4 col-form-label">New Password</label> 
-                                    <div class="col-8">
-                                        <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
-                                    </div>
+                                        {{Form::label('featurewall', 'Feature Wall', ['class' => 'col-4 col-form-label', 'for' => 'featurewall'])}}
+                                        <div class="col-8">
+                                            {{Form::file('featurewall',['class'=>'form-control fileinput','placeholder'=>'Enter Text'])}}
+                                        </div>
                                     </div> 
                                     <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                        <div class="offset-4 col-8">
+                                            {{Form::hidden('updatesetting','account')}}
+                                            {{Form::hidden('_method','PUT')}}
+                                            {{Form::submit('Update',['class'=>'btn btn-primary'])}}
+                                        </div>
                                     </div>
-                                    </div>
-                                </form>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>
@@ -89,5 +53,24 @@
            </div>
         </div>
     </div>
-</section>      
+</section>   
+<script src="{{asset('vendor/bootstrap-fileinput/js/fileinput.js')}}"></script>	
+<script src="{{asset('vendor/bootstrap-fileinput/themes/fas/theme.js')}}"></script>	
+<script>
+    $(document).ready(function () {
+        $('.fileinput').fileinput({	
+            theme: "fas",	
+            showUpload: false,	
+            allowedFileExtensions: ["jpg", "jpeg", "gif", "png", "bmp"],	
+            allowedFileTypes: ["image"],	
+            browseClass: "btn btn-success",	
+            browseLabel: "Pick Image",	
+            browseIcon: "<i class=\"fas fa-image\"></i> ",	
+            removeClass: "btn btn-danger",	
+            removeLabel: "Delete",	
+            removeIcon: "<i class=\"fas fa-trash-alt\"></i> ",	
+            uploadUrl: "/file-upload-batch/logo"	
+        });
+    });
+</script>   
 @endsection

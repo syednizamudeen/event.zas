@@ -4,8 +4,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-lg-9 col-md-6">
-                        <h3 class="mb-0 text-truncated">Mike Anamendolla</h3>
-                        <p class="lead">contact@mail.com</p>
+                        <h3 class="mb-0 text-truncated">{{$user->name}}</h3>
+                        <p class="lead">{{$user->email}}</p>
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nemo, autem tenetur dolore sapiente necessitatibus rerum tempore quisquam, laudantium temporibus accusamus tempora neque aliquid esse quibusdam. Fugiat neque recusandae repudiandae.
                         </p>
