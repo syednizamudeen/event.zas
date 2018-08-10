@@ -11,6 +11,7 @@ use App\Country;
 use App\Type;
 use App\Duration;
 use App\SocialConnection;
+use App\VendorService;
 
 class VendorsController extends Controller
 {
@@ -45,7 +46,7 @@ class VendorsController extends Controller
      */
     public function create()
     {
-        // 
+        abort(404, 'The resource you are looking for could not be found');
     }
 
     /**
@@ -56,7 +57,7 @@ class VendorsController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        abort(404, 'The resource you are looking for could not be found');
     }
 
     /**
@@ -67,7 +68,7 @@ class VendorsController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404, 'The resource you are looking for could not be found');
     }
 
     /**
@@ -78,7 +79,13 @@ class VendorsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = array(
+            'title'=>'Edit Vendor',
+            'vendor'=>Vendor::findOrFail($id),
+            'services'=>array_column(Service::all('id','name')->toArray(), 'name', 'id'),
+            'countries'=>array_column(Country::all('id','name')->toArray(), 'name', 'id')
+        );
+        return view('vendors.edit')->with($data);
     }
 
     /**
@@ -90,7 +97,41 @@ class VendorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vendor = Vendor::findOrFail($id);
+        $vendor->companyregno = $request->input('companyregno');
+        $vendor->address = $request->input('address');
+        $vendor->country_id = $request->input('country');
+        $vendor->postalcode = $request->input('postalcode');
+        $vendor->contactno = $request->input('contact');
+        $vendor->website = $request->input('website');
+        $vendor->save();
+        #Update Services
+        foreach($request->services as $k=>$v)
+        {
+            if(!is_null($v))
+            {
+                $vendorservice = VendorService::where(['vendor_id'=>$id,'service_id'=>$v])->get();
+                if($vendorservice->count()==0)
+                {
+                    VendorService::create([
+                        'vendor_id' => $id,
+                        'service_id' => $v,
+                    ]);
+                }                
+            }
+        }
+        #Remove Services
+        $vendorservices = VendorService::where(['vendor_id'=>$id])->get();
+        foreach($vendorservices as $k=>$v)
+        {
+            if(!in_array($v['service_id'],$request->services))
+            {
+                $vendorservice = VendorService::where(['vendor_id'=>$id,'service_id'=>$v['service_id']])->firstOrFail();
+                $vendorservice->delete();
+            }
+        }
+
+        return redirect('/vendors')->with('success', 'Vendor Updated');
     }
 
     /**
@@ -101,7 +142,13 @@ class VendorsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        #do not allow vendor to be deleted as the user details still need to be delete; so vendor must be deleted from useController
+        abort(404, 'The resource you are looking for could not be found');
+
+        // $vendor = Vendor::findOrFail($id);
+        // $vendor->delete();
+
+        // return redirect('/vendors')->with('success', 'Vendor Deleted');
     }
 
     /**
