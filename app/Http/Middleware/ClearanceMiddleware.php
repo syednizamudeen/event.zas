@@ -83,6 +83,32 @@ class ClearanceMiddleware {
            else abort('401');
        }
 
+       if ($request->is('settings'))
+        {
+            if (Auth::user()->hasPermissionTo('update account')) return $next($request);
+            else abort('401');
+        }
+        elseif ($request->is('settings/account'))
+        {
+            if (Auth::user()->hasPermissionTo('update account')) return $next($request);
+            else abort('401');
+        }
+        elseif ($request->is('settings/profile'))
+        {
+            if (Auth::user()->hasPermissionTo('update profile')) return $next($request);
+            else abort('401');
+        }
+        elseif ($request->is('settings/picture'))
+        {
+            if (Auth::user()->hasPermissionTo('update picture')) return $next($request);
+            else abort('401');
+        }
+        elseif ($request->is('settings/connection'))
+        {
+            if (Auth::user()->hasPermissionTo('update social connection')) return $next($request);
+            else abort('401');
+        }
+
         if ($request->isMethod('Delete'))
         {
             if (Auth::user()->hasPermissionTo('delete services')) return $next($request);
