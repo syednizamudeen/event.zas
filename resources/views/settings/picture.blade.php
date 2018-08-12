@@ -22,10 +22,11 @@
                                 {!! Form::open(['action' => ['SettingsController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                     @foreach ($imagetypes as $imagetype)
                                     <div class="form-group row">
-                                        {{Form::label('picture['.$imagetype->id.']', $imagetype->name, ['class' => 'col-4 col-form-label', 'for' => 'picture['.$imagetype->id.']'])}}
+                                        {{Form::label('picture_'.$imagetype['id'], $imagetype['name'], ['class' => 'col-4 col-form-label', 'for' => 'picture_'.$imagetype['id']])}}
                                         <div class="col-8">
-                                            {{Form::file('picture['.$imagetype->id.']',['class'=>'form-control fileinput','placeholder'=>'Enter Text'])}}
+                                            {{Form::file('picture_'.$imagetype['id'],['class'=>'form-control fileinput','placeholder'=>'Enter Text','multiple','data-preview-file-type'=>'image','data-preview'=>asset(env("MEDIA_UPLOAD_PATH", "\upload").'/'.$imagetype['link']['filename'])])}}
                                         </div>
+                                        {{Form::hidden('picture_hidden['.$imagetype['id'].']',array_key_exists('link',$imagetype)?$imagetype['link']['id']:'')}}
                                     </div>
                                     @endforeach
                                     <div class="form-group row">

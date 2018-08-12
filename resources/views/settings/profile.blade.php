@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-
+<link rel="stylesheet" href="{{asset('vendor/select2/dist/css/select2.css')}}">
 <section>
     <div class="container">
         @include('settings.partials.profilecard')
@@ -19,69 +19,67 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <form>
+                                {!! Form::open(['action' => ['SettingsController@update', $user->id], 'method' => 'POST']) !!}
                                     <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">User Name*</label> 
-                                    <div class="col-8">
-                                        <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="name" class="col-4 col-form-label">First Name</label> 
-                                    <div class="col-8">
-                                        <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
-                                    </div>
+                                        {{Form::label('name', 'Name', ['class' => 'col-4 col-form-label', 'for' => 'name'])}}
+                                        <div class="col-8">
+                                            {{Form::text('name',$vendor->user->name,['class'=>'form-control','placeholder'=>'Enter Text', 'disabled'])}}
+                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="lastname" class="col-4 col-form-label">Last Name</label> 
-                                    <div class="col-8">
-                                        <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="text" class="col-4 col-form-label">Nick Name*</label> 
-                                    <div class="col-8">
-                                        <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
-                                    </div>
+                                        @php($serviceidselected = [])
+                                        @foreach($vendor->vendorservice as $service)
+                                            @php($serviceidselected[] = $service->service->id) 
+                                        @endforeach
+                                        {{Form::label('services','Services Provided', ['class' => 'col-4 col-form-label', 'for' => 'services'])}}
+                                        <div class="col-8">
+                                            {{Form::select('services[]',$services, $serviceidselected,['class'=>'form-control select2','multiple'=>'multiple','style'=>'width:100%','required'])}}
+                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="select" class="col-4 col-form-label">Display Name public as</label> 
-                                    <div class="col-8">
-                                        <select id="select" name="select" class="custom-select">
-                                        <option value="admin">Admin</option>
-                                        </select>
-                                    </div>
+                                        {{Form::label('companyregno','Company Reg. No.', ['class' => 'col-4 col-form-label', 'for' => 'companyregno'])}}
+                                        <div class="col-8">
+                                            {{Form::text('companyregno',$vendor->companyregno,['class'=>'form-control','placeholder'=>'Enter Text','required'])}}
+                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">Email*</label> 
-                                    <div class="col-8">
-                                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label for="website" class="col-4 col-form-label">Website</label> 
-                                    <div class="col-8">
-                                        <input id="website" name="website" placeholder="website" class="form-control here" type="text">
-                                    </div>
+                                        {{Form::label('address','Address', ['class' => 'col-4 col-form-label', 'for' => 'address'])}}
+                                        <div class="col-8">
+                                            {{Form::textarea('address',$vendor->address,['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="publicinfo" class="col-4 col-form-label">Public Info</label> 
-                                    <div class="col-8">
-                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                    </div>
+                                        {{Form::label('country','Country', ['class' => 'col-4 col-form-label', 'for' => 'country'])}}
+                                        <div class="col-8">
+                                            {{Form::select('country',$countries, $vendor->country->id,['class'=>'form-control'])}}
+                                        </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="newpass" class="col-4 col-form-label">New Password</label> 
-                                    <div class="col-8">
-                                        <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                                        {{Form::label('postalcode','Postal Code', ['class' => 'col-4 col-form-label', 'for' => 'postalcode'])}}
+                                        <div class="col-8">
+                                            {{Form::number('postalcode',$vendor->postalcode,['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                                        </div>
                                     </div>
-                                    </div> 
                                     <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                        {{Form::label('contact','Contact(Office) No.', ['class' => 'col-4 col-form-label', 'for' => 'contact'])}}
+                                        <div class="col-8">
+                                            {{Form::text('contact',$vendor->contactno,['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                                        </div>
                                     </div>
+                                    <div class="form-group row">
+                                        {{Form::label('website','Website', ['class' => 'col-4 col-form-label', 'for' => 'website'])}}
+                                        <div class="col-8">
+                                            {{Form::text('website',$vendor->website,['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                                        </div>
                                     </div>
-                                </form>
+                                    <div class="form-group row">
+                                        <div class="offset-4 col-8">
+                                            {{Form::hidden('updatesetting','profile')}}
+                                            {{Form::hidden('_method','PUT')}}
+                                            {{Form::submit('Update',['class'=>'btn btn-primary'])}}
+                                        </div>
+                                    </div>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>
@@ -89,5 +87,11 @@
            </div>
         </div>
     </div>
-</section>      
+</section>
+<script src="{{asset('vendor/select2/dist/js/select2.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $('.select2').select2();
+    });
+</script>    
 @endsection
