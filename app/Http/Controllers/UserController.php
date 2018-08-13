@@ -133,13 +133,17 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id); 
-        $userid = $user->id;
-        $vendor = Vendor::where('user_id', '=' ,$userid)->firstOrFail();
-        $vendorid = $vendor->id;
-        $vendorservice = VendorService::where('vendor_id', '=' ,$vendorid)->delete();
-        $usersocialconnection = UserSocialConnection::where('user_id', '=' ,$userid)->delete();
-        $subscription = Subscription::where('vendor_id', '=' ,$vendorid)->delete();
-        $vendor->delete();
+        $roles = $user->roles->pluck('name'); 
+        if(in_array('vendor',$roles->toArray()))
+        {
+            $userid = $user->id;
+            $vendor = Vendor::where('user_id', '=' ,$userid)->firstOrFail();
+            $vendorid = $vendor->id;
+            $vendorservice = VendorService::where('vendor_id', '=' ,$vendorid)->delete();
+            $usersocialconnection = UserSocialConnection::where('user_id', '=' ,$userid)->delete();
+            $subscription = Subscription::where('vendor_id', '=' ,$vendorid)->delete();
+            $vendor->delete();
+        }
         $user->delete();
         return redirect()->route('users.index')->with('flash_message', 'User successfully deleted.');
     }

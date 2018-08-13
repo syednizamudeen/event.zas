@@ -35,6 +35,7 @@ Route::get('settings/blocked', 'SettingsController@blocked');
 Route::get('settings/billing', 'SettingsController@billing');
 Route::get('settings/notification', 'SettingsController@notification');
 Route::resource('settings','SettingsController');
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
 Auth::routes();
 
