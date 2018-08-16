@@ -83,7 +83,7 @@ class ClearanceMiddleware {
            else abort('401');
        }
 
-       if ($request->is('settings'))
+       if ($request->is('settings') || $request->is('settings/*'))
         {
             if (Auth::user()->hasPermissionTo('update account')) return $next($request);
             else abort('401');
