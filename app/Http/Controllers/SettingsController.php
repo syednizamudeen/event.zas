@@ -76,6 +76,7 @@ class SettingsController extends Controller
             'title'=>'Upload Picture',
             'user'=>User::findOrFail(Auth::user()->id),
             'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:'',
+            'img_base_path'=>env("MEDIA_UPLOAD_PATH", "\upload").'/',
             'imagetypes'=>$imagesArray
         );
         return view('settings.picture')->with($data);
@@ -276,10 +277,10 @@ class SettingsController extends Controller
             $image = $request->file('picture_'.$k);
             if(!is_null($image))
             {
-                $imagename = time().'.'.$image->getClientOriginalExtension();
+                $imagename = rand(99,999).time().'.'.$image->getClientOriginalExtension();
                 if($profile_image->count()>0)
                 {
-                    unlink($uploadpath.'\\'.$profile_image[0]->filename);
+                    if(file_exists($uploadpath.'\\'.$profile_image[0]->filename)) unlink($uploadpath.'\\'.$profile_image[0]->filename);
                     $profile_image = Image::findOrFail($profile_image[0]->id);
                     $profile_image->image_type_id = $k;
                     $profile_image->image_type = $image->getClientOriginalExtension();

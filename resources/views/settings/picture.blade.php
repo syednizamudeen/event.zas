@@ -24,7 +24,7 @@
                                     <div class="form-group row">
                                         {{Form::label('picture_'.$imagetype['id'], $imagetype['name'], ['class' => 'col-4 col-form-label', 'for' => 'picture_'.$imagetype['id']])}}
                                         <div class="col-8">
-                                            {{Form::file('picture_'.$imagetype['id'],['class'=>'form-control fileinput','placeholder'=>'Enter Text','multiple','data-preview-file-type'=>'image','data-preview'=>asset(env("MEDIA_UPLOAD_PATH", "\upload").'/'.$imagetype['link']['filename'])])}}
+                                            {{Form::file('picture_'.$imagetype['id'],['class'=>'form-control','placeholder'=>'Enter Text','multiple','data-preview-file-type'=>'image'])}}
                                         </div>
                                         {{Form::hidden('picture_hidden['.$imagetype['id'].']',array_key_exists('link',$imagetype)?$imagetype['link']['id']:'')}}
                                     </div>
@@ -49,8 +49,9 @@
 <script src="{{asset('vendor/bootstrap-fileinput/themes/fas/theme.js')}}"></script>	
 <script>
     $(document).ready(function () {
-        $('.fileinput').fileinput({	
-            theme: "fas",	
+        var fileinputOption = {	
+            theme: "fas",
+            maxFileCount: 1,	
             showUpload: false,	
             fileActionSettings : {
                 showUpload : false,
@@ -62,8 +63,29 @@
             browseIcon: "<i class=\"fas fa-image\"></i> ",	
             removeClass: "btn btn-danger",	
             removeLabel: "Delete",	
-            removeIcon: "<i class=\"fas fa-trash-alt\"></i> "
+            removeIcon: "<i class=\"fas fa-trash-alt\"></i> ",
+        };
+        @foreach ($imagetypes as $imagetype)
+        var defaultImage = {};
+        @if (!empty($imagetype['link']['filename']))
+        defaultImage = {
+            overwriteInitial: true,
+            initialPreview: [
+                '<img src="{{asset($img_base_path.$imagetype['link']['filename'])}}" class="kv-preview-data file-preview-image">'
+            ],
+            initialPreviewAsData: false,
+            initialPreviewFileType: 'image',
+            initialPreviewDownloadUrl: '{{asset($img_base_path.$imagetype['link']['filename'])}}',
+            initialPreviewConfig: [
+                {type: "image", caption: "{{$imagetype['link']['filename']}}", url: "/site/file-delete", key: {{$imagetype['link']['id']}}}
+            ],
+        };
+        @endif
+        $({{'picture_'.$imagetype['id']}}).fileinput($.extend({}, fileinputOption, defaultImage)).on('filebeforedelete', function(event, key, data) {
+            console.log('Key = ' + key);
+            return true;
         });
+        @endforeach
     });
 </script>   
 @endsection
