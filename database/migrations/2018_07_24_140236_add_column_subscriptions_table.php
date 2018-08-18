@@ -19,7 +19,7 @@ class AddColumnSubscriptionsTable extends Migration
             $table->integer('vendor_id');
             $table->integer('plan_id');            
             $table->integer('plan_id')->unsigned()->change();
-            $table->foreign('plan_id')->references('id')->on('plans');
+            // $table->foreign('plan_id')->references('id')->on('plans');
             $table->dateTime('activationdate');
             $table->dateTime('expirydate');
             $table->timestamps();

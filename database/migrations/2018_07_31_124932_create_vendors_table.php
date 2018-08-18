@@ -30,9 +30,9 @@ class CreateVendorsTable extends Migration
             $table->integer('user_id')->unsigned()->change();
             $table->integer('service_id')->unsigned()->change();
             $table->integer('country_id')->unsigned()->change();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('service_id')->references('id')->on('services');
-            $table->foreign('country_id')->references('id')->on('countries');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('service_id')->references('id')->on('services');
+            // $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 

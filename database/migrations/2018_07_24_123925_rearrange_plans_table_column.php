@@ -13,7 +13,7 @@ class RearrangePlansTableColumn extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE plans MODIFY country_id int(10) AFTER amount;');
+        // DB::statement('ALTER TABLE plans MODIFY country_id int(10) AFTER amount;');
     }
 
     /**
