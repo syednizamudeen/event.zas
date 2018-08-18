@@ -34,6 +34,7 @@ Route::get('settings/subscription', 'SettingsController@subscription');
 Route::get('settings/blocked', 'SettingsController@blocked');
 Route::get('settings/billing', 'SettingsController@billing');
 Route::get('settings/notification', 'SettingsController@notification');
+Route::post('settings/removepicture', 'SettingsController@removePicture');
 Route::resource('settings','SettingsController');
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 

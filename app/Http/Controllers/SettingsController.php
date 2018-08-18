@@ -14,9 +14,14 @@ use App\Country;
 use App\VendorService;
 use Illuminate\Http\Request;
 Use File;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
+    private $defaultExtension;
+    private $defaultFileName;
+    private $defaultFilePath;
+    
     /**
      * Create a new controller instance.
      *
@@ -25,6 +30,9 @@ class SettingsController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', 'clearance']);
+        $this->defaultExtension = 'png';
+        $this->defaultFileName = 'no-image.png';
+        $this->defaultFolder = env("MEDIA_UPLOAD_PATH", "user_files/");
     }
 
     /**
@@ -43,7 +51,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Account',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:''
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
         );
         return view('settings.account')->with($data);
     }
@@ -54,7 +62,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Profile',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:'',
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName),
             'vendor'=>Vendor::where(['user_id'=>Auth::user()->id])->firstOrFail(),
             'services'=>array_column(Service::all('id','name')->toArray(), 'name', 'id'),
             'countries'=>array_column(Country::all('id','name')->toArray(), 'name', 'id')
@@ -75,8 +83,8 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Upload Picture',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:'',
-            'img_base_path'=>env("MEDIA_UPLOAD_PATH", "\upload").'/',
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName),
+            'img_base_path'=>'/storage//'.$this->defaultFolder,
             'imagetypes'=>$imagesArray
         );
         return view('settings.picture')->with($data);
@@ -95,7 +103,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Social Connection',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:'',
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName),
             'socialconnections'=>$socialArray
         );        
         return view('settings.connection')->with($data);
@@ -107,7 +115,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Payment History',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:''
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
         );
         return view('settings.payment')->with($data);
     }
@@ -118,7 +126,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Subscription',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:''
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
         );
         return view('settings.subscription')->with($data);
     }
@@ -129,7 +137,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Blocked Account',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:''
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
         );
         return view('settings.blocked')->with($data);
     }
@@ -140,7 +148,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Billing',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:''
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
         );
         return view('settings.billing')->with($data);
     }
@@ -151,7 +159,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Notification',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>$profile_image->count()>0?env("MEDIA_UPLOAD_PATH", "\upload").'/'.$profile_image[0]->filename:''
+            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
         );
         return view('settings.notification')->with($data);
     }
@@ -266,37 +274,45 @@ class SettingsController extends Controller
     private function updatePicture(Request $request, $id)
     {
         // $this->validate($request, [
-        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',    
+        //     'picture_' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',    
         // ]);
-        $uploadpath = public_path().env("MEDIA_UPLOAD_PATH", "\upload");
-        if(!File::exists($uploadpath)) File::makeDirectory($uploadpath, $mode = 0700, true, true);
         
         foreach($request->picture_hidden as $k=>$v)
         {
-            $profile_image = Image::where(['image_type_id'=>$k,'user_id'=>Auth::user()->id])->get();
-            $image = $request->file('picture_'.$k);
-            if(!is_null($image))
+            $image = Image::where(['image_type_id'=>$k,'user_id'=>Auth::user()->id])->get();
+            if($request->hasFile('picture_'.$k))
             {
-                $imagename = rand(99,999).time().'.'.$image->getClientOriginalExtension();
-                if($profile_image->count()>0)
-                {
-                    if(file_exists($uploadpath.'\\'.$profile_image[0]->filename)) unlink($uploadpath.'\\'.$profile_image[0]->filename);
-                    $profile_image = Image::findOrFail($profile_image[0]->id);
-                    $profile_image->image_type_id = $k;
-                    $profile_image->image_type = $image->getClientOriginalExtension();
-                    $profile_image->filename = $imagename;
-                    $profile_image->save();
+                $filenameWithExt = $request->file('picture_'.$k)->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('picture_'.$k)->getClientOriginalExtension();
+                $fileNameToStore = $filename.'_'.time().'_'.rand(99,999).'.'.$extension;
+                $path = $request->file('picture_'.$k)->storeAs('public/user_files', $fileNameToStore);
+            }
+            else
+            {
+                $extension = $this->defaultExtension;
+                $fileNameToStore = $this->defaultFileName;
+            }
+            if($image->count()>0)
+            {
+                if($request->hasFile('picture_'.$k))
+                {                        
+                    $image = Image::findOrFail($image[0]->id);
+                    if($image->filename != $this->defaultFileName) Storage::delete('public/'.$this->defaultFolder.$image->filename);
+                    $image->image_type_id = $k;
+                    $image->image_type = $extension;
+                    $image->filename = $fileNameToStore;
+                    $image->save();
                 }
-                else
-                {
-                    Image::create([
-                        'image_type_id' => $k,
-                        'user_id' => Auth::user()->id,
-                        'image_type' => $image->getClientOriginalExtension(),
-                        'filename' => $imagename
-                    ]);
-                }
-                $request->file('picture_'.$k)->move($uploadpath, $imagename);
+            }
+            else
+            {
+                Image::create([
+                    'image_type_id' => $k,
+                    'user_id' => Auth::user()->id,
+                    'image_type' => $extension,
+                    'filename' => $fileNameToStore
+                ]);
             }
         }    
         return redirect()->route('settings.index')->with('flash_message', 'Picture updated!');   
@@ -339,6 +355,22 @@ class SettingsController extends Controller
             }
         }
         return redirect()->route('settings.index')->with('flash_message', 'Profile updated!');
+    }
+
+    public function removePicture(Request $request)
+    {
+        if($request->ajax())
+        {
+            $image = Image::find($request->key);
+            if($image->filename != $this->defaultFileName)
+            {
+                Storage::delete('public/'.$this->defaultFolder.$image->filename);
+                $image->image_type = $this->defaultExtension;
+                $image->filename = $this->defaultFileName;
+                $image->save();
+            }
+        }
+        return response()->json([]);
     }
 
     /**

@@ -36,6 +36,7 @@
                                             {{Form::submit('Update',['class'=>'btn btn-primary'])}}
                                         </div>
                                     </div>
+                                    {{ csrf_field() }}
                                 {!! Form::close() !!}
                             </div>
                         </div>
@@ -49,6 +50,11 @@
 <script src="{{asset('vendor/bootstrap-fileinput/themes/fas/theme.js')}}"></script>	
 <script>
     $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         var fileinputOption = {	
             theme: "fas",
             maxFileCount: 1,	
@@ -77,13 +83,17 @@
             initialPreviewFileType: 'image',
             initialPreviewDownloadUrl: '{{asset($img_base_path.$imagetype['link']['filename'])}}',
             initialPreviewConfig: [
-                {type: "image", caption: "{{$imagetype['link']['filename']}}", url: "/site/file-delete", key: {{$imagetype['link']['id']}}}
+                {type: "image", caption: "{{$imagetype['link']['filename']}}", url: "/settings/removepicture", key: {{$imagetype['link']['id']}}}
             ],
         };
         @endif
-        $({{'picture_'.$imagetype['id']}}).fileinput($.extend({}, fileinputOption, defaultImage)).on('filebeforedelete', function(event, key, data) {
-            console.log('Key = ' + key);
-            return true;
+        $({{'picture_'.$imagetype['id']}}).fileinput($.extend({}, fileinputOption, defaultImage)).on('filepredelete', function(event, key, jqXHR, data) {  
+            var abort = true;
+            if (confirm("Are you sure you want to delete this image?")) {
+                abort = false;
+            }
+            return abort;
+        }).on('filedeleteerror', function(event, data, msg) {
         });
         @endforeach
     });
