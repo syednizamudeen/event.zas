@@ -25,7 +25,8 @@ class AppServiceProvider extends ServiceProvider
             __DIR__ . '/../../vendor/kartik-v/bootstrap-fileinput/css' => public_path('vendor/bootstrap-fileinput/css'),
             __DIR__ . '/../../vendor/kartik-v/bootstrap-fileinput/js' => public_path('vendor/bootstrap-fileinput/js'),
             __DIR__ . '/../../vendor/kartik-v/bootstrap-fileinput/img' => public_path('vendor/bootstrap-fileinput/img'),
-            __DIR__ . '/../../vendor/kartik-v/bootstrap-fileinput/themes' => public_path('vendor/bootstrap-fileinput/themes')
+            __DIR__ . '/../../vendor/kartik-v/bootstrap-fileinput/themes' => public_path('vendor/bootstrap-fileinput/themes'),
+            __DIR__ . '/../../vendor/tinymce' => public_path('vendor/tinymce')
         ], 'public');
     }
 

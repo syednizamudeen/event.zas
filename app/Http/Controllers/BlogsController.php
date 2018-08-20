@@ -36,7 +36,10 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        // 
+        $data = array(
+            'title'=>'Create Post'
+        );
+        return view('blog.create')->with($data);
     }
 
     /**
