@@ -13,8 +13,9 @@ use App\Service;
 use App\Country;
 use App\VendorService;
 use Illuminate\Http\Request;
-Use File;
+use File;
 use Illuminate\Support\Facades\Storage;
+use URL;
 
 class SettingsController extends Controller
 {
@@ -47,22 +48,20 @@ class SettingsController extends Controller
 
     public function account()
     {
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $data = array(
             'title'=>'Account',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
+            'profile_image'=>$this->get_ProfileImage()
         );
         return view('settings.account')->with($data);
     }
 
     public function profile()
     {
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $data = array(
             'title'=>'Profile',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName),
+            'profile_image'=>$this->get_ProfileImage(),
             'vendor'=>Vendor::where(['user_id'=>Auth::user()->id])->firstOrFail(),
             'services'=>array_column(Service::all('id','name')->toArray(), 'name', 'id'),
             'countries'=>array_column(Country::all('id','name')->toArray(), 'name', 'id')
@@ -79,12 +78,11 @@ class SettingsController extends Controller
             $imageLinkArray = Image::where(['user_id'=>Auth::user()->id,'image_type_id'=>$v->id])->get();
             if($imageLinkArray->count()>0) $imagesArray[$k] = array_merge($v->toArray(),array('link'=>$imageLinkArray->toArray()[0]));
         }
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $data = array(
             'title'=>'Upload Picture',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName),
-            'img_base_path'=>'/storage//'.$this->defaultFolder,
+            'profile_image'=>$this->get_ProfileImage(),
+            'img_base_path'=>'/storage/'.$this->defaultFolder,
             'imagetypes'=>$imagesArray
         );
         return view('settings.picture')->with($data);
@@ -92,7 +90,6 @@ class SettingsController extends Controller
 
     public function connection()
     {
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $socialArray = array();
         foreach(SocialConnection::orderBy('name')->get() as $k => $v)
         {
@@ -103,7 +100,7 @@ class SettingsController extends Controller
         $data = array(
             'title'=>'Social Connection',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName),
+            'profile_image'=>$this->get_ProfileImage(),
             'socialconnections'=>$socialArray
         );        
         return view('settings.connection')->with($data);
@@ -111,57 +108,58 @@ class SettingsController extends Controller
 
     public function payment()
     {
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $data = array(
             'title'=>'Payment History',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
+            'profile_image'=>$this->get_ProfileImage()
         );
         return view('settings.payment')->with($data);
     }
 
     public function subscription()
     {
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $data = array(
             'title'=>'Subscription',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
+            'profile_image'=>$this->get_ProfileImage()
         );
         return view('settings.subscription')->with($data);
     }
 
     public function blocked()
     {
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $data = array(
             'title'=>'Blocked Account',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
+            'profile_image'=>$this->get_ProfileImage()
         );
         return view('settings.blocked')->with($data);
     }
 
     public function billing()
     {
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $data = array(
             'title'=>'Billing',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
+            'profile_image'=>$this->get_ProfileImage()
         );
         return view('settings.billing')->with($data);
     }
 
     public function notification()
     {
-        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
         $data = array(
             'title'=>'Notification',
             'user'=>User::findOrFail(Auth::user()->id),
-            'profile_image'=>'/storage//'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName)
+            'profile_image'=>$this->get_ProfileImage()
         );
         return view('settings.notification')->with($data);
+    }
+
+    private function get_ProfileImage()
+    {
+        $profile_image = Image::where(['image_type_id'=>1,'user_id'=>Auth::user()->id])->get();
+        return URL::to('/').'/storage/'.$this->defaultFolder.($profile_image->count()>0?$profile_image[0]->filename:$this->defaultFileName);
     }
 
     /**
@@ -243,7 +241,7 @@ class SettingsController extends Controller
         ]);
         $input = $request->only(['name']);
         $user->fill($input)->save();
-        return redirect()->route('settings.index')->with('flash_message', 'Account'. $user->name.' updated!');
+        return redirect('/settings/account')->with('success', 'Account '. $user->name.' updated!');
     }
 
     private function updateConnection(Request $request, $id)
@@ -268,7 +266,7 @@ class SettingsController extends Controller
                 }
             }
         }
-        return redirect()->route('settings.index')->with('flash_message', 'Social Connection updated!');
+        return redirect('/settings/connection')->with('success', 'Social Connection updated!');
     }
 
     private function updatePicture(Request $request, $id)
@@ -285,7 +283,7 @@ class SettingsController extends Controller
                 $filenameWithExt = $request->file('picture_'.$k)->getClientOriginalName();
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $request->file('picture_'.$k)->getClientOriginalExtension();
-                $fileNameToStore = $filename.'_'.time().'_'.rand(99,999).'.'.$extension;
+                $fileNameToStore = substr($filename.'_'.time().'_'.rand(99,999).'.'.$extension, -191);
                 $path = $request->file('picture_'.$k)->storeAs('public/user_files', $fileNameToStore);
             }
             else
@@ -315,7 +313,7 @@ class SettingsController extends Controller
                 ]);
             }
         }    
-        return redirect()->route('settings.index')->with('flash_message', 'Picture updated!');   
+        return redirect('/settings/picture')->with('success', 'Picture updated!');  
     }
 
     private function updateProfile(Request $request, $id)
@@ -354,7 +352,7 @@ class SettingsController extends Controller
                 $vendorservice->delete();
             }
         }
-        return redirect()->route('settings.index')->with('flash_message', 'Profile updated!');
+        return redirect('/settings/profile')->with('success', 'Profile updated!');
     }
 
     public function removePicture(Request $request)
@@ -370,7 +368,7 @@ class SettingsController extends Controller
                 $image->save();
             }
         }
-        return response()->json([]);
+        return response()->json(['msg'=>'deleted!']);
     }
 
     /**

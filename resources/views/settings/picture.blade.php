@@ -25,6 +25,7 @@
                                         {{Form::label('picture_'.$imagetype['id'], $imagetype['name'], ['class' => 'col-4 col-form-label', 'for' => 'picture_'.$imagetype['id']])}}
                                         <div class="col-8">
                                             {{Form::file('picture_'.$imagetype['id'],['class'=>'form-control','placeholder'=>'Enter Text','multiple','data-preview-file-type'=>'image'])}}
+                                        <div id="kv-success-{{array_key_exists('link',$imagetype)?$imagetype['link']['id']:''}}" class="alert alert-success" style="margin-top:10px;display:none"></div>
                                         </div>
                                         {{Form::hidden('picture_hidden['.$imagetype['id'].']',array_key_exists('link',$imagetype)?$imagetype['link']['id']:'')}}
                                     </div>
@@ -49,6 +50,7 @@
 <script src="{{asset('vendor/bootstrap-fileinput/js/fileinput.js')}}"></script>	
 <script src="{{asset('vendor/bootstrap-fileinput/themes/fas/theme.js')}}"></script>	
 <script>
+    var APP_URL = {!! json_encode(url('/')) !!}
     $(document).ready(function () {
         $.ajaxSetup({
             headers: {
@@ -83,7 +85,7 @@
             initialPreviewFileType: 'image',
             initialPreviewDownloadUrl: '{{asset($img_base_path.$imagetype['link']['filename'])}}',
             initialPreviewConfig: [
-                {type: "image", caption: "{{$imagetype['link']['filename']}}", url: "/settings/removepicture", key: {{$imagetype['link']['id']}}}
+                {type: "image", caption: "{{$imagetype['link']['filename']}}", url: APP_URL+"/settings/removepicture", key: {{$imagetype['link']['id']}}}
             ],
         };
         @endif
@@ -94,6 +96,8 @@
             }
             return abort;
         }).on('filedeleteerror', function(event, data, msg) {
+        }).on('filedeleted', function(event, key, jqXHR, data) {
+            $('#kv-success-'+key).html('Image deleted...').fadeIn('slow');
         });
         @endforeach
     });
