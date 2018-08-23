@@ -7,22 +7,27 @@
         <!-- Latest Posts -->
         <main class="post blog-post col-lg-8"> 
             <div class="container">
+            <h3 class="box-title">{{$title}}</h3>
             <div class="post-single">
                 <div class="post-thumbnail"></div>
                 <div class="post-details">
-                <div class="post-meta d-flex justify-content-between">
-                    <div class="category"></div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Title</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Text">
-                </div>
-                <div class="post-body">
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div class="post-meta d-flex justify-content-between">
+                        <div class="category"></div>
                     </div>
-                </div>
+                    {!! Form::open(['action' => 'BlogsController@store', 'method' => 'POST']) !!}
+                        <div class="form-group">
+                            {{Form::label('name','Title')}}
+                            {{Form::text('name','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                        </div>
+                        <div class="post-body">
+                            <div class="form-group">
+                                {{Form::label('body','Body')}}
+                                {{Form::textarea('body','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                            </div>
+                        </div>
+                        {{ csrf_field() }}
+                        {{Form::submit('Save',['class'=>'btn btn-primary'])}}
+                    {!! Form::close() !!}
                 </div>
             </div>
             </div>

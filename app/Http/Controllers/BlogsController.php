@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Blog;
+use Auth;
 
 class BlogsController extends Controller
 {
@@ -50,7 +52,18 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+            'body'=>'required'
+        ]);
+
+        $blog = new Blog;
+        $blog->name = $request->input('name');
+        $blog->body = $request->input('body');
+        $blog->user_id = Auth::user()->id;
+        $blog->save();
+
+        return redirect('/blog')->with('success', 'Blog Post Created');
     }
 
     /**
