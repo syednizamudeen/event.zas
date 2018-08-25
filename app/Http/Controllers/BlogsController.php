@@ -26,7 +26,8 @@ class BlogsController extends Controller
     public function index()
     {
         $data = array(
-            'title'=>'Enventzas Blog'
+            'title'=>'Enventzas Blog',
+            'posts'=>Blog::orderBy('created_at','desc')->paginate(6)
         );
         return view('blog.index')->with($data);
     }
@@ -75,9 +76,11 @@ class BlogsController extends Controller
      */
     public function show($name)
     {
+        $blog = Blog::where('slug', $name)->first();
+        if(!$blog) abort(404, 'The resource you are looking for could not be found');
         $data = array(
             'title'=>'Blog Post',
-            'blog'=>Blog::where('slug', $name)->first()
+            'blog'=>$blog
         );
         return view('blog.show')->with($data);
     }

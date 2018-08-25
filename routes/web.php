@@ -18,7 +18,7 @@ Route::resource('services','ServicesController');
 Route::resource('home','HomeController');
 Route::resource('contact','ContactController');
 Route::resource('about','AboutController');
-Route::get('blog/{name}', 'BlogsController@show')->where('show', '[a-z]+');
+Route::get('post/{name}', 'BlogsController@show')->where('show', '[a-z]+');
 Route::resource('blog','BlogsController');
 Route::resource('ideas','IdeasController');
 Route::get('vendors/register', 'VendorsController@register');

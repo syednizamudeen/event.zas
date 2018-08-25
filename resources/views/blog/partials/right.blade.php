@@ -1,4 +1,7 @@
 <aside class="col-lg-4">
+@if (!Auth::guest())
+<a href="{{url('/blog/create')}}" class="btn btn-warning btn-lg btn-block mb-3"><i class="fas fa-edit fa-lg fa-fw"></i>Create Post</a>
+@endif
 <!-- Widget [Search Bar Widget]-->
 <div class="widget search">
     <header>

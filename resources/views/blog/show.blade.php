@@ -16,9 +16,9 @@
                 <h1>{{$blog->name}}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
+                    <div class="title"><span>{{$blog->user->name}}</span></div></a>
                     <div class="d-flex align-items-center flex-wrap">       
-                    <div class="date"><i class="fas fa-clock"></i> {{$blog->created_at}} 2 months ago</div>
+                    <div class="date"><i class="fas fa-clock"></i> {{$blog->created_at->diffForHumans()}}</div>
                     <div class="views"><i class="fas fa-eye"></i> 500</div>
                     <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
                     </div>

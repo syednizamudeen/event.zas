@@ -34,4 +34,12 @@ class Blog extends Model
     {
         return 'slug';
     }
+
+    /**
+     * Get the user record associated with the blog.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

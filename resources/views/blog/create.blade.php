@@ -5,9 +5,9 @@
   <div class="container">
       <div class="row">
         <!-- Latest Posts -->
-        <main class="post blog-post col-lg-8"> 
+        <main class="post blog-post col-lg-12"> 
             <div class="container">
-            <h3 class="box-title">{{$title}}</h3>
+            <h3 class="box-title">{{$title}}</h3>            
             <div class="post-single">
                 <div class="post-thumbnail"></div>
                 <div class="post-details">
@@ -26,13 +26,12 @@
                             </div>
                         </div>
                         {{ csrf_field() }}
-                        {{Form::submit('Save',['class'=>'btn btn-primary'])}}
-                    {!! Form::close() !!}
+                        {{ Form::button('<i class="fas fa-save fa-lg fa-fw"></i>Save', ['type' => 'submit', 'class' => 'btn btn-primary float-right ml-3'] )  }}<a href="{{url('/blog')}}" class="btn btn-info float-right"><i class="fa fa-undo fa-fw"></i>Go Back</a>
+                    {!! Form::close() !!}                    
                 </div>
             </div>
             </div>
         </main>
-          @include('blog.partials.right')
       </div>
   </div>    
         </div>

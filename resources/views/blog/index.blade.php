@@ -8,6 +8,24 @@
           <main class="posts-listing col-lg-8"> 
           <div class="container">
               <div class="row">
+                    @foreach($posts as $post)
+                        <div class="post col-xl-6">
+                            <div class="post-thumbnail"></div>
+                            <div class="post-details">
+                            <div class="post-meta d-flex justify-content-between">
+                                
+                            </div><a href="{{url('/blog/show')}}">
+                            <h3 class="h4">{{$post->name}}</h3></a>
+                            <p class="text-muted">{{str_limit(strip_tags($post->body),125,'...')}}</p>
+                            <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                <div class="avatar"><img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid"></div>
+                                <div class="title"><span>{{$post->user->name}}</span></div></a>
+                                <div class="date"><i class="fas fa-clock"></i> {{$post->created_at->diffForHumans()}}</div>
+                                <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
+                            </div>
+                            </div>
+                        </div>
+                    @endforeach
               <!-- post -->
               <div class="post col-xl-6">
                   <div class="post-thumbnail"></div>
@@ -112,6 +130,7 @@
               </div>
               <!-- Pagination -->
               <nav aria-label="Page navigation example">
+                    {{$posts->links()}}     
                     <ul class="pagination pagination-lg justify-content-center">
                         <li class="page-item disabled">
                             <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-circle-left fa-lg" aria-hidden="true"></i></a>
