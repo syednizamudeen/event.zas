@@ -13,17 +13,18 @@
                 <div class="post-meta d-flex justify-content-between">
                     <div class="category"></div>
                 </div>
-                <h1>Diversity in Engineering: The Effect on Questions<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+                <h1>{{$blog->name}}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid"></div>
                     <div class="title"><span>John Doe</span></div></a>
                     <div class="d-flex align-items-center flex-wrap">       
-                    <div class="date"><i class="fas fa-clock"></i> 2 months ago</div>
+                    <div class="date"><i class="fas fa-clock"></i> {{$blog->created_at}} 2 months ago</div>
                     <div class="views"><i class="fas fa-eye"></i> 500</div>
                     <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
                     </div>
                 </div>
                 <div class="post-body">
+                    {!!$blog->body!!}
                     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     <p> <img src="{{asset('app/img/team/3.jpg')}}" alt="..." class="img-fluid"></p>

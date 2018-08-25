@@ -60,6 +60,7 @@ class BlogsController extends Controller
         $blog = new Blog;
         $blog->name = $request->input('name');
         $blog->body = $request->input('body');
+        $blog->slug = $request->input('slug');
         $blog->user_id = Auth::user()->id;
         $blog->save();
 
@@ -69,13 +70,14 @@ class BlogsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $name
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
         $data = array(
-            'title'=>'Blog Post'
+            'title'=>'Blog Post',
+            'blog'=>Blog::where('slug', $name)->first()
         );
         return view('blog.show')->with($data);
     }

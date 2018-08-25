@@ -9,6 +9,7 @@
         "components/font-awesome": "5.0.*",
         "components/jquery": "3.3.*",
         "components/jqueryui": "1.12.*",
+        "cviebrock/eloquent-sluggable": "^4.2",
         "datatables/datatables": "1.10.*",
         "doctrine/dbal": "2.8.0",
         "eonasdan/bootstrap-datetimepicker": "4.17.*",
