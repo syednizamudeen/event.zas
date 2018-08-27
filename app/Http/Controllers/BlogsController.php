@@ -15,7 +15,7 @@ class BlogsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','show']]);
+        $this->middleware(['auth','clearance'], ['except' => ['index','show']]);
     }
 
     /**
@@ -93,7 +93,13 @@ class BlogsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        $data = array(
+            'title'=>'Edit Blog',
+            'blog'=>$blog
+        );
+        if($blog->user_id==Auth::user()->id || Auth::user()->hasRole('super-admin')) return view('blog.edit')->with($data);
+        else abort('401');
     }
 
     /**
@@ -105,7 +111,18 @@ class BlogsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+            'body'=>'required'
+        ]);
+
+        $blog = Blog::findOrFail($id);
+        $blog->name = $request->input('name');
+        $blog->body = $request->input('body');
+        $blog->slug = $request->input('slug');
+        $blog->save();
+
+        return redirect('/blog')->with('success', 'Blog Post Updated');
     }
 
     /**
@@ -116,6 +133,13 @@ class BlogsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        if($blog->user_id==Auth::user()->id || Auth::user()->hasRole('super-admin'))
+        {
+            $blog->delete();
+
+            return redirect('/blog')->with('success', 'Blog Post Deleted');
+        }
+        abort('401');
     }
 }

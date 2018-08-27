@@ -1,4 +1,4 @@
-@if(count($errors)>0)
+@if(isset($errors) && count($errors)>0)
     @foreach($errors->all() as $error)
     <section>
         <div class="container p-0">

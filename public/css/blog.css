@@ -205,6 +205,7 @@ section.featured-posts .row:nth-of-type(odd) .text {
   }
   
   .post .title,
+  .post .edit,
   .post .date,
   .post .comments,
   .post .views {
@@ -214,6 +215,7 @@ section.featured-posts .row:nth-of-type(odd) .text {
   }
   
   .post .title i,
+  .post .edit i,
   .post .date i,
   .post .comments i,
   .post .views i {
@@ -222,6 +224,7 @@ section.featured-posts .row:nth-of-type(odd) .text {
   }
   
   .post .title::after,
+  .post .edit::after,
   .post .date::after,
   .post .comments::after,
   .post .views::after {

@@ -7,6 +7,7 @@
         <!-- Latest Posts -->
         <main class="post blog-post col-lg-8"> 
             <div class="container">
+            <h3 class="box-title">{{$title}}</h3>
             <div class="post-single">
                 <div class="post-thumbnail"></div>
                 <div class="post-details">
@@ -14,29 +15,28 @@
                     <div class="category"></div>
                 </div>
                 <h1>{{$blog->name}}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
-                <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>{{$blog->user->name}}</span></div></a>
-                    <div class="d-flex align-items-center flex-wrap">       
-                    <div class="date"><i class="fas fa-clock"></i> {{$blog->created_at->diffForHumans()}}</div>
-                    <div class="views"><i class="fas fa-eye"></i> 500</div>
-                    <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
+                <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
+                    <div class="author d-flex align-items-center flex-wrap">
+                        <div class="avatar">
+                            <img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid">
+                        </div>
+                        <div class="title">
+                            <span>{{$blog->user->name}}</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap"> 
+                        @if (!Auth::guest())
+                        @hasanyrole('super-admin|vendor')
+                        <a href="{{url('/blog/'.$blog->id.'/edit')}}"><div class="edit"><i class="fas fa-edit"></i>Edit</div></a>
+                        @endrole
+                        @endif
+                        <div class="date"><i class="fas fa-clock"></i> {{$blog->created_at->diffForHumans()}}</div>
+                        <div class="views"><i class="fas fa-eye"></i> 500</div>
+                        <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
                     </div>
                 </div>
                 <div class="post-body">
-                    {!!$blog->body!!}
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p> <img src="{{asset('app/img/team/3.jpg')}}" alt="..." class="img-fluid"></p>
-                    <h3>Lorem Ipsum Dolor</h3>
-                    <p>div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus iusto voluptates deleniti similique rerum ducimus sint ex odio saepe. Sapiente quae pariatur ratione quis perspiciatis deleniti accusantium</p>
-                    <blockquote class="blockquote">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                    <footer class="blockquote-footer">Someone famous in
-                        <cite title="Source Title">Source Title</cite>
-                    </footer>
-                    </blockquote>
-                    <p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis. Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam voluptas neque soluta adipisci ad.</p>
+                    {!!$blog->body!!}                    
                 </div>
                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
                     <div class="icon prev"><i class="fa fa-angle-left"></i></div>
@@ -46,7 +46,8 @@
                     <div class="text"><strong class="text-primary">Next Post </strong>
                         <h6>I Bought a Wedding Dress.</h6>
                     </div>
-                    <div class="icon next"><i class="fa fa-angle-right">   </i></div></a></div>
+                    <div class="icon next"><i class="fa fa-angle-right">   </i></div></a>
+                </div>
                 <div class="post-comments">
                     <header>
                     <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
