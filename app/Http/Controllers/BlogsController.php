@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use Auth;
+use Purifier;
 
 class BlogsController extends Controller
 {
@@ -60,7 +61,7 @@ class BlogsController extends Controller
 
         $blog = new Blog;
         $blog->name = $request->input('name');
-        $blog->body = $request->input('body');
+        $blog->body = Purifier::clean($request->input('body'));
         $blog->slug = $request->input('slug');
         $blog->user_id = Auth::user()->id;
         $blog->save();
