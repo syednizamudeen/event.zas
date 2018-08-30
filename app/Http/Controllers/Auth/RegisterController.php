@@ -79,7 +79,7 @@ class RegisterController extends Controller
         $newuser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => $data['password'],
+            'password' => bcrypt($data['password']),
         ]);
         $user = User::find($newuser->id);
         $verifyUser = VerifyUser::create([
