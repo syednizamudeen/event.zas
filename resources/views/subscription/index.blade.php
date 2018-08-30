@@ -37,6 +37,7 @@
                         </td>
                         <td>
                             <!--<a href="{{url('/subscriptions/'.$subscription->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>--> {!! Form::open(['action' => ['SubscriptionsController@destroy', $subscription->id], 'method' => 'POST', 'class'=>'pull-right']) !!}
+                            {{Form::hidden('sourcemodel','subscription')}}
                             {{Form::hidden('_method','DELETE')}}
                                 {{ Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger'] )  }}
                             {!! Form::close() !!}

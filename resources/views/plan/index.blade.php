@@ -33,6 +33,7 @@
                         </td>
                         <td>
                             <a href="{{url('/plans/'.$plan->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a> {!! Form::open(['action' => ['PlansController@destroy', $plan->id], 'method' => 'POST', 'class'=>'pull-right']) !!}
+                            {{Form::hidden('sourcemodel','plan')}}
                             {{Form::hidden('_method','DELETE')}}
                                 {{ Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger'] )  }}
                             {!! Form::close() !!}

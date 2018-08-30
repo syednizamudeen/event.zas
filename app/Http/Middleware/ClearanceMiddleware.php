@@ -126,11 +126,11 @@ class ClearanceMiddleware {
 
         if ($request->isMethod('Delete'))
         {
-            if (Auth::user()->hasPermissionTo('delete services')) return $next($request);
-            elseif (Auth::user()->hasPermissionTo('delete subscriptions')) return $next($request);
-            elseif (Auth::user()->hasPermissionTo('delete plans')) return $next($request);
-            elseif (Auth::user()->hasPermissionTo('delete countries')) return $next($request);
-            elseif (Auth::user()->hasPermissionTo('delete blog')) return $next($request);
+            if (Auth::user()->hasPermissionTo('delete services') && $request['sourcemodel']=='service') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('delete subscriptions') && $request['sourcemodel']=='subscription') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('delete plans') && $request['sourcemodel']=='plan') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('delete countries') && $request['sourcemodel']=='country') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('delete blog') && $request['sourcemodel']=='blog') return $next($request);
             else abort('401');
         }
 
