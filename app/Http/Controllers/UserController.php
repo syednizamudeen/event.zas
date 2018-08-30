@@ -9,6 +9,7 @@ use App\Vendor;
 use App\UserSocialConnection;
 use App\Subscription;
 use App\VendorService;
+use App\Blog;
 use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -141,6 +142,7 @@ class UserController extends Controller
             $vendorid = $vendor->id;
             $vendorservice = VendorService::where('vendor_id', '=' ,$vendorid)->delete();
             $usersocialconnection = UserSocialConnection::where('user_id', '=' ,$userid)->delete();
+            $blogposts = Blog::where('user_id', '=' ,$userid)->delete();
             $subscription = Subscription::where('vendor_id', '=' ,$vendorid)->delete();
             $vendor->delete();
         }
