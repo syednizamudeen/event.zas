@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Blog;
 use Auth;
 use Purifier;
+use File;
+use Illuminate\Support\Facades\Storage;
+use URL;
 
 class BlogsController extends Controller
 {
@@ -16,7 +19,7 @@ class BlogsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','clearance'], ['except' => ['index','show']]);
+        $this->middleware(['auth','clearance'], ['except' => ['index','show','update','uploadpicture']]);
     }
 
     /**
@@ -119,11 +122,31 @@ class BlogsController extends Controller
 
         $blog = Blog::findOrFail($id);
         $blog->name = $request->input('name');
-        $blog->body = $request->input('body');
+        $blog->body = Purifier::clean($request->input('body'));
         $blog->slug = $request->input('slug');
         $blog->save();
 
         return redirect('/blog')->with('success', 'Blog Post Updated');
+    }
+
+    public function uploadpicture(Request $request)
+    {
+        if($request->hasFile('file'))
+        {
+            $filenameWithExt = $request->file('file')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('file')->getClientOriginalExtension();
+            $fileNameToStore = substr($filename.'_'.time().'_'.rand(99,999).'.'.$extension, -191);
+            $path = $request->file('file')->storeAs('public/blog_files', $fileNameToStore);
+            $basepath = URL::to('/').'/storage/blog_files/';
+        }
+        else
+        {
+            $extension = 'png';
+            $fileNameToStore = 'no-image.png';
+            $basepath = URL::to('/').'/storage/'.env("MEDIA_UPLOAD_PATH", "user_files/");
+        }
+        echo json_encode(array('location' => $basepath.$fileNameToStore));
     }
 
     /**

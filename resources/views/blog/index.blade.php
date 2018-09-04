@@ -13,7 +13,7 @@
                             <div class="post-thumbnail"></div>
                             <div class="post-details">
                             <div class="post-meta d-flex justify-content-between">
-                            </div><a href="{{url('/blog/').'/'.$post->slug}}">
+                            </div><a href="{{url('/post/').'/'.$post->slug}}">
                             <h3 class="h4">{{$post->name}}</h3></a>
                             <p class="text-muted">{{str_limit(strip_tags($post->body),125,'...')}}</p>
                             <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">

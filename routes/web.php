@@ -19,6 +19,7 @@ Route::resource('home','HomeController');
 Route::resource('contact','ContactController');
 Route::resource('about','AboutController');
 Route::get('post/{name}', 'BlogsController@show')->where('show', '[a-z]+');
+Route::post('blog/postimage', 'BlogsController@uploadpicture');
 Route::resource('blog','BlogsController');
 Route::resource('ideas','IdeasController');
 Route::get('vendors/register', 'VendorsController@register');

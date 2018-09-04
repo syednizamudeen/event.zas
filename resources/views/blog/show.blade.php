@@ -117,6 +117,10 @@
         </div>
         </div>
     </div>
-    </section>
-
+</section>
+<script>
+    $('.post-body img').each(function(){
+        $(this).addClass('img-fluid');
+    });
+</script>
 @endsection

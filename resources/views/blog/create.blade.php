@@ -50,13 +50,34 @@
             'insertdatetime media table contextmenu paste code help wordcount'
         ],
         toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat link image',
-        images_upload_url: 'postAcceptor.php',
         images_upload_handler: function (blobInfo, success, failure) {
-            setTimeout(function() {
-            // no matter what you upload, we will turn it into TinyMCE logo :)
-            success('http://moxiecode.cachefly.net/tinymce/v9/images/logo.png');
-            }, 2000);
-        }
+            var xhr, formData;
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', "{{ url('/blog/postimage') }}");
+            var token = '{{ csrf_token() }}';
+            xhr.setRequestHeader("X-CSRF-Token", token);
+            xhr.onload = function() {
+                var json;
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+                json = JSON.parse(xhr.responseText);
+
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+                success(json.location);
+            };
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            xhr.send(formData);
+        },
+        relative_urls: false,
+        remove_script_host: false,
+        convert_urls: true,
     });
 </script>
 @endsection
