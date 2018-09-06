@@ -5,7 +5,7 @@
     <div class="container">
         @include('settings.partials.profilecard')
         <div class="row">
-            <div class="col-md-3 ">
+            <div class="col-md-3">
                 @include('settings.partials.leftmenu')
            </div>
            <div class="col-md-9">
