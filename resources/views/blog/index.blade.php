@@ -26,20 +26,9 @@
                         </div>
                     @endforeach
               </div>
-              {{$posts->links()}}  
-              {{-- <nav aria-label="Page navigation example">                       
-                    <ul class="pagination pagination-lg justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-circle-left fa-lg" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#" tabindex="-1">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#"><i class="fas fa-chevron-circle-right fa-lg" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-              </nav> --}}
+              <nav aria-label="Page navigation example">
+              {{$posts->links()}}
+              </nav>
           </div>
           </main>
           @include('blog.partials.right')
@@ -133,5 +122,10 @@
         </div>
     </div>
     </section>
-
+    <script>
+        $('.pagination').addClass('pagination-lg justify-content-center');
+        $('.pagination li').each(function(){
+            $(this).addClass('page-item').children().addClass('page-link');
+        });
+    </script>
 @endsection
