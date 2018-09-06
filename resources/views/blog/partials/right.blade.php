@@ -1,4 +1,5 @@
 <aside class="col-lg-4">
+<a href="{{url('/blog')}}" class="btn btn-info btn-lg btn-block mb-3"><i class="fa fa-undo fa-fw"></i>Go Back</a>
 @if (!Auth::guest())
 <a href="{{url('/blog/create')}}" class="btn btn-warning btn-lg btn-block mb-3"><i class="fas fa-edit fa-lg fa-fw"></i>Create Post</a>
 @endif

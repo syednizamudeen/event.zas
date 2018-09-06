@@ -24,15 +24,20 @@
                             <span>{{$blog->user->name}}</span>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center flex-wrap"> 
-                        @if (!Auth::guest())
-                        @hasanyrole('super-admin|vendor')
-                        <a href="{{url('/blog/'.$blog->id.'/edit')}}"><div class="edit"><i class="fas fa-edit"></i>Edit</div></a>
-                        @endrole
-                        @endif
+                    <div class="d-flex align-items-center flex-wrap">                        
                         <div class="date"><i class="fas fa-clock"></i> {{$blog->created_at->diffForHumans()}}</div>
                         <div class="views"><i class="fas fa-eye"></i> 500</div>
                         <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
+                        &nbsp;&nbsp;&nbsp;
+                        @if (!Auth::guest())
+                        @hasanyrole('super-admin|vendor')
+                        <a href="{{url('/blog/'.$blog->id.'/edit')}}"><div class="edit"><i class="fas fa-edit"></i>Edit</div></a>
+                        {!! Form::open(['action' => ['BlogsController@destroy', $blog->id], 'method' => 'POST', 'class'=>'pull-right']) !!}
+                            {{Form::hidden('_method','DELETE')}}
+                            {{ Form::button('<i class="fas fa-trash"></i> Delete', ['type' => 'submit', 'class' => 'btn btn-xs btn-light'] )  }}
+                        {!! Form::close() !!}
+                        @endrole
+                        @endif
                     </div>
                 </div>
                 <div class="post-body">
