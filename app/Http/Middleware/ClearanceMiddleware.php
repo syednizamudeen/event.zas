@@ -13,8 +13,12 @@ class ClearanceMiddleware {
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next) {  
+    public function handle($request, Closure $next) {
 
+        $routeArray = $request->route()->getAction();
+        $controllerAction = class_basename($routeArray['controller']);
+        list($controller, $action) = explode('@', $controllerAction);
+        
         if (Auth::user()->hasPermissionTo('Administer roles & permissions'))
         {
             return $next($request);
@@ -126,11 +130,11 @@ class ClearanceMiddleware {
 
         if ($request->isMethod('Delete'))
         {
-            if (Auth::user()->hasPermissionTo('delete services') && $request['sourcemodel']=='service') return $next($request);
-            elseif (Auth::user()->hasPermissionTo('delete subscriptions') && $request['sourcemodel']=='subscription') return $next($request);
-            elseif (Auth::user()->hasPermissionTo('delete plans') && $request['sourcemodel']=='plan') return $next($request);
-            elseif (Auth::user()->hasPermissionTo('delete countries') && $request['sourcemodel']=='country') return $next($request);
-            elseif (Auth::user()->hasPermissionTo('delete blog') && $request['sourcemodel']=='blog') return $next($request);
+            if (Auth::user()->hasPermissionTo('delete services') && $controller=='ServicesController') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('delete subscriptions') && $controller=='SubscriptionsController') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('delete plans') && $controller=='PlansController') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('delete countries') && $controller=='CountriesController') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('delete blog') && $controller=='BlogsController') return $next($request);
             else abort('401');
         }
 

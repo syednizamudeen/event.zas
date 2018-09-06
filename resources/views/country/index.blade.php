@@ -35,7 +35,6 @@
                         <td>{{$country->countrycode}}</td>
                         <td>
                             <a href="{{url('/countries/'.$country->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a> {!! Form::open(['action' => ['CountriesController@destroy', $country->id], 'method' => 'POST', 'class'=>'pull-right']) !!}
-                            {{Form::hidden('sourcemodel','country')}}
                             {{Form::hidden('_method','DELETE')}}
                                 {{ Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger'] )  }}
                             {!! Form::close() !!}
