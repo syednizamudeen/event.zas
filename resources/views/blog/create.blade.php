@@ -1,6 +1,7 @@
 @extends('layouts.home')
 @section('content')
   <link rel="stylesheet" href="{{asset('css/blog.css')}}">
+  <link rel="stylesheet" href="{{asset('vendor/tagsinput/css/tagsinput.css')}}">
   <section class="bg-light" id="team">
   <div class="container">
       <div class="row">
@@ -25,6 +26,10 @@
                                 {{Form::textarea('body','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
                             </div>
                         </div>
+                        <div class="form-group">
+                            {{Form::label('tags','Tags')}}
+                            {{Form::text('tags','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
+                        </div>
                         {{ csrf_field() }}
                         {{ Form::button('<i class="fas fa-save fa-lg fa-fw"></i>Save', ['type' => 'submit', 'class' => 'btn btn-primary float-right ml-3'] )  }}<a href="{{url('/blog')}}" class="btn btn-info float-right"><i class="fa fa-undo fa-fw"></i>Go Back</a>
                     {!! Form::close() !!}                    
@@ -37,8 +42,9 @@
         </div>
         </div>
     </div>
-    </section>
-<script src="{{asset('vendor/tinymce/tinymce.min.js')}}"></script>	
+</section>
+<script src="{{asset('vendor/tinymce/tinymce.min.js')}}"></script>
+<script src="{{asset('vendor/tagsinput/js/tagsinput.js')}}"></script>	
 <script>
     tinymce.init({
         selector: 'textarea',
@@ -78,6 +84,9 @@
         relative_urls: false,
         remove_script_host: false,
         convert_urls: true,
+    });
+    $('#tags').tagsinput({
+        trimValue: true
     });
 </script>
 @endsection

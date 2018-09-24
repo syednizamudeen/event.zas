@@ -59,15 +59,18 @@ class BlogsController extends Controller
     {
         $this->validate($request,[
             'name'=>'required',
-            'body'=>'required'
+            'body'=>'required',
+            'tags'=>'required',
         ]);
 
         $blog = new Blog;
         $blog->name = $request->input('name');
-        $blog->body = Purifier::clean($request->input('body'));
+        $blog->body = $request->input('body');
+        // $blog->body = Purifier::clean($request->input('body'));
         $blog->slug = $request->input('slug');
-        $blog->user_id = Auth::user()->id;
+        $blog->user_id = Auth::user()->id;        
         $blog->save();
+        $blog->tag(explode(',',$request->input('tags')));
 
         return redirect('/blog')->with('success', 'Blog Post Created');
     }
@@ -117,14 +120,17 @@ class BlogsController extends Controller
     {
         $this->validate($request,[
             'name'=>'required',
-            'body'=>'required'
+            'body'=>'required',
+            'tags'=>'required',
         ]);
 
         $blog = Blog::findOrFail($id);
         $blog->name = $request->input('name');
-        $blog->body = Purifier::clean($request->input('body'));
+        $blog->body = $request->input('body');
+        // $blog->body = Purifier::clean($request->input('body'));
         $blog->slug = $request->input('slug');
         $blog->save();
+        $blog->tag(explode(',',$request->input('tags')));
 
         return redirect('/blog')->with('success', 'Blog Post Updated');
     }

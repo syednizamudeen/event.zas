@@ -42,6 +42,9 @@
                 </div>
                 <div class="post-body">
                     {!!$blog->body!!}                    
+                    @foreach($blog->tags as $tag)
+                        <span class="badge badge-primary">{{$tag->name}}</span>
+                    @endforeach
                 </div>
                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
                     <div class="icon prev"><i class="fa fa-angle-left"></i></div>

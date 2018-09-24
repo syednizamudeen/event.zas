@@ -185,6 +185,8 @@ return [
 
         Mews\Purifier\PurifierServiceProvider::class,
 
+        Conner\Tagging\Providers\TaggingServiceProvider::class,
+
     ],
 
     /*

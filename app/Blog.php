@@ -8,6 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Blog extends Model
 {
     use Sluggable;
+    use \Conner\Tagging\Taggable;
 
     public $fillable = ['name'];
 

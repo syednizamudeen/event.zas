@@ -20,6 +20,7 @@
         "laravelcollective/html": "5.4.*",
         "mews/purifier": "^2.1",
         "nnnick/chartjs": "2.7.*",
+        "rtconner/laravel-tagging": "2.*",
         "select2/select2": "4.0.*",
         "spatie/laravel-permission": "2.12.*",
         "tinymce/tinymce": "4.7.*",
