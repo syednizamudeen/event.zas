@@ -65,8 +65,7 @@ class BlogsController extends Controller
 
         $blog = new Blog;
         $blog->name = $request->input('name');
-        $blog->body = $request->input('body');
-        // $blog->body = Purifier::clean($request->input('body'));
+        $blog->body = Purifier::clean($request->input('body'));
         $blog->slug = $request->input('slug');
         $blog->user_id = Auth::user()->id;        
         $blog->save();
@@ -126,8 +125,7 @@ class BlogsController extends Controller
 
         $blog = Blog::findOrFail($id);
         $blog->name = $request->input('name');
-        $blog->body = $request->input('body');
-        // $blog->body = Purifier::clean($request->input('body'));
+        $blog->body = Purifier::clean($request->input('body'));
         $blog->slug = $request->input('slug');
         $blog->save();
         $blog->tag(explode(',',$request->input('tags')));
