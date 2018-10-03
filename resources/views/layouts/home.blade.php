@@ -117,6 +117,9 @@
                   <a href="{{url("/about")}}">About</a>
               </li>
               <li class="list-inline-item">
+                <a href="{{url("/faq")}}">F.A.Q.</a>
+            </li>
+              <li class="list-inline-item">
                   <a href="#">Privacy Policy</a>
               </li>
               <li class="list-inline-item">

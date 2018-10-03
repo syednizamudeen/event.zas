@@ -5,80 +5,22 @@
 <section id="about">
 <div class="container">
     <div class="row">
-    <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">About</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-    </div>
-    </div>
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">{{$title}}</h2>
+            <h3 class="section-subheading text-muted">Event.ZAS</h3>
+            <p>We are a search portal/ engine for anyone planning an event. Get connected to fulfill your event needs and celebrate good times.</p>
+            <p>Vendors will be able to build their profile about their business to have great exposure, making it easy for potential clientele to plan their dream events. Client will able to reach event vendors instantly.</p>
+        </div>
+    </div>  
     <div class="row">
-    <div class="col-lg-12">
-        <ul class="timeline">
-        <li>
-            <div class="timeline-image">
-            <img class="rounded-circle img-fluid" src="{{asset('app/img/about/1.jpg')}}" alt="">   
-            </div>
-            <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>2009-2011</h4>
-                <h4 class="subheading">Our Humble Beginnings</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-            </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-image">
-            <img class="rounded-circle img-fluid" src="{{asset('app/img/about/2.jpg')}}" alt="">
-            </div>
-            <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>March 2011</h4>
-                <h4 class="subheading">An Agency is Born</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-            </div>
-            </div>
-        </li>
-        <li>
-            <div class="timeline-image">
-            <img class="rounded-circle img-fluid" src="{{asset('app/img/about/3.jpg')}}" alt="">
-            </div>
-            <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>December 2012</h4>
-                <h4 class="subheading">Transition to Full Service</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-            </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-image">
-            <img class="rounded-circle img-fluid" src="{{asset('app/img/about/4.jpg')}}" alt="">
-            </div>
-            <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>July 2014</h4>
-                <h4 class="subheading">Phase Two Expansion</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-            </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-image">
-            <h4>Be Part
-                <br>Of Our
-                <br>Story!</h4>
-            </div>
-        </li>
-        </ul>
-    </div>
-    </div>
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">How does it work?</h2>
+            <p>Vendors to sign up with Event.za. They will be able to fill in details about their business nature which will later be published in Event.Zas website.</p>
+            <p>Search categories; Wedding - Venue - Catering (halal/non halal) - Photography & Videography - Bridal Outfit & rental - Make Up Artist - Henna Artist - Car rental - Decorations - Cakes - Dessert Corner - Entertainments - Flowers - Wedding planner</p>
+            <p>Birthday - Character Birthday Cakes - Themed deco - Balloons - Venue - Entertainments - Dessert - Live Snacks</p>
+            <p>Corporate - PRs for product (Branding)/ service launch / Exhibitions</p>
+        </div>
+    </div>  
 </div>
 </section>      
 @endsection

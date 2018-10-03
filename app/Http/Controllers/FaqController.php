@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class FaqController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,9 +24,9 @@ class AboutController extends Controller
     public function index()
     {
         $data = array(
-            'title'=>'About'
+            'title'=>'F.A.Q.'
         );
-        return view('about.index')->with($data);
+        return view('faq.index')->with($data);
     }
 
     /**
