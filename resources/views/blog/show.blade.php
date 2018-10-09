@@ -1,6 +1,11 @@
 @extends('layouts.home')
 @section('content')
-  <link rel="stylesheet" href="{{asset('css/blog.css')}}">
+<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+<link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('css/blog.css')}}">
   <section class="bg-light" id="team">
   <div class="container">
       <div class="row">
@@ -56,7 +61,8 @@
                     </div>
                     <div class="icon next"><i class="fa fa-angle-right">   </i></div></a>
                 </div>
-                <div class="post-comments">
+                @include('laravelLikeComment::comment', ['comment_item_id' => 'blog_'.$blog->id])
+                {{-- <div class="post-comments">
                     <header>
                     <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
                     </header>
@@ -93,8 +99,8 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                     </div>
                     </div>
-                </div>
-                <div class="add-comment">
+                </div> --}}
+                {{-- <div class="add-comment">
                     <header>
                     <h3 class="h6">Leave a reply</h3>
                     </header>
@@ -114,7 +120,7 @@
                         </div>
                     </div>
                     </form>
-                </div>
+                </div> --}}
                 </div>
             </div>
             </div>
@@ -126,9 +132,12 @@
         </div>
     </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
+    var APP_URL = {!! json_encode(url('/')) !!}
     $('.post-body img').each(function(){
         $(this).addClass('img-fluid');
     });
 </script>
+<script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
 @endsection
