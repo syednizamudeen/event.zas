@@ -5,8 +5,7 @@ if(!Auth::check())
 $GLOBALS['commentClass'] = -1;
 ?>
 <div class="laravelComment" id="laravelComment-{{ $comment_item_id }}">
-    <div class="ui threaded comments" id="{{ $comment_item_id }}-comment-0">
-        <button class="btn btn-warning" id="write-comment" data-form="#{{ $comment_item_id }}-comment-form"> Write Comment</button>
+    <div class="ui threaded comments" id="{{ $comment_item_id }}-comment-0">        
         <div class="add-comment">
             <form class="laravelComment-form commenting-form" id="{{ $comment_item_id }}-comment-form" data-parent="0" data-item="{{ $comment_item_id }}" style="display: none;">
                 <div class="row">
@@ -29,22 +28,16 @@ function dfs($comments, $comment){
     $GLOBALS['commentVisit'][$comment->id] = 1;
     $GLOBALS['commentClass']++;
 ?>
+    <div class="post-comments">
     <div class="comment show-{{ $comment->item_id }}-{{ (int)($GLOBALS['commentClass'] / 5) }}" id="comment-{{ $comment->id }}">
-        <a class="avatar">
-            <img src="{{ $comment->avatar }}">
-        </a>
-        <div class="content">
-            <a class="author" url="{{ $comment->url or '' }}"> {{ $comment->name }} </a>
-            <div class="metadata">
-                <span class="date">{{ $comment->updated_at->diffForHumans() }}</span>
+        <div class="comment-header d-flex justify-content-between">
+            <div class="user d-flex align-items-center">
+            <div class="image"><img src="{{ $comment->avatar }}" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="title"><strong>{{ $comment->name }}</strong><span class="date">{{ $comment->updated_at->diffForHumans() }}</span> <a class="{{ $GLOBALS['commentDisabled'] }} reply reply-button" data-toggle="{{ $comment->id }}-reply-form">Reply</a>{{ \risul\LaravelLikeComment\Controllers\CommentController::viewLike('comment-'.$comment->id) }}</div>
             </div>
-            <div class="text">
-                {{ $comment->comment }}
-            </div>
-            <div class="actions">
-                <a class="{{ $GLOBALS['commentDisabled'] }} reply reply-button" data-toggle="{{ $comment->id }}-reply-form">Reply</a>
-            </div>
-            {{ \risul\LaravelLikeComment\Controllers\CommentController::viewLike('comment-'.$comment->id) }}
+        </div>
+        <div class="comment-body">
+            <p>{{ $comment->comment }}</p>
             <div class="add-comment">
                 <form class="laravelComment-form commenting-form" id="{{ $comment->id }}-reply-form" data-parent="{{ $comment->id }}" data-item="{{ $comment->item_id }}" style="display: none;">
                     <div class="row">
@@ -70,6 +63,7 @@ function dfs($comments, $comment){
     }
     echo "</div>";
     echo "</div>";
+    echo "</div>";
 }
 
 $comments = \risul\LaravelLikeComment\Controllers\CommentController::getComments($comment_item_id);
@@ -80,5 +74,5 @@ foreach ($comments as $comment) {
 }
 ?>
     </div>
-    <button class="btn btn-success" id="showComment" data-show-comment="0" data-item-id="{{ $comment_item_id }}">Show Comments</button>
+    <button class="btn btn-warning" id="write-comment" data-form="#{{ $comment_item_id }}-comment-form"> Write Comment</button> <button class="btn btn-success" id="showComment" data-show-comment="0" data-item-id="{{ $comment_item_id }}">Show Comments</button>
 </div>

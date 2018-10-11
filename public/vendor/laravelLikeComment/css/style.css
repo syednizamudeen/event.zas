@@ -1,12 +1,5 @@
-.laravelLike-icon{
+.laravelLike-icon, .reply-button{
 	cursor: pointer;
-}
-.laravelLike-icon.up{
-	color: #27ae61;
-}
-.laravelLike-icon.down{
-	color: #c0392b;
-	margin-left: 10px !important;
 }
 .comment{
     display: none;

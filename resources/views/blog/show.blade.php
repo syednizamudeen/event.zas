@@ -1,6 +1,5 @@
 @extends('layouts.home')
 @section('content')
-<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
 <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
 <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
 <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
@@ -51,7 +50,7 @@
                         <span class="badge badge-primary">{{$tag->name}}</span>
                     @endforeach
                 </div>
-                <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
+                {{-- <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
                     <div class="icon prev"><i class="fa fa-angle-left"></i></div>
                     <div class="text"><strong class="text-primary">Previous Post </strong>
                         <h6>I Bought a Wedding Dress.</h6>
@@ -60,67 +59,8 @@
                         <h6>I Bought a Wedding Dress.</h6>
                     </div>
                     <div class="icon next"><i class="fa fa-angle-right">   </i></div></a>
-                </div>
+                </div> --}}
                 @include('laravelLikeComment::comment', ['comment_item_id' => 'blog_'.$blog->id])
-                {{-- <div class="post-comments">
-                    <header>
-                    <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
-                    </header>
-                    <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                        <div class="user d-flex align-items-center">
-                        <div class="image"><img src="{{asset('app/img/team/1.jpg')}}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
-                        </div>
-                    </div>
-                    <div class="comment-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                    </div>
-                    <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                        <div class="user d-flex align-items-center">
-                        <div class="image"><img src="{{asset('app/img/team/1.jpg')}}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
-                        </div>
-                    </div>
-                    <div class="comment-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                    </div>
-                    <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                        <div class="user d-flex align-items-center">
-                        <div class="image"><img src="{{asset('app/img/team/1.jpg')}}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
-                        </div>
-                    </div>
-                    <div class="comment-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="add-comment">
-                    <header>
-                    <h3 class="h6">Leave a reply</h3>
-                    </header>
-                    <form action="#" class="commenting-form">
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                        <input type="text" name="username" id="username" placeholder="Name" class="form-control">
-                        </div>
-                        <div class="form-group col-md-6">
-                        <input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
-                        </div>
-                        <div class="form-group col-md-12">
-                        <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group col-md-12">
-                        <button type="submit" class="btn btn-secondary">Submit Comment</button>
-                        </div>
-                    </div>
-                    </form>
-                </div> --}}
                 </div>
             </div>
             </div>
