@@ -30,8 +30,8 @@
                     </div>
                     <div class="d-flex align-items-center flex-wrap">                        
                         <div class="date"><i class="fas fa-clock"></i> {{$blog->created_at->diffForHumans()}}</div>
-                        <div class="views"><i class="fas fa-eye"></i> 500</div>
-                        <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
+                        {{-- <div class="views"><i class="fas fa-eye"></i> 500</div> --}}
+                        <div class="comments meta-last"><i class="fas fa-comment"></i>{{$comments->count()}}</div>
                         &nbsp;&nbsp;&nbsp;
                         @if (!Auth::guest())
                         @hasanyrole('super-admin|vendor')

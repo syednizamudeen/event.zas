@@ -86,7 +86,8 @@ class BlogsController extends Controller
         if(!$blog) abort(404, 'The resource you are looking for could not be found');
         $data = array(
             'title'=>'Blog Post',
-            'blog'=>$blog
+            'blog'=>$blog,
+            'comments'=>\risul\LaravelLikeComment\Controllers\CommentController::getComments('blog_'.$blog->id)
         );
         return view('blog.show')->with($data);
     }

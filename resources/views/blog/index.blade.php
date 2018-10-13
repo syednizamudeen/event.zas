@@ -20,7 +20,7 @@
                                 <div class="avatar"><img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid"></div>
                                 <div class="title"><span>{{$post->user->name}}</span></div></a>
                                 <div class="date"><i class="fas fa-clock"></i> {{$post->created_at->diffForHumans()}}</div>
-                                <div class="comments meta-last"><i class="fas fa-comment"></i>12</div>
+                                <div class="comments meta-last"><i class="fas fa-comment"></i>{{(\risul\LaravelLikeComment\Controllers\CommentController::getComments('blog_'.$post->id))->count()}}</div>
                             </div>
                             </div>
                         </div>
