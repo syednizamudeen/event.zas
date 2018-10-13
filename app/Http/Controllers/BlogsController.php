@@ -31,7 +31,8 @@ class BlogsController extends Controller
     {
         $data = array(
             'title'=>'Enventzas Blog',
-            'posts'=>Blog::orderBy('created_at','desc')->paginate(6)
+            'posts'=>Blog::orderBy('created_at','desc')->paginate(6),
+            'latest'=>$this->getLatestPosts(),
         );
         return view('blog.index')->with($data);
     }
@@ -87,7 +88,8 @@ class BlogsController extends Controller
         $data = array(
             'title'=>'Blog Post',
             'blog'=>$blog,
-            'comments'=>\risul\LaravelLikeComment\Controllers\CommentController::getComments('blog_'.$blog->id)
+            'comments'=>\risul\LaravelLikeComment\Controllers\CommentController::getComments('blog_'.$blog->id),
+            'latest'=>$this->getLatestPosts(),
         );
         return view('blog.show')->with($data);
     }
@@ -170,5 +172,10 @@ class BlogsController extends Controller
             return redirect('/blog')->with('success', 'Blog Post Deleted');
         }
         abort('401');
+    }
+
+    private function getLatestPosts()
+    {
+        return Blog::select('id','name','slug')->orderBy('created_at','desc')->limit(3)->offset(0)->get();
     }
 }

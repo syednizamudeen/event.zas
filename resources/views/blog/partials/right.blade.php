@@ -20,34 +20,21 @@
     <header>
     <h3 class="h6">Latest Posts</h3>
     </header>
-    <div class="blog-posts"><a href="#">
-        <div class="item d-flex align-items-center">
-        <div class="image"><img src="{{asset('app/img/team/1.jpg')}}" alt="..." class="img-fluid"></div>
-        <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-            <div class="d-flex align-items-center">
-            <div class="views"><i class="fas fa-eye"></i> 500</div>
-            <div class="comments"><i class="fas fa-comment"></i>12</div>
+    <div class="blog-posts">
+        @foreach($latest as $post)            
+            <a href="{{url('/post/').'/'.$post->slug}}">
+            <div class="item d-flex align-items-center">
+            <div class="image"><img src="{{asset('app/img/team/1.jpg')}}" alt="..." class="img-fluid"></div>
+            <div class="title"><strong>{{$post->name}}</strong>
+                <div class="d-flex align-items-center">
+                {{-- <div class="views"><i class="fas fa-eye"></i> 500</div> --}}
+                <div class="comments"><i class="fas fa-comment"></i>{{(\risul\LaravelLikeComment\Controllers\CommentController::getComments('blog_'.$post->id))->count()}}</div>
+                </div>
             </div>
-        </div>
-        </div></a><a href="#">
-        <div class="item d-flex align-items-center">
-        <div class="image"><img src="{{asset('app/img/team/2.jpg')}}" alt="..." class="img-fluid"></div>
-        <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-            <div class="d-flex align-items-center">
-            <div class="views"><i class="fas fa-eye"></i> 500</div>
-            <div class="comments"><i class="fas fa-comment"></i>12</div>
             </div>
+            </a>
+        @endforeach        
         </div>
-        </div></a><a href="#">
-        <div class="item d-flex align-items-center">
-        <div class="image"><img src="{{asset('app/img/team/3.jpg')}}" alt="..." class="img-fluid"></div>
-        <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-            <div class="d-flex align-items-center">
-            <div class="views"><i class="fas fa-eye"></i> 500</div>
-            <div class="comments"><i class="fas fa-comment"></i>12</div>
-            </div>
-        </div>
-        </div></a></div>
 </div>
 <!-- Widget [Categories Widget]-->
 <div class="widget categories">
