@@ -43,16 +43,9 @@
                     <div class="col-lg-6">
                         <p class="lead">Showing {{$services->firstItem()}} to {{$services->lastItem()}} of {{$services->total()}} records</p>
                     </div>
-                    <div class="col-lg-6">
-                            {{$services->links()}}
+                    <div class="col-lg-6">                            
                         <nav aria-label="Pagination alignment">
-                            <ul class="pagination pagination-lg justify-content-end">
-                                <li class="page-item"><a class="page-link text-dark" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
-                            </ul>
+                            {{$services->links("pagination::bootstrap-4")}}
                         </nav>
                     </div>
                 </div>
