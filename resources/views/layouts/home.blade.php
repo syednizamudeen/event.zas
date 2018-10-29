@@ -12,7 +12,7 @@
     <title>{{config('app.name','EventZas')}}</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{asset('app/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap/dist/css/bootstrap.min.css')}}">
 
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="{{asset('vendor/components/font-awesome/css/fontawesome-all.css')}}" type="text/css">
@@ -26,7 +26,7 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('app/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Plugin JavaScript -->
     <script src="{{asset('app/jquery-easing/jquery.easing.min.js')}}"></script>

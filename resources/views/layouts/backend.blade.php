@@ -9,7 +9,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{asset('vendor/bootstrap/dist/css/bootstrap.min.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{asset('backend/bootstrap/dist/css/bootstrap.min.css')}}" type="text/css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('vendor/components/font-awesome/css/fontawesome-all.css')}}" type="text/css">
   <!-- Theme style -->
