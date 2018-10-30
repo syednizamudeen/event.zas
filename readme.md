@@ -17,6 +17,7 @@
 * Role Based Access Control
 * Email Verification
 * Blog
+* SEO friendly blog post link
 
 ## License
 
