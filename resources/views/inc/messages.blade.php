@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 ">
-                <div class="py-5 mt-5">
+                <div class="pt-5 mt-5">
                     <div class="alert alert-danger" role="alert">
                         <h4><i class="fas fa-ban fa-lg fa-fw"></i>Alert!</h4>
                         <hr>
@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 ">
-            <div class="py-5 mt-5">
+            <div class="pt-5 mt-5">
                 <div class="alert alert-success" role="alert">
                     <h4><i class="fas fa-check fa-lg fa-fw"></i>Success!</h4>
                     <hr>
@@ -36,7 +36,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 ">
-            <div class="py-5 mt-5">
+            <div class="pt-5 mt-5">
                 <div class="alert alert-danger" role="alert">
                     <h4><i class="fas fa-ban fa-lg fa-fw"></i>Alert!</h4>
                     <hr>
@@ -52,7 +52,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 ">
-            <div class="py-5 mt-5">
+            <div class="pt-5 mt-5">
                 <div class="alert alert-primary" role="alert">
                     <h4><i class="fas fa-info-circle fa-lg fa-fw"></i>Info!</h4>
                     <hr>
@@ -68,7 +68,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 ">
-            <div class="py-5 mt-5">
+            <div class="pt-5 mt-5">
                 <div class="alert alert-warning" role="alert">
                     <h4><i class="fas fa-exclamation-triangle fa-lg fa-fw"></i>Warning!</h4>
                     <hr>

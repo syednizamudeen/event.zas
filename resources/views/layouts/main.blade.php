@@ -44,7 +44,7 @@
             <div class="container-fluid">
                 <!-- Logo -->
                 <a class="navbar-brand logo" href="{{url("/")}}">
-                    <img src="main/images/logo.jpg" alt="logo">
+                    <img src="{{asset('main/images/logo.jpg')}}" alt="logo">
                 </a>
                 <!-- // Logo -->
 
