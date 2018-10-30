@@ -24,7 +24,7 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,8 +32,12 @@
                             <tr>
                                 <th scope="row">{{$service->id}}</th>
                                 <td><a href="{{url('/services/'.$service->id)}}">{{$service->name}}</a></td>
-                                <td>
-                                    <a href="{{url('/services/'.$service->id.'/edit')}}" class="btn btn-link text-warning rowedit"><i class="fas fa-edit fa-lg fa-fw"></i></a> <button class="btn btn-link text-danger rowdelete"><i class="fas fa-trash-alt fa-lg fa-fw"></i></button>
+                                <td class="row">
+                                    <a href="{{url('/services/'.$service->id.'/edit')}}" class="btn btn-link text-warning text-right col-6 rowedit"><i class="fas fa-edit fa-lg fa-fw"></i></a>
+                                    {!! Form::open(['action' => ['ServicesController@destroy', $service->id], 'method' => 'POST', 'class'=>'rowdelete col-6']) !!}
+                                        {{Form::hidden('_method','DELETE')}}
+                                        {{ Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-link text-danger'] )  }}
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
                         @endforeach
@@ -57,7 +61,9 @@
 <script>
     (function ($) {
         "use strict";
-        $("table").on("click", ".rowdelete", function(){
+        $("table").on("submit", ".rowdelete", function(e){
+            e.preventDefault();
+            var that = this;
             bootbox.confirm({
                 title: "<i class=\"fas fa-trash-alt fa-lg fa-fw text-danger\"></i>Delete Row",
                 message: "Are you sure you want to continue?",
@@ -73,7 +79,7 @@
                     }
                 },
                 callback: function (result) {
-                    console.log('This was logged in the callback: ' + result);
+                    if(result){that.submit()}
                 }
             });
         });
