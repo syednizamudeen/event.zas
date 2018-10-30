@@ -1,64 +1,55 @@
-@extends('layouts.home')
-
+@extends('layouts.main')
 @section('content')
-<section>
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center mb-5">Welcome</h2>
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <span class="anchor" id="formLogin"></span>
-    
-                        <!-- form card login -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="mb-0">Login</h3>                                
-                            </div>
-                            <div class="card-body">
-                                <form class="form" role="form" autocomplete="off" method="POST" action="{{ route('login') }}">
-                                    {{ csrf_field() }}
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label for="email">E-Mail Address</label>
-                                        <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" required="" autofocus>
-                                        @if ($errors->has('email'))
-                                            <small class="text-danger">{{ $errors->first('email') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" name="password" id="password" required="" autocomplete="new-password">
-                                        @if ($errors->has('password'))
-                                            <small class="text-danger">{{ $errors->first('password') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-check small">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? 'checked' : '' }}> <span>Remember me on this computer</span>
-                                        </label>
-                                    </div>                                    
-                                    <button type="submit" class="btn btn-primary btn-lg float-right">Login</button>
-                                    <a href="{{ route('register') }}" class="btn btn-success btn-lg float-right mr-1">Sign Up</a>
-                                    <div class="form-group">
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">Forgot Your Password?</a>
-                                    </div>
-                                </form>
-                            </div>
-                            <!--/card-block-->
-                        </div>
-                        <!-- /form card login -->
-    
-                    </div>
-    
-    
-                </div>
-                <!--/row-->
-    
+<link rel="stylesheet" href="{{asset('main/css/loginutil.css')}}">
+<link rel="stylesheet" href="{{asset('main/css/login.css')}}">
+<div class="container-login100">
+    <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+        <form class="form login100-form validate-form flex-sb flex-w" role="form" autocomplete="off" method="POST" action="{{ route('login') }}">
+            <span class="login100-form-title p-b-32">
+                Account Login
+            </span>
+
+            <span class="txt1 p-b-11">
+                Email
+            </span>
+            <div class="wrap-input100 validate-input m-b-36" data-validate = "Email is required">
+                <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" autofocus>
+                <span class="focus-input100"></span>
             </div>
-            <!--/col-->
-        </div>
-        <!--/row-->
+            
+            <span class="txt1 p-b-11">
+                Password
+            </span>
+            <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
+                <span class="btn-show-pass">
+                    <i class="fa fa-eye"></i>
+                </span>
+                <input class="input100" type="password" name="password" id="password">                
+                <span class="focus-input100"></span>
+            </div>
+            
+            <div class="flex-sb-m w-full p-b-48">
+                <div class="contact100-form-checkbox">
+                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" {{ old('remember') ? 'checked' : '' }}>
+                    <label class="label-checkbox100" for="ckb1">
+                        Remember me
+                    </label>
+                </div>
+
+                <div>
+                    <a href="{{ route('password.request') }}" class="txt3">
+                        Forgot Password?
+                    </a>
+                </div>
+            </div>
+
+            <a href="{{ route('register') }}" class="btn btn-success btn-lg">Register</a>
+            <button type="submit" class="btn btn-warning btn-lg float-right">
+                Login
+            </button>
+            {{ csrf_field() }}
+        {!! Form::close() !!}
     </div>
-    <!--/container-->
-</section>
+</div>
+<script src="{{asset('main/js/login.js')}}"></script>
 @endsection
