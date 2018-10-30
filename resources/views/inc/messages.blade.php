@@ -1,74 +1,81 @@
 @if(isset($errors) && count($errors)>0)
     @foreach($errors->all() as $error)
-    <section>
-        <div class="container p-0">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="callout callout-danger">
-                        <h4>Error!</h4>
-                        <p>{{$error}}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 ">
+                <div class="py-5 mt-5">
+                    <div class="alert alert-danger" role="alert">
+                        <h4><i class="fas fa-ban fa-lg fa-fw"></i>Alert!</h4>
+                        <hr>
+                        <p class="lead">{{$error}}</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>    
+    </div>    
     @endforeach
 @endif
 
 @if(session('success'))
-<section>
-    <div class="container p-0">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="callout callout-success">
-                    <h4>Success!</h4>
-                    <p>{{session('success')}}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="py-5 mt-5">
+                <div class="alert alert-success" role="alert">
+                    <h4><i class="fas fa-check fa-lg fa-fw"></i>Success!</h4>
+                    <hr>
+                    <p class="lead">{{session('success')}}</p>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 @endif
 
 @if(session('error'))
-<section>
-    <div class="container p-0">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="callout callout-danger">
-                    <h4>Success!</h4>
-                    <p>{{session('error')}}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="py-5 mt-5">
+                <div class="alert alert-danger" role="alert">
+                    <h4><i class="fas fa-ban fa-lg fa-fw"></i>Alert!</h4>
+                    <hr>
+                    <p class="lead">{{session('error')}}</p>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 @endif
 
 @if (session('status'))
-<section>
-    <div class="container p-0">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-success">
-                    {{ session('status') }}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="py-5 mt-5">
+                <div class="alert alert-primary" role="alert">
+                    <h4><i class="fas fa-info-circle fa-lg fa-fw"></i>Info!</h4>
+                    <hr>
+                    <p class="lead">{{ session('status') }}</p>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 @endif
 
 @if (session('warning'))
-<section>
-    <div class="container p-0">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-warning">
-                    {{ session('warning') }}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="py-5 mt-5">
+                <div class="alert alert-warning" role="alert">
+                    <h4><i class="fas fa-exclamation-triangle fa-lg fa-fw"></i>Warning!</h4>
+                    <hr>
+                    <p class="lead">{{ session('warning') }}</p>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 @endif
