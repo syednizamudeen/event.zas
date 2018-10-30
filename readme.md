@@ -15,6 +15,8 @@
 ## Feature
 * Basic Authentication
 * Role Based Access Control
+* Email Verification
+* Blog
 
 ## License
 
