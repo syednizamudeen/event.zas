@@ -1,60 +1,73 @@
-@extends('layouts.home')
-
+@extends('layouts.main')
 @section('content')
-<section>
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center mb-5">New User Registration</h2>
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <div class="card border-secondary">
-                            <div class="card-header">
-                                <h3 class="mb-0 my-2">Sign Up</h3>
-                            </div>
-                            <div class="card-body">
-                                <form class="form" role="form" autocomplete="off" method="POST" action="{{ route('register') }}">
-                                    {{ csrf_field() }}
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label for="name">Name</label>
-                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required="" autofocus placeholder="full name">
-                                        @if ($errors->has('name'))
-                                            <small class="text-danger">{{ $errors->first('name') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required="" placeholder="email@gmail.com">
-                                        @if ($errors->has('email'))
-                                            <small class="text-danger">{{ $errors->first('email') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label for="password">Password</label>
-                                        <input id="password" type="password" class="form-control" name="password" placeholder="password" title="At least 6 characters with letters and numbers" required="">
-                                        @if ($errors->has('password'))
-                                            <small class="text-danger">{{ $errors->first('password') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password-confirmation">Verify</label>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="password (again)" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg float-right">Register</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/row-->
-    
+<link rel="stylesheet" href="{{asset('main/css/loginutil.css')}}">
+<link rel="stylesheet" href="{{asset('main/css/login.css')}}">
+<div class="container-login100">
+    <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+        <form class="form login100-form validate-form flex-sb flex-w" role="form" autocomplete="off" method="POST" action="{{ route('register') }}">
+            <span class="login100-form-title p-b-32">
+                Account Sign Up
+            </span>
+
+            <span class="txt1 p-b-11">
+                Name
+            </span>
+            <div class="wrap-input100 validate-input m-b-36" data-validate = "Name is required">
+                <input class="input100" type="text" name="name" id="name" value="{{ old('name') }}" autofocus placeholder="Full name">
+                <span class="focus-input100"></span>
             </div>
-            <!--/col-->
-        </div>
-        <!--/row-->
+
+            <span class="txt1 p-b-11">
+                Email
+            </span>
+            <div class="wrap-input100 validate-input m-b-36" data-validate = "Email is required">
+                <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" autofocus placeholder="email@gmail.com">
+                <span class="focus-input100"></span>
+            </div>
+            
+            <span class="txt1 p-b-11">
+                Password
+            </span>
+            <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
+                <span class="btn-show-pass">
+                    <i class="fa fa-eye"></i>
+                </span>
+                <input class="input100" type="password" name="password" id="password" placeholder="Password">                
+                <span class="focus-input100"></span>
+            </div>
+
+            <span class="txt1 p-b-11">
+                Verify (Re-type Password)
+            </span>
+            <div class="wrap-input100 validate-input m-b-12" data-validate = "Verify Password is required">
+                <span class="btn-show-pass">
+                    <i class="fa fa-eye"></i>
+                </span>
+                <input class="input100" type="password" name="password_confirmation" id="password-confirm" placeholder="Password (again)">                
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="flex-sb-m w-full p-b-48">
+                <div class="contact100-form-checkbox">
+                    <input class="input-checkbox100" id="acceptterms" type="checkbox" name="acceptterms">
+                    <label class="label-checkbox100" for="acceptterms">
+                        I agree to the <a href="terms-of-service.html">Terms and Conditions</a>
+                    </label>
+                </div>
+
+                <div>
+                    <a href="{{ route('login') }}" class="txt3">
+                        I want to Log In
+                    </a>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-warning btn-lg float-right">
+                Register
+            </button>
+            {{ csrf_field() }}
+        {!! Form::close() !!}
     </div>
-    <!--/container-->
-</section>
+</div>
+<script src="{{asset('main/js/login.js')}}"></script>
 @endsection

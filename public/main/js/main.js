@@ -2,8 +2,8 @@
     "use strict";
 
     //Auto Close Alert
-    $(".alert-success, .alert-info, .alert-warning, .alert-danger").fadeTo(2000, 500).slideUp(500, function(){
-        $(".alert-success, .alert-info, .alert-warning, .alert-danger").parent().parent().parent().slideUp(500);
+    $(".alert-success, .alert-info, .alert-warning, .alert-danger, .alert-primary").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert-success, .alert-info, .alert-warning, .alert-danger, .alert-primary").parent().parent().parent().slideUp(500);
     }); // ./Auto Close Alert
 
     //Smoth Scroll

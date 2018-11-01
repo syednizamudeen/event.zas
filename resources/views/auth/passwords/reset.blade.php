@@ -1,58 +1,51 @@
-@extends('layouts.home')
-
+@extends('layouts.main')
 @section('content')
-<section>
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center mb-5">Reset Password</h2>
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <div class="card border-secondary">
-                            <div class="card-header">
-                                <h3 class="mb-0 my-2">Enter New Password</h3>
-                            </div>
-                            <div class="card-body">
-                                <form class="form" role="form" autocomplete="off" method="POST" action="{{ route('password.request') }}">
-                                    {{ csrf_field() }}
-            
-                                    <input type="hidden" name="token" value="{{ $token }}">
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" placeholder="email@gmail.com" required="" autofocus>
-                                        @if ($errors->has('email'))
-                                            <small class="text-danger">{{ $errors->first('email') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label for="password">Password</label>
-                                        <input id="password" type="password" class="form-control" name="password" placeholder="password" title="At least 6 characters with letters and numbers" required="">
-                                        @if ($errors->has('password'))
-                                            <small class="text-danger">{{ $errors->first('password') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                        <label for="password-confirm">Confirm Password</label>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="password (again)" required="">
-                                        @if ($errors->has('password_confirmation'))
-                                            <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg float-right">Reset Password</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/row-->
-    
+<link rel="stylesheet" href="{{asset('main/css/loginutil.css')}}">
+<link rel="stylesheet" href="{{asset('main/css/login.css')}}">
+<div class="container-login100">
+    <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+        <form class="form login100-form validate-form flex-sb flex-w" role="form" autocomplete="off" method="POST" action="{{ route('password.request') }}">
+            <span class="login100-form-title p-b-32">
+                Enter New Password
+            </span>
+
+            <span class="txt1 p-b-11">
+                Email
+            </span>
+            <div class="wrap-input100 validate-input m-b-36" data-validate = "Email is required">
+                <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" autofocus placeholder="email@gmail.com">
+                <span class="focus-input100"></span>
             </div>
-            <!--/col-->
-        </div>
-        <!--/row-->
+            
+            <span class="txt1 p-b-11">
+                Password
+            </span>
+            <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
+                <span class="btn-show-pass">
+                    <i class="fa fa-eye"></i>
+                </span>
+                <input class="input100" type="password" name="password" id="password" placeholder="Password">                
+                <span class="focus-input100"></span>
+            </div>
+
+            <span class="txt1 p-b-11">
+                Verify (Re-type Password)
+            </span>
+            <div class="wrap-input100 validate-input m-b-12" data-validate = "Verify Password is required">
+                <span class="btn-show-pass">
+                    <i class="fa fa-eye"></i>
+                </span>
+                <input class="input100" type="password" name="password_confirmation" id="password-confirm" placeholder="Password (again)">                
+                <span class="focus-input100"></span>
+            </div>
+
+            <button type="submit" class="btn btn-warning btn-lg float-right">
+                Reset
+            </button>
+            <input type="hidden" name="token" value="{{ $token }}">
+            {{ csrf_field() }}
+        {!! Form::close() !!}
     </div>
-    <!--/container-->
-</section>
+</div>
+<script src="{{asset('main/js/login.js')}}"></script>
 @endsection

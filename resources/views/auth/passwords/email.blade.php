@@ -1,46 +1,29 @@
-@extends('layouts.home')
-
+@extends('layouts.main')
 @section('content')
-<section>
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <div class="card border-secondary">
-                            <div class="card-header">
-                                <h3 class="mb-0 my-2">Forgot password?</h3>
-                            </div>
-                            <div class="card-body">
-                                @if (session('status'))
-                                    <div class="alert alert-success">
-                                        {{ session('status') }}
-                                    </div>
-                                @endif
-                                <form class="form" role="form" autocomplete="off" method="POST" action="{{ route('password.email') }}">
-                                        {{ csrf_field() }}
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label for="email">E-mail Address</label>
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="email@gmail.com" required="">
-                                        @if ($errors->has('email'))
-                                            <small class="text-danger">{{ $errors->first('email') }}</small>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Send Password Reset Link</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/row-->
-    
+<link rel="stylesheet" href="{{asset('main/css/loginutil.css')}}">
+<link rel="stylesheet" href="{{asset('main/css/login.css')}}">
+<div class="container-login100">
+    <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+        <form class="form login100-form validate-form flex-sb flex-w" role="form" autocomplete="off" method="POST" action="{{ route('password.email') }}">
+            <span class="login100-form-title p-b-32">
+                Forgot Password ?
+            </span>
+
+            <span class="txt1 p-b-11">
+                Email
+            </span>
+            <div class="wrap-input100 validate-input m-b-36" data-validate = "Email is required">
+                <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" autofocus placeholder="email@gmail.com">
+                <span class="focus-input100"></span>
             </div>
-            <!--/col-->
-        </div>
-        <!--/row-->
+
+            <a href="{{ route('login') }}" class="btn btn-success btn-lg">Login</a>
+            <button type="submit" class="btn btn-warning btn-lg float-right">
+                Reset
+            </button>
+            {{ csrf_field() }}
+        {!! Form::close() !!}
     </div>
-    <!--/container-->
-</section>
+</div>
+<script src="{{asset('main/js/login.js')}}"></script>
 @endsection
