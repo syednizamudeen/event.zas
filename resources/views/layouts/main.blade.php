@@ -184,10 +184,10 @@
                 </div>
                 <div class="col-lg-4 text-right">
                     <div class="copyright-text">
-                        <a href="settings.html">Settings</a>
-                        <a href="#about">About</a>
-                        <a href="faq.html">F.A.Q.</a>
-                        <a href="terms-of-service.html">Terms of Use</a>
+                        <!--<a href="settings.html">Settings</a>-->
+                        <a href="{{Route::currentRouteName()=='home.index'?'#about':url("/about")}}">About</a>
+                        <a href="{{Route::currentRouteName()=='home.index'?'#faq':url("/faq")}}">F.A.Q.</a>
+                        <a href="{{url("/terms-of-service")}}">Terms of Service</a>
                         <!--<a href="#contact">Contact</a>-->
                     </div>
                 </div>

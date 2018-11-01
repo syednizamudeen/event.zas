@@ -51,7 +51,7 @@
                 <div class="contact100-form-checkbox">
                     <input class="input-checkbox100" id="acceptterms" type="checkbox" name="acceptterms">
                     <label class="label-checkbox100" for="acceptterms">
-                        I agree to the <a href="terms-of-service.html">Terms and Conditions</a>
+                        I agree to the <a href="{{url("/terms-of-service")}}">Terms and Conditions</a>
                     </label>
                 </div>
 

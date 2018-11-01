@@ -19,6 +19,7 @@ Route::resource('home','HomeController');
 Route::resource('contact','ContactController');
 Route::resource('about','AboutController');
 Route::resource('faq','FaqController');
+Route::resource('terms-of-service','TsController');
 Route::get('post/{name}', 'BlogsController@show')->where('show', '[a-z]+');
 Route::post('blog/postimage', 'BlogsController@uploadpicture');
 Route::resource('blog','BlogsController');
