@@ -23,10 +23,11 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $data = array(
-            'title'=>'About'
-        );
-        return view('about.index')->with($data);
+        // $data = array(
+        //     'title'=>'About'
+        // );
+        // return view('about.index')->with($data);
+        return view('about.index');
     }
 
     /**

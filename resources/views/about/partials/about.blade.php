@@ -3,9 +3,9 @@
         <!-- Section Title -->
         <div class="row justify-content-center">
             <div class="col-lg-6 ">
-                <div class="section-title text-center">
-                    <h2>{{$title}}</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus placeat unde non modi, facilis, quae?</p>
+                <div class="section-title text-center faq-title">
+                    <h2>About</h2>
+                    <p>We are a search portal/ engine for anyone planning an event.</p>
                 </div>
             </div>
         </div>
@@ -26,9 +26,9 @@
             </div>
             <div class="col-lg-6">
                 <div class="about-content">
-                    <h2>Hello, I am AL Mamun</h2>
-                    <h4>Graphic Designer and Web Designer</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis numquam ipsam ut deleniti perferendis aliquid ullam, voluptatibus nam sunt eum laudantium cupiditate iste, obcaecati deserunt dolores aliquam quia cum minus animi ipsa est facere culpa fugiat, maxime quam! Itaque aperiam sequi accusantium impedit recusandae nobis quod sunt deserunt provident omnis.</p>
+                    <h2>Event.ZAS</h2>
+                    <h4>Get connected to fulfill your event needs and celebrate good times</h4>
+                    <p>Vendors will be able to build their profile about their business to have great exposure, making it easy for potential clientele to plan their dream events. Client will able to reach event vendors instantly.</p>
 
                     {{-- <h5>My Skills</h5>
 

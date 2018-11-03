@@ -874,7 +874,7 @@
             <!-- Section Title -->
             <div class="row justify-content-center">
                 <div class="col-lg-6 ">
-                    <div class="section-title text-center">
+                    <div class="section-title text-center faq-title">
                         <h2>Contact Me</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     </div>
