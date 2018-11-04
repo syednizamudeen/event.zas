@@ -188,7 +188,7 @@
                         <a href="{{Route::currentRouteName()=='home.index'?'#about':url("/about")}}">About</a>
                         <a href="{{Route::currentRouteName()=='home.index'?'#faq':url("/faq")}}">F.A.Q.</a>
                         <a href="{{url("/terms-of-service")}}">Terms of Service</a>
-                        <!--<a href="#contact">Contact</a>-->
+                        <a href="{{Route::currentRouteName()=='home.index'?'#contact':url("/contact")}}">Contact</a>
                     </div>
                 </div>
             </div>

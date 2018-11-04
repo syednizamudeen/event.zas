@@ -869,50 +869,7 @@
 
 
     <!-- ====== Contact Area ====== -->
-    <section id="contact" class="section-padding contact-section bg-secondary">
-        <div class="container">
-            <!-- Section Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-6 ">
-                    <div class="section-title text-center faq-title">
-                        <h2>Contact Me</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- //Section Title -->
-
-            <!-- Contact Form -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <!-- Form -->
-                    <form id="contact-form" action="mail.php" method="post" class="contact-form bg-white">
-                        <div class="row">
-                            <div class="col-lg-6 form-group">
-                                <input type="text" class="form-control" name="name" required placeholder="Name">
-                            </div>
-                            <div class="col-lg-6 form-group">
-                                <input type="email" class="form-control" name="email" required placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="subject" required placeholder="Subject">
-                        </div>
-
-                        <div class="form-group">
-                            <textarea name="message" id="" class="form-control" required placeholder="Message"></textarea>
-                        </div>
-                        <div class="form-btn text-center">
-                            <button class="button" type="submit">Send Message</button>
-                            <p class="form-message"></p>
-                        </div>
-                    </form>
-                    <!-- // Form -->
-                </div>
-            </div>
-            <!-- // Contact Form -->
-        </div>
-    </section>
+    @include('contact.partials.contact')
     <!-- ====== // Contact Area ====== --> 
     <script>
         $(document).ready(function () {
@@ -970,40 +927,6 @@
                 nav: true,
                 navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
                 dots: false
-            });
-
-
-            /*::::::::::::::::::::::::::::::::::::
-            Contact Area 
-            ::::::::::::::::::::::::::::::::::::*/
-            var form = $('#contact-form');
-
-            var formMessages = $('.form-message');
-            $(form).submit(function (e) {
-                e.preventDefault();
-                var formData = $(form).serialize();
-                $.ajax({
-                        type: 'POST',
-                        url: $(form).attr('action'),
-                        data: formData
-                    })
-                    .done(function (response) {
-                        $(formMessages).removeClass('error');
-                        $(formMessages).addClass('success');
-                        $(formMessages).text(response);
-
-                        $('#contact-form input,#contact-form textarea').val('');
-                    })
-                    .fail(function (data) {
-                        $(formMessages).removeClass('success');
-                        $(formMessages).addClass('error');
-
-                        if (data.responseText !== '') {
-                            $(formMessages).text(data.responseText);
-                        } else {
-                            $(formMessages).text('Oops! An error occured and your message could not be sent.');
-                        }
-                    });
             });
             
             $('#carouselExample').on('slide.bs.carousel', function (e) {
