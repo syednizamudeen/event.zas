@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Configuration;
+use Mail;
 
 class ContactController extends Controller
 {
@@ -13,7 +15,7 @@ class ContactController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index','send']]);
     }
     
     /**
@@ -23,10 +25,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $data = array(
-            'title'=>'Enventzas Contact'
-        );
-        return view('contact.index')->with($data);
+        // $data = array(
+        //     'title'=>'Enventzas Contact'
+        // );
+        // return view('contact.index')->with($data);
+        return view('contact.index');
     }
 
     /**
@@ -93,5 +96,30 @@ class ContactController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function send(Request $request)
+    {
+        $this->validate($request,[
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required'
+        ]);
+        $sendTo = Configuration::where([
+            'name' => 'feedback_email',
+            'section'=> 'CONTACTUS'
+        ])->first(['value'])->toArray();
+        if(isset($sendTo['value']))
+        {
+            $sendTo = $sendTo['value'];
+            $from = $request['email'];
+            Mail::send('emails.contact', ['title' => $request['subject'], 'content' => $request['message']],function($message) use($from, $sendTo) {
+                $message->from($from);
+                $message->to($sendTo);
+                $message->subject("[INBOX] Event.ZAS");
+            });
+            return redirect('/contact')->with('success', 'Message Sent Successfully!');
+        }
+        return redirect('/contact')->with('error', 'Message Not Sent.');
     }
 }

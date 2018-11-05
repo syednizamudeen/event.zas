@@ -16,6 +16,7 @@ Route::get('/backend', 'DashboardController@index');
 
 Route::resource('services','ServicesController');
 Route::resource('home','HomeController');
+Route::post('contact/send', 'ContactController@send');
 Route::resource('contact','ContactController');
 Route::resource('about','AboutController');
 Route::resource('faq','FaqController');
