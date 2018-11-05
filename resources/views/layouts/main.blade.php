@@ -75,6 +75,7 @@
                                 <a class="dropdown-item" href="{{url("/plans")}}">Plan</a>
                                 <a class="dropdown-item" href="{{url("/countries")}}">Country</a>
                                 <a class="dropdown-item" href="{{url("/vendors")}}">Vendor</a>
+                                <a class="dropdown-item" href="{{url("/configurations")}}">Configuration</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{url("/users")}}">User</a>
                                 <a class="dropdown-item" href="{{url("/roles")}}">Role</a>

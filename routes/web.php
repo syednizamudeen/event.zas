@@ -40,6 +40,7 @@ Route::get('settings/billing', 'SettingsController@billing');
 Route::get('settings/notification', 'SettingsController@notification');
 Route::post('settings/removepicture', 'SettingsController@removePicture');
 Route::resource('settings','SettingsController');
+Route::resource('configurations','ConfigurationsController');
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
 Auth::routes();

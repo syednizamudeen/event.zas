@@ -13,7 +13,7 @@
                 </div>
                 <div class="row pb-2">
                     <div class="col-lg-6">
-                        <a href="{{url('/services/create')}}" class="btn btn-info btn-lg"><i class="fas fa-plus fa-lg fa-fw"></i>Create</a>
+                        <a href="{{url('/configurations/create')}}" class="btn btn-info btn-lg"><i class="fas fa-plus fa-lg fa-fw"></i>Create</a>
                     </div>
                     <div class="col-lg-6">
                         <!--<button class="btn btn-default btn-lg float-right"><i class="fas fa-long-arrow-alt-left fa-lg fa-fw"></i>Back</button>-->
@@ -24,21 +24,23 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Updated At</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Section</th>
+                        <th scope="col">Type</th>
                         <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($services as $service)
+                        @foreach($configurations as $configuration)
                             <tr>
-                                <th scope="row">{{$service->id}}</th>
-                                <td><a href="{{url('/services/'.$service->id)}}">{{$service->name}}</a></td>
-                                <td>{{(!empty($service->created_at)?$service->created_at->diffForHumans():'')}}</td>
-                                <td>{{(!empty($service->updated_at)?$service->updated_at->diffForHumans():'')}}</td>
+                                <th scope="row">{{$configuration->id}}</th>
+                                <td><a href="{{url('/configurations/'.$configuration->id)}}">{{$configuration->name}}</a></td>
+                                <td>{{$configuration->value}}</td>
+                                <td>{{$configuration->section}}</td>
+                                <td>{{$configuration->type}}</td>
                                 <td class="row">
-                                    <a href="{{url('/services/'.$service->id.'/edit')}}" class="btn btn-link text-warning text-right col-6 rowedit"><i class="fas fa-edit fa-lg fa-fw"></i></a>
-                                    {!! Form::open(['action' => ['ServicesController@destroy', $service->id], 'method' => 'POST', 'class'=>'rowdelete col-6']) !!}
+                                    <a href="{{url('/configurations/'.$configuration->id.'/edit')}}" class="btn btn-link text-warning text-right col-6 rowedit"><i class="fas fa-edit fa-lg fa-fw"></i></a>
+                                    {!! Form::open(['action' => ['ConfigurationsController@destroy', $configuration->id], 'method' => 'POST', 'class'=>'rowdelete col-6']) !!}
                                         {{Form::hidden('_method','DELETE')}}
                                         {{ Form::button('<i class="fas fa-trash-alt fa-lg fa-fw"></i>', ['type' => 'submit', 'class' => 'btn btn-link text-danger'] )  }}
                                         {{ csrf_field() }}
@@ -50,11 +52,11 @@
                 </table>
                 <div class="row">
                     <div class="col-lg-6">
-                        <p class="lead">Showing {{$services->firstItem()}} to {{$services->lastItem()}} of {{$services->total()}} records</p>
+                        <p class="lead">Showing {{$configurations->firstItem()}} to {{$configurations->lastItem()}} of {{$configurations->total()}} records</p>
                     </div>
                     <div class="col-lg-6">                            
                         <nav aria-label="Pagination alignment">
-                            {{$services->links("pagination::bootstrap-4")}}
+                            {{$configurations->links("pagination::bootstrap-4")}}
                         </nav>
                     </div>
                 </div>

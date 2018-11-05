@@ -49,6 +49,11 @@ class ClearanceMiddleware {
             if (Auth::user()->hasPermissionTo('view blog')) return $next($request);
             else abort('401');
         }
+        elseif ($request->is('configurations'))
+        {
+            if (Auth::user()->hasPermissionTo('View Configurations')) return $next($request);
+            else abort('401');
+        }
 
         if ($request->is('services/create'))
         {
@@ -75,6 +80,11 @@ class ClearanceMiddleware {
             if (Auth::user()->hasPermissionTo('add blog')) return $next($request);
             else abort('401');
         }
+        elseif ($request->is('configurations/create'))
+        {
+            if (Auth::user()->hasPermissionTo('Add Configurations')) return $next($request);
+            else abort('401');
+        }
 
         if ($request->is('services/*/edit'))
          {
@@ -99,6 +109,11 @@ class ClearanceMiddleware {
        elseif ($request->is('blog/*/edit'))
        {
            if (Auth::user()->hasPermissionTo('edit blog')) return $next($request);
+           else abort('401');
+       }
+       elseif ($request->is('configurations/*/edit'))
+       {
+           if (Auth::user()->hasPermissionTo('Edit Configurations')) return $next($request);
            else abort('401');
        }
 
@@ -135,6 +150,7 @@ class ClearanceMiddleware {
             elseif (Auth::user()->hasPermissionTo('delete plans') && $controller=='PlansController') return $next($request);
             elseif (Auth::user()->hasPermissionTo('delete countries') && $controller=='CountriesController') return $next($request);
             elseif (Auth::user()->hasPermissionTo('delete blog') && $controller=='BlogsController') return $next($request);
+            elseif (Auth::user()->hasPermissionTo('Delete Configurations') && $controller=='ConfigurationsController') return $next($request);
             else abort('401');
         }
 
