@@ -491,7 +491,7 @@
                         <div class="single-faq">
 
                             <!-- FAQ Header -->
-                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-1">Collapsible Group Item One</h4>
+                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-1">Can I create a few account if I provide different services?</h4>
                             <!-- // FAQ Header -->
 
                             <!-- FAQ Content -->
@@ -508,7 +508,7 @@
                         <div class="single-faq">
 
                             <!-- FAQ Header -->
-                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-2">Lorem ipsum dolor sit amet Two</h4>
+                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-2">After the free trail period or in future can I choose to unsubscribe?</h4>
                             <!-- // FAQ Header -->
 
                             <!-- FAQ Content -->
@@ -525,7 +525,7 @@
                         <div class="single-faq">
 
                             <!-- FAQ Header -->
-                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-3">Collapsible Group Item Three</h4>
+                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-3">How can I delete my account?</h4>
                             <!-- // FAQ Header -->
 
                             <!-- FAQ Content -->
@@ -565,39 +565,17 @@
             </div>
             <!-- //Section Title -->
             <div class="row">
-                <!-- Single Blog -->
-                <div class="col-lg-4 col-md-6">
+                @foreach($posts as $post)
+                <div class="col-lg-6 col-md-6">
                     <div class="single-blog">
-                        <div class="blog-thumb" style="background-image: url(main/images/img-1.jpg)"></div>
-                        <h4 class="blog-title"><a href="single-blog.html">Full Responsive</a></h4>
-                        <p class="blog-meta"><a href="#">AL Mamun</a>, 22 FEB 2018</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque similique velit, officiis non.</p>
-                        <a href="single-blog.html" class="button">Read More</a>
+                        <!--<div class="blog-thumb" style="background-image: url(main/images/img-1.jpg)"></div>-->
+                        <h4 class="blog-title"><a href="{{url('/post/').'/'.$post->slug}}">{{$post->name}}</a></h4>
+                        <p class="blog-meta"><a href="#">{{$post->user->name}}</a>{{!empty($post->created_at)?', '.$post->created_at->diffForHumans():''}}</p>
+                        <p>{{str_limit(strip_tags($post->body),100,'...')}}</p>
+                        <a href="{{url('/post/').'/'.$post->slug}}" class="button">Read More</a>
                     </div>
                 </div>
-                <!-- Single Blog -->
-                <!-- Single Blog -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog">
-                        <div class="blog-thumb" style="background-image: url(main/images/img-1.jpg)"></div>
-                        <h4 class="blog-title"><a href="single-blog.html">Lifetime free Update</a></h4>
-                        <p class="blog-meta"><a href="#">AL Mamun</a>, 22 FEB 2018</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque similique velit, officiis non.</p>
-                        <a href="single-blog.html" class="button">Read More</a>
-                    </div>
-                </div>
-                <!-- Single Blog -->
-                <!-- Single Blog -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog">
-                        <div class="blog-thumb" style="background-image: url(main/images/img-1.jpg)"></div>
-                        <h4 class="blog-title"><a href="single-blog.html">Unlimited Support</a></h4>
-                        <p class="blog-meta"><a href="#">AL Mamun</a>, 22 FEB 2018</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque similique velit, officiis non.</p>
-                        <a href="single-blog.html" class="button">Read More</a>
-                    </div>
-                </div>
-                <!-- Single Blog -->
+                @endforeach                
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center cta-button">

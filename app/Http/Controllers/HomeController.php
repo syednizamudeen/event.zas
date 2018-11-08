@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Service;
+use App\Blog;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,8 @@ class HomeController extends Controller
             'title'=>'Enventzas Home',
             'services'=>array_merge(array(''=>'Category'),array_column(Service::all('id','name')->toArray(), 'name', 'id')),
             'cities'=>array(''=>'City','1'=>'Singapore','2'=>'Johor','3'=>'Kuala Lumpur'),
-            'countries'=>array(''=>'Country','1'=>'Singapore','2'=>'Malaysia')
+            'countries'=>array(''=>'Country','1'=>'Singapore','2'=>'Malaysia'),
+            'posts'=>Blog::select('id','name','body','slug','user_id','created_at')->orderBy('created_at','desc')->limit(4)->offset(0)->get()
         );
         return view('home.index')->with($data);
     }
