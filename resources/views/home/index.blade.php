@@ -31,7 +31,7 @@
                             <input type="submit" class="search-submit btn" value="Search">  
                         </form>
                         </div>
-                        <a href="filter.html" class="text-muted smooth-scroll"><i class="fas fa-search fa-lg fa-fw"></i>More Search Options</a>
+                        <a href="{{url("/vendors/search")}}" class="text-muted smooth-scroll"><i class="fas fa-search fa-lg fa-fw"></i>More Search Options</a>
                     </div>
                 </div>
             </div>
