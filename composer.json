@@ -26,7 +26,7 @@
         "select2/select2": "4.0.*",
         "spatie/laravel-permission": "2.12.*",
         "tinymce/tinymce": "4.7.*",
-        "twbs/bootstrap": "4.1.*"
+        "twbs/bootstrap": "4.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
