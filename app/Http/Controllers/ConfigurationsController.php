@@ -122,7 +122,7 @@ class ConfigurationsController extends Controller
         $configuration->type = $request->input('type');
         $configuration->save();
 
-        return redirect('/configurations')->with('success', 'Service Configuration');
+        return redirect('/configurations')->with('success', 'Configuration Updated');
     }
 
     /**
