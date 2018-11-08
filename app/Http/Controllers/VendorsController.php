@@ -22,7 +22,7 @@ class VendorsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'clearance'])->except('register');
+        $this->middleware(['auth', 'clearance'], ['except' => ['index', 'register', 'search']]);
     }
 
     /**
@@ -149,6 +149,20 @@ class VendorsController extends Controller
         // $vendor->delete();
 
         // return redirect('/vendors')->with('success', 'Vendor Deleted');
+    }
+
+    /**
+     * Display search result of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        $data = array(
+            'title'=>'Search Vendors',
+            // 'vendors'=>Vendor::orderBy('id','desc')->paginate(10)
+        );
+        return view('vendors.search')->with($data);
     }
 
     /**

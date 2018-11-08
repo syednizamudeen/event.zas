@@ -57,7 +57,7 @@
                 <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a class="nav-link" href="{{url("/home")}}">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">ALL VENDORS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url("/vendors/search")}}">ALL VENDORS</a></li>
                         <!--<li class="nav-item"><a class="nav-link" href="#service">SERVICE</a></li>-->
                         <li class="nav-item"><a class="nav-link" href="#portfolio">RECOMMENDED IDEAS</a></li>
                         <li class="nav-item"><a class="nav-link" href="#blog">EVENT INSPIRATION</a></li>
