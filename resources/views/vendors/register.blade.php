@@ -211,6 +211,10 @@
                                             {{Form::label('cardexpiry','Card Expiry')}}
                                             {{Form::text('cardexpiry','',['class'=>'form-control','placeholder'=>'Enter Text'])}}
                                         </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="acceptterms" name="acceptterms">
+                                            <label for="acceptterms" class="for-check-label">I agree to the <a href="{{url("/terms-of-service")}}">Terms and Conditions</a></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
