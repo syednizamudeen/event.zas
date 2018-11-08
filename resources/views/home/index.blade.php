@@ -54,6 +54,7 @@
     </div>
     <!-- ====== //Hero Area ====== -->
 
+    @if(count($logos)>0)
     <!-- ====== Featured Area ====== -->
     <section id="featured" class="section-padding pb-70">
 
@@ -61,30 +62,13 @@
         <div class="container">
             <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="4000">
                 <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                    <div class="carousel-item col-md-3 active">
-                        <img class="img-fluid mx-auto d-block" src="http://placehold.it/350x150/000/fff?text=1" alt="slide 1">
+                    @php ($active='active')
+                    @foreach($logos as $logo)
+                    <div class="carousel-item col-md-3 {{$active}}">
+                    <img class="img-fluid mx-auto d-block rounded" style="width:350px;height:150px;" src="{{$logopath.$logo->filename}}" alt="slide 1">
                     </div>
-                    <div class="carousel-item col-md-3">
-                        <img class="img-fluid mx-auto d-block" src="http://placehold.it/350x150?text=2" alt="slide 2">
-                    </div>
-                    <div class="carousel-item col-md-3">
-                        <img class="img-fluid mx-auto d-block" src="http://placehold.it/350x150?text=3" alt="slide 3">
-                    </div>
-                    <div class="carousel-item col-md-3">
-                        <img class="img-fluid mx-auto d-block" src="http://placehold.it/350x150?text=4" alt="slide 4">
-                    </div>
-                    <div class="carousel-item col-md-3">
-                        <img class="img-fluid mx-auto d-block" src="http://placehold.it/350x150?text=5" alt="slide 5">
-                    </div>
-                    <div class="carousel-item col-md-3">
-                        <img class="img-fluid mx-auto d-block" src="http://placehold.it/350x150?text=6" alt="slide 6">
-                    </div>
-                    <div class="carousel-item col-md-3">
-                        <img class="img-fluid mx-auto d-block" src="http://placehold.it/350x150?text=7" alt="slide 7">
-                    </div>
-                    <div class="carousel-item col-md-3">
-                        <img class="img-fluid mx-auto d-block" src="http://placehold.it/350x150?text=8" alt="slide 7">
-                    </div>
+                    @php ($active='')
+                    @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
                     <i class="fa fa-chevron-left fa-lg text-muted"></i>
@@ -137,6 +121,7 @@
         </div>-->
     </section>
     <!-- ====== //Featured Area ====== -->
+    @endif
 
     <!-- ====== About Area ====== -->
     @include('about.partials.about')
@@ -508,7 +493,7 @@
                         <div class="single-faq">
 
                             <!-- FAQ Header -->
-                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-2">After the free trail period or in future can I choose to unsubscribe?</h4>
+                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-2">After the free trail period how can I unsubscribe?</h4>
                             <!-- // FAQ Header -->
 
                             <!-- FAQ Content -->

@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Service;
 use App\Blog;
+use App\Image;
+use URL;
 
 class HomeController extends Controller
 {
+    private $defaultFolder;
+
     /**
      * Create a new controller instance.
      *
@@ -16,6 +20,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index']]);
+        $this->defaultFolder = env("MEDIA_UPLOAD_PATH", "user_files/");
     }
 
     /**
@@ -30,7 +35,9 @@ class HomeController extends Controller
             'services'=>array_merge(array(''=>'Category'),array_column(Service::all('id','name')->toArray(), 'name', 'id')),
             'cities'=>array(''=>'City','1'=>'Singapore','2'=>'Johor','3'=>'Kuala Lumpur'),
             'countries'=>array(''=>'Country','1'=>'Singapore','2'=>'Malaysia'),
-            'posts'=>Blog::select('id','name','body','slug','user_id','created_at')->orderBy('created_at','desc')->limit(4)->offset(0)->get()
+            'posts'=>Blog::select('id','name','body','slug','user_id','created_at')->orderBy('created_at','desc')->limit(4)->offset(0)->get(),
+            'logos'=>Image::where(['image_type_id'=>3])->orderBy('created_at','desc')->limit(8)->offset(0)->get(),
+            'logopath'=>URL::to('/').'/storage/'.$this->defaultFolder
         );
         return view('home.index')->with($data);
     }
