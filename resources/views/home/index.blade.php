@@ -41,12 +41,12 @@
         <div class="hero-area-slids owl-carousel">
             <div class="single-slider">
                 <!-- Single Background -->
-                <div class="slider-bg" style="background-image: url(main/images/img-1.jpg)"></div>
+                <div class="slider-bg" style="background-image: url({{asset('main/images/img-1.jpg')}})"></div>
                 <!-- // Single Background -->
             </div>
             <div class="single-slider">
                 <!-- Single Background -->
-                <div class="slider-bg" style="background-image: url(main/images/img-2.jpg)"></div>
+                <div class="slider-bg" style="background-image: url({{asset('main/images/img-2.jpg')}})"></div>
                 <!-- // Single Background -->
             </div>
         </div>
@@ -132,7 +132,7 @@
     <!-- ====================================================================
             NOTE: You need to change  'data-count="10"' and 'p' Eliments 
         ===================================================================== -->
-    {{-- <section class="section-padding pb-70 bg-img fact-counter" id="counter" style="background-image: url(main/images/img-1.jpg)">
+    {{-- <section class="section-padding pb-70 bg-img fact-counter" id="counter" style="background-image: url({{asset('main/images/img-1.jpg')}})">
         <div class="container">
             <div class="row">
                 <!-- Single Fact Counter -->
@@ -340,7 +340,7 @@
             <div class="row portfolio">
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix wp graphic">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -352,7 +352,7 @@
                 <!-- // Single Portfolio -->
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix logo web graphic other wp">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -364,7 +364,7 @@
                 <!-- // Single Portfolio -->
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix wp other">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -376,7 +376,7 @@
                 <!-- // Single Portfolio -->
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix logo other graphic wp web">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -388,7 +388,7 @@
                 <!-- // Single Portfolio -->
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix logo other wp graphic web">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -400,7 +400,7 @@
                 <!-- // Single Portfolio -->
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix wp logo graphic web">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -412,7 +412,7 @@
                 <!-- // Single Portfolio -->
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix web wp">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -424,7 +424,7 @@
                 <!-- // Single Portfolio -->
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix logo graphic wp web">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -436,7 +436,7 @@
                 <!-- // Single Portfolio -->
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix other logo web">
-                    <div class="single-portfolio" style="background-image: url(main/images/img-1.jpg)">
+                    <div class="single-portfolio" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                         <div class="portfolio-icon text-center">
                             <a data-lightbox='lightbox' href="main/images/img-1.jpg"><i class="fas fa-expand-arrows-alt"></i></a>
                         </div>
@@ -466,7 +466,7 @@
             <!-- //Section Title -->
             <div class="row">
                 <div class="col-lg-5">
-                    <div class="faq-bg bg-img" style="background-image: url(main/images/img-1.jpg)"></div>
+                    <div class="faq-bg bg-img" style="background-image: url({{asset('main/images/img-1.jpg')}})"></div>
                 </div>
                 <div class="col-lg-7">
                     <!-- FAQ Content -->
@@ -553,7 +553,7 @@
                 @foreach($posts as $post)
                 <div class="col-lg-6 col-md-6">
                     <div class="single-blog">
-                        <!--<div class="blog-thumb" style="background-image: url(main/images/img-1.jpg)"></div>-->
+                        <!--<div class="blog-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})"></div>-->
                         <h4 class="blog-title"><a href="{{url('/post/').'/'.$post->slug}}">{{$post->name}}</a></h4>
                         <p class="blog-meta"><a href="#">{{$post->user->name}}</a>{{!empty($post->created_at)?', '.$post->created_at->diffForHumans():''}}</p>
                         <p>{{str_limit(strip_tags($post->body),100,'...')}}</p>
@@ -642,7 +642,7 @@
                 <!-- Single Team -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-team">
-                        <div class="team-thumb" style="background-image: url(main/images/img-1.jpg)">
+                        <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                             <div class="team-social">
                                 <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
                                 <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
@@ -663,7 +663,7 @@
                 <!-- Single Team -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-team">
-                        <div class="team-thumb" style="background-image: url(main/images/img-1.jpg)">
+                        <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                             <div class="team-social">
                                 <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
@@ -681,7 +681,7 @@
                 <!-- Single Team -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-team">
-                        <div class="team-thumb" style="background-image: url(main/images/img-1.jpg)">
+                        <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                             <div class="team-social">
                                 <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
@@ -699,7 +699,7 @@
                 <!-- Single Team -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-team">
-                        <div class="team-thumb" style="background-image: url(main/images/img-1.jpg)">
+                        <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
                             <div class="team-social">
                                 <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
