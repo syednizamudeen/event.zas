@@ -60,7 +60,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{url("/vendors/search")}}">ALL VENDORS</a></li>
                         <!--<li class="nav-item"><a class="nav-link" href="#service">SERVICE</a></li>-->
                         <li class="nav-item"><a class="nav-link" href="#portfolio">RECOMMENDED IDEAS</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#blog">EVENT INSPIRATION</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{Route::currentRouteName()=='home.index'?'#blog':url("/blog")}}">EVENT INSPIRATION</a></li>
                         @if (Auth::guest())
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">LOGIN</a></li>
                         <li class="nav-item"><a class="nav-link pr0" href="{{url("/vendors/register")}}">BECOME A VENDOR</a></li>
