@@ -152,16 +152,20 @@ class VendorsController extends Controller
     }
 
     /**
-     * Display search result of the resource.
+     * Display search page of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function search()
+    public function search(Request $request)
     {
         $data = array(
             'title'=>'Search Vendors',
-            // 'vendors'=>Vendor::orderBy('id','desc')->paginate(10)
+            'vendors'=>Vendor::orderBy('id','desc')->paginate(2)
         );
+        if($request->ajax())
+        {
+            return view('vendors.partials.live')->with($data);  
+        }
         return view('vendors.search')->with($data);
     }
 

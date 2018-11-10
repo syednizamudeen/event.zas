@@ -9,7 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 ">
                 <div class="section-title text-center">
-                    <h2>All Vendors</h2>
+                    <h2>{{ $title }}</h2>
                     <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>-->
                 </div>
             </div>
@@ -17,35 +17,36 @@
         <!-- //Section Title -->            
         <div class="row">
             <div class="col-lg-2">
+            {!! Form::open(['method' => 'POST', 'name' => 'vendorfacet']) !!}
                 <h3 class="mt-2 text-warning">Categories</h3>
                 <hr>
                 <div class="m-2">
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="anniversary">
+                        <input type="checkbox" id="anniversary" name="category" value="anniversary">
                         <label for="anniversary">
                             Anniversary
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="birthday">
+                        <input type="checkbox" id="birthday" name="category" value="birthday">
                         <label for="birthday">
                             Birthday Party
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="event">
+                        <input type="checkbox" id="event" name="category" value="event">
                         <label for="event">
                             Corporate Event
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="decoration">
+                        <input type="checkbox" id="decoration" name="category" value="decoration">
                         <label for="decoration">
                             Decoration
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="invitation">
+                        <input type="checkbox" id="invitation" name="category" value="invitation">
                         <label for="invitation">
                             Invitation Designer
                         </label>
@@ -62,13 +63,13 @@
                 <hr>
                 <div class="m-2">
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="malaysia">
+                        <input type="checkbox" id="malaysia" name="malaysia">
                         <label for="malaysia">
                             Malaysia
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="singapore">
+                        <input type="checkbox" id="singapore" name="singapore">
                         <label for="singapore">
                             Singapore
                         </label>
@@ -78,25 +79,25 @@
                 <hr>
                 <div class="m-2">
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="johor">
+                        <input type="checkbox" id="johor" name="johor">
                         <label for="johor">
                             Johor
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="kualalumpur">
+                        <input type="checkbox" id="kualalumpur" name="kualalumpur">
                         <label for="kualalumpur">
                             Kuala Lumpur
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="larkin">
+                        <input type="checkbox" id="larkin" name="larkin">
                         <label for="larkin">
                             Larkin
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="singaporecity">
+                        <input type="checkbox" id="singaporecity" name="singaporecity">
                         <label for="singaporecity">
                             Singapore
                         </label>
@@ -106,25 +107,25 @@
                 <hr>
                 <div class="m-2">
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="five">
+                        <input type="checkbox" id="five" name="five">
                         <label for="five">
                             <i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i> 5.0
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="four">
+                        <input type="checkbox" id="four" name="four">
                         <label for="four">
                                 <i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i><i class="far fa-star fa-lg"></i> 4.0
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="three">
+                        <input type="checkbox" id="three" name="three">
                         <label for="three">
                             <i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i><i class="fas fa-star fa-lg"></i><i class="far fa-star fa-lg"></i><i class="far fa-star fa-lg"></i> 3.0
                         </label>
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="low">
+                        <input type="checkbox" id="low" name="low">
                         <label for="low">
                             Low
                         </label>
@@ -134,14 +135,14 @@
                 <hr>
                 <div class="m-2">
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="paid">
+                        <input type="checkbox" id="paid" name="subscription" value="paid">
                         <label for="paid">
                             EventZAS Pay
                         </label>
                         <!-- <p class="text-muted font-italic pb-2">We recommend only sponsored vendors.</p> -->
                     </div>
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="free">
+                        <input type="checkbox" id="free" name="subscription" value="free">
                         <label for="free">
                             Trial
                         </label>
@@ -149,219 +150,78 @@
                     </div>
                 </div>
                 <!-- <button class="button float-right mt-5">Apply Filter</button> -->
+            {!! Form::close() !!}
             </div>
-            <div class="col-lg-10">
-                <div class="row">
-                    <!-- Single Team -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-team">
-                            <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
-                                <h6>
-                                    <span class="badge badge-success float-right m-3">
-                                        EventZAS Pay <span class="fa-stack">
-                                        <i class="far fa-circle fa-stack-2x"></i>
-                                        <i class="fas fa-dollar-sign fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </span>
-                                </h6>
-                                <div class="team-social">
-                                    <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Instagram"><i class="fab fa-instagram  fa-lg"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <h4>AL Mamun</h4>
-                                <span class="clearfix">Wedding Organiser</span>
-                                <span class="clearfix">Singapore</span>
-                                <a href="#" class="text-warning"><i class="fas fa-comments fa-fw"></i>(0) reviews</a> | 
-                                <a href="profile.html" class="text-success"><i class="fas fa-folder-open fa-fw"></i>Show Profile</a>
-                                <button class="button"><i class="fas fa-dollar-sign fa-fw"></i>Ask for Quote</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- // Single Team -->
-                    <!-- Single Team -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-team">
-                            <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
-                                <div class="team-social">
-                                    <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Instagram"><i class="fab fa-instagram  fa-lg"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <h4>AL Mamun</h4>
-                                <span class="clearfix">Wedding Organiser</span>
-                                <span class="clearfix">Singapore</span>
-                                <a href="#" class="text-warning"><i class="fas fa-comments fa-fw"></i>(0) reviews</a> | 
-                                <a href="profile.html" class="text-success"><i class="fas fa-folder-open fa-fw"></i>Show Profile</a>
-                                <button class="button"><i class="fas fa-dollar-sign fa-fw"></i>Ask for Quote</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- // Single Team -->
-                    <!-- Single Team -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-team">
-                            <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
-                                <h6>
-                                    <span class="badge badge-success float-right m-3">
-                                        EventZAS Pay <span class="fa-stack">
-                                        <i class="far fa-circle fa-stack-2x"></i>
-                                        <i class="fas fa-dollar-sign fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </span>
-                                </h6>
-                                <div class="team-social">
-                                    <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Instagram"><i class="fab fa-instagram  fa-lg"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <h4>AL Mamun</h4>
-                                <span class="clearfix">Wedding Organiser</span>
-                                <span class="clearfix">Singapore</span>
-                                <a href="#" class="text-warning"><i class="fas fa-comments fa-fw"></i>(0) reviews</a> | 
-                                <a href="profile.html" class="text-success"><i class="fas fa-folder-open fa-fw"></i>Show Profile</a>
-                                <button class="button"><i class="fas fa-dollar-sign fa-fw"></i>Ask for Quote</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- // Single Team -->
-                    <!-- Single Team -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-team">
-                            <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
-                                <div class="team-social">
-                                    <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Instagram"><i class="fab fa-instagram  fa-lg"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <h4>AL Mamun</h4>
-                                <span class="clearfix">Wedding Organiser</span>
-                                <span class="clearfix">Singapore</span>
-                                <a href="#" class="text-warning"><i class="fas fa-comments fa-fw"></i>(0) reviews</a> | 
-                                <a href="profile.html" class="text-success"><i class="fas fa-folder-open fa-fw"></i>Show Profile</a>
-                                <button class="button"><i class="fas fa-dollar-sign fa-fw"></i>Ask for Quote</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- // Single Team -->
-                </div>
-                <div class="row">
-                    <!-- Single Team -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-team">
-                            <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
-                                <div class="team-social">
-                                    <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Instagram"><i class="fab fa-instagram  fa-lg"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <h4>AL Mamun</h4>
-                                <span class="clearfix">Wedding Organiser</span>
-                                <span class="clearfix">Singapore</span>
-                                <a href="#" class="text-warning"><i class="fas fa-comments fa-fw"></i>(0) reviews</a> | 
-                                <a href="profile.html" class="text-success"><i class="fas fa-folder-open fa-fw"></i>Show Profile</a>
-                                <button class="button"><i class="fas fa-dollar-sign fa-fw"></i>Ask for Quote</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- // Single Team -->
-                    <!-- Single Team -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-team">
-                            <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
-                                <div class="team-social">
-                                    <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Instagram"><i class="fab fa-instagram  fa-lg"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <h4>AL Mamun</h4>
-                                <span class="clearfix">Wedding Organiser</span>
-                                <span class="clearfix">Singapore</span>
-                                <a href="#" class="text-warning"><i class="fas fa-comments fa-fw"></i>(0) reviews</a> | 
-                                <a href="profile.html" class="text-success"><i class="fas fa-folder-open fa-fw"></i>Show Profile</a>
-                                <button class="button"><i class="fas fa-dollar-sign fa-fw"></i>Ask for Quote</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- // Single Team -->
-                    <!-- Single Team -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-team">
-                            <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
-                                <div class="team-social">
-                                    <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Instagram"><i class="fab fa-instagram  fa-lg"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <h4>AL Mamun</h4>
-                                <span class="clearfix">Wedding Organiser</span>
-                                <span class="clearfix">Singapore</span>
-                                <a href="#" class="text-warning"><i class="fas fa-comments fa-fw"></i>(0) reviews</a> | 
-                                <a href="profile.html" class="text-success"><i class="fas fa-folder-open fa-fw"></i>Show Profile</a>
-                                <button class="button"><i class="fas fa-dollar-sign fa-fw"></i>Ask for Quote</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- // Single Team -->
-                    <!-- Single Team -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-team">
-                            <div class="team-thumb" style="background-image: url({{asset('main/images/img-1.jpg')}})">
-                                <div class="team-social">
-                                    <a target="_blank" href="#" title="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                                    <a target="_blank" href="#" title="Instagram"><i class="fab fa-instagram  fa-lg"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <h4>AL Mamun</h4>
-                                <span class="clearfix">Wedding Organiser</span>
-                                <span class="clearfix">Singapore</span>
-                                <a href="#" class="text-warning"><i class="fas fa-comments fa-fw"></i>(0) reviews</a> | 
-                                <a href="profile.html" class="text-success"><i class="fas fa-folder-open fa-fw"></i>Show Profile</a>
-                                <button class="button"><i class="fas fa-dollar-sign fa-fw"></i>Ask for Quote</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- // Single Team -->
-                </div>
+            <div class="col-lg-10" id="live_container">
+                @include('vendors.partials.live')
             </div>
         </div>
     </div>
 </section>
 <script src="{{asset('vendor/jqueryui/jquery-ui.min.js')}}"></script>
 <script>
-jQuery(document).ready(function(){
-
-    var getOutput    = $("#state");
-    var getSlider = $("#advance_slide");
-
-    getSlider.slider({
-    range:true,
-    min:1000,
-    max:10000,
-    values:[3300, 6500],
-    step:50,
-    slide:function(event, ui){
-        getOutput.html( ui.values[0]+' - '+ui.values[1]+' $');
+$(window).on('hashchange', function() {
+    if (window.location.hash) {
+        var page = window.location.hash.replace('#', '');
+        if (page == Number.NaN || page <= 0) {
+            return false;
+        }else{
+            getData(page);
+        }
     }
+});
+$(document).ready(function(){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var getOutput = $("#state");
+    var getSlider = $("#advance_slide");
+    getSlider.slider({
+        range:true,
+        min:1000,
+        max:10000,
+        values:[3300, 6500],
+        step:50,
+        slide:function(event, ui){
+            getOutput.html( ui.values[0]+' - '+ui.values[1]+' $');
+        }
     });
     getOutput.html(getSlider.slider("values",0)+' - '+getSlider.slider("values",1)+" $");
-
+    getSlider.on("slidestop", function(event, ui){
+        console.log("Slider stopped; initiate live search..."+ui.values[0]+' - '+ui.values[1]);
+    });
+    $(document).on('click', '.pagination a', function(event) {
+        event.preventDefault();
+        $('li').removeClass('active');
+        $(this).parent('li').addClass('active');
+        var myurl = $(this).attr('href');
+        var page=$(this).attr('href').split('page=')[1];
+        getData(page);
+    });
+    $("form[name='vendorfacet'] :input").change(function() {
+        console.log("facet changed; initiate live search...");
+        console.log($("form[name='vendorfacet']").serializeArray());
+    });
 });
+function getData(page) {
+    $.ajax(
+    {
+        url: '?page=' + page,
+        type: "get",
+        datatype: "html"
+    })
+    .done(function(data)
+    {
+        $("#live_container").empty().html(data);
+        location.hash = page;
+    })
+    .fail(function(jqXHR, ajaxOptions, thrownError)
+    {
+        alert('No response from server');
+
+    });
+}
 </script>
 @endsection
