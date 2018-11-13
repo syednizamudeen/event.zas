@@ -189,6 +189,8 @@ return [
         
         risul\LaravelLikeComment\LikeCommentServiceProvider::class,
 
+        Laravel\Passport\PassportServiceProvider::class,
+
     ],
 
     /*
