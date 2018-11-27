@@ -21,36 +21,14 @@
                 <h3 class="mt-2 text-warning">Categories</h3>
                 <hr>
                 <div class="m-2">
+                    @foreach($services as $service)
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="anniversary" name="category" value="anniversary">
-                        <label for="anniversary">
-                            Anniversary
+                        <input type="checkbox" id="service_{{$service->id}}" name="{{$service->name}}" value="{{$service->name}}">
+                        <label for="service_{{$service->id}}">
+                            {{$service->name}}
                         </label>
                     </div>
-                    <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="birthday" name="category" value="birthday">
-                        <label for="birthday">
-                            Birthday Party
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="event" name="category" value="event">
-                        <label for="event">
-                            Corporate Event
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="decoration" name="category" value="decoration">
-                        <label for="decoration">
-                            Decoration
-                        </label>
-                    </div>
-                    <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="invitation" name="category" value="invitation">
-                        <label for="invitation">
-                            Invitation Designer
-                        </label>
-                    </div>
+                    @endforeach
                 </div>
                 <h3 class="mt-2 text-warning">Price</h3>
                 <hr>
@@ -62,18 +40,14 @@
                 <h3 class="mt-2 text-warning">Country</h3>
                 <hr>
                 <div class="m-2">
+                    @foreach($countries as $country)
                     <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="malaysia" name="malaysia">
-                        <label for="malaysia">
-                            Malaysia
+                        <input type="checkbox" id="country_{{$country->id}}" name="{{$country->name}}">
+                        <label for="country_{{$country->id}}">
+                            {{$country->name}}
                         </label>
                     </div>
-                    <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="singapore" name="singapore">
-                        <label for="singapore">
-                            Singapore
-                        </label>
-                    </div>
+                    @endforeach
                 </div>
                 <h3 class="mt-2 text-warning">City</h3>
                 <hr>

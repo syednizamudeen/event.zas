@@ -160,7 +160,9 @@ class VendorsController extends Controller
     {
         $data = array(
             'title'=>'Search Vendors',
-            'vendors'=>Vendor::orderBy('id','desc')->paginate(2)
+            'vendors'=>Vendor::orderBy('id','desc')->paginate(2),
+            'services'=>Service::select('id', 'name')->orderBy('name')->get(),
+            'countries'=>Country::select('id', 'name')->orderBy('name')->get()
         );
         if($request->ajax())
         {
