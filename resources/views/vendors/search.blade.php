@@ -194,7 +194,6 @@ function getData(page) {
     .fail(function(jqXHR, ajaxOptions, thrownError)
     {
         alert('No response from server');
-
     });
 }
 </script>

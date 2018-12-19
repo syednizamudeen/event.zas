@@ -22,11 +22,11 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Updated At</th>
-                        <th scope="col" class="text-center">Action</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Updated At</th>
+                            <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,7 +36,7 @@
                                 <td><a href="{{url('/services/'.$service->id)}}">{{$service->name}}</a></td>
                                 <td>{{(!empty($service->created_at)?$service->created_at->diffForHumans():'')}}</td>
                                 <td>{{(!empty($service->updated_at)?$service->updated_at->diffForHumans():'')}}</td>
-                                <td class="row">
+                                <td class="row mx-0">
                                     <a href="{{url('/services/'.$service->id.'/edit')}}" class="btn btn-link text-warning text-right col-6 rowedit"><i class="fas fa-edit fa-lg fa-fw"></i></a>
                                     {!! Form::open(['action' => ['ServicesController@destroy', $service->id], 'method' => 'POST', 'class'=>'rowdelete col-6']) !!}
                                         {{Form::hidden('_method','DELETE')}}
